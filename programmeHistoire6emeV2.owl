@@ -1,0 +1,2119 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY organisation-systeme-scolaire-francais "http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#" >
+    <!ENTITY programme_histoire_college_france "file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#" >
+]>
+
+
+<rdf:RDF xmlns="Programme_Histoire_College_France#"
+     xml:base="Programme_Histoire_College_France"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:programme_histoire_college_france="file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:organisation-systeme-scolaire-francais="http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#">
+    <owl:Ontology rdf:about="file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France">
+        <rdfs:label xml:lang="fr">Ontologie du programme scolaire en matière Histoire au Collège en France. </rdfs:label>
+        <rdfs:comment xml:lang="fr">La concption de l&apos;ontologie du programme scolaire en matière Histoire au Collège en France est basée sur le programme officiel du Ministère de l&apos;Education Nationale. (Cf: http://www.education.gouv.fr/cid22116/mene0817481a.html )
+
+Histoire-géographie-éducation civique
+
+Objectifs
+Se constituer des références culturelles pour mieux se situer dans le temps, dans l’espace, dans un système de valeurs démocratiques et devenir un citoyen responsable.
+
+En histoire, les élèves acquièrent une culture commune. Ils prennent conscience des héritages du passé et des enjeux du monde présent.
+
+En géographie, les élèves développent leur curiosité et leur connaissance du monde. Ils s&apos;approprient les repères nécessaires pour y évoluer avec discernement.
+
+En éducation civique, ils se préparent à se comporter en personnes responsables. Ils acquièrent aussi les connaissances essentielles pour comprendre la citoyenneté et se préparer à son exercice.
+
+Au programme en histoire
+Différents champs de l’histoire sont abordés : économique, social, politique et culturel, avec une place particulière pour l’histoire des arts.
+
+En sixième
+Après un premier contact avec une civilisation de l’Orient, les élèves découvrent la Grèce et Rome et étudient l&apos;émergence du judaïsme et du christianisme.
+
+En cinquième
+Les élèves découvrent les grandes civilisations entre le VIIe siècle et la fin du XVIIe siècle : débuts de l’islam, civilisation médiévale européenne (christianisme, féodalité, émergence de l’État), histoire africaine. Ils abordent également les bouleversements culturels et intellectuels en Europe à partir de la fin du XVe siècle et l’affirmation de l’État.
+
+En quatrième
+Les XVIIIe et XIXe siècles (du siècle des Lumières à la révolution industrielle) sont caractérisés par des ruptures décisives : les révolutions sont au centre du programme. La question des traites négrières et de l’esclavage est aussi largement abordée.
+
+En troisième
+Les élèves parcourent l’histoire du monde depuis 1914 : ils étudient les guerres mondiales, les régimes totalitaires et le cadre géopolitique mondial d&apos;après 1945. Une attention particulière est portée à l’histoire politique de la France.
+
+Au programme en géographie
+En sixième
+Après un approfondissement de la connaissance de l’espace proche (paysages et territoires), le programme explore le monde, pour y situer les sociétés humaines dans leur diversité, découvrir et caractériser les différentes manières de l’habiter.
+
+En cinquième
+Croissance démographique, inégalités des conditions de vie, de richesses et de développement des sociétés, rapports entre les sociétés et les ressources (aménagement, usage, préservation et partage entre les territoires et les hommes) : la cinquième est consacrée au développement durable.
+
+En quatrième
+En s&apos;appuyant sur les paysages, les élèves acquièrent quelques éléments simples de description, d’analyse et d’explication du processus de mondialisation et travaillent sur les débats qu&apos;il suscite.
+
+En troisième
+En partant des territoires proches et de leurs habitants, les élèves étudient la France comme espace de production ouvert sur l&apos;Europe et le monde et l’Union européenne (UE).  Le programme débouche sur le rôle mondial de la France et de l’UE.
+
+Au programme en éducation civique
+Les élèves s&apos;initient à la complexité de la vie sociale et politique. À partir de situations concrètes (élection des délégués de classe par exemple), ils abordent les notions clés et le vocabulaire de la citoyenneté :
+
+la vie en collectivité, autour des notions de collégien, d’enfant et d’habitant
+des principes fondateurs, comme la laïcité  
+les valeurs de diversité, égalité, sécurité, liberté, droit, justice
+La République française et son organisation démocratique sont au cœur du programme de troisième.
+
+</rdfs:comment>
+        <owl:imports rdf:resource="http://shadok.enst.fr/ilot/ontologies/bloom"/>
+        <owl:imports rdf:resource="http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#aPeriodePrecedente -->
+
+    <owl:ObjectProperty rdf:about="&programme_histoire_college_france;aPeriodePrecedente">
+        <owl:inverseOf rdf:resource="&organisation-systeme-scolaire-francais;aPeriodeSuivante"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#contientConnaissance -->
+
+    <owl:ObjectProperty rdf:about="&programme_histoire_college_france;contientConnaissance">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#estUnePartieDe -->
+
+    <owl:ObjectProperty rdf:about="&programme_histoire_college_france;estUnePartieDe"/>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#faitPartieDe -->
+
+    <owl:ObjectProperty rdf:about="&programme_histoire_college_france;faitPartieDe">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;faitPartieDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaissance"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;faitPartieDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;niveau"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#travailSurCapaciteDe -->
+
+    <owl:ObjectProperty rdf:about="&programme_histoire_college_france;travailSurCapaciteDe"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#aPeriodeSuivante -->
+
+    <rdf:Description rdf:about="&organisation-systeme-scolaire-francais;aPeriodeSuivante"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#aDureeRelative -->
+
+    <owl:DatatypeProperty rdf:about="&programme_histoire_college_france;aDureeRelative">
+        <rdfs:comment xml:lang="fr">Durée exprimée en % de la période dans laquelle le sujet est directement inclus</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#estUnePartieDe -->
+
+    <owl:DatatypeProperty rdf:about="&programme_histoire_college_france;estUnePartieDe"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#capacite -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;capacite"/>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#caracteriser -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;caracteriser">
+        <rdfs:label xml:lang="fr">Caractériser</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;capacite"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#college_3eme -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;college_3eme">
+        <owl:equivalentClass rdf:resource="&organisation-systeme-scolaire-francais;periode3eme"/>
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;niveau"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#college_4eme -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;college_4eme">
+        <owl:equivalentClass rdf:resource="&organisation-systeme-scolaire-francais;periode4eme"/>
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;niveau"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#college_5eme -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;college_5eme">
+        <owl:equivalentClass rdf:resource="&organisation-systeme-scolaire-francais;periode5eme"/>
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;niveau"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#college_6eme -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;college_6eme">
+        <owl:equivalentClass rdf:resource="&organisation-systeme-scolaire-francais;periode6eme"/>
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;niveau"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#connaissance -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;connaissance"/>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#connaitreEtUtiliserLesReperes -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;connaitreEtUtiliserLesReperes">
+        <rdfs:label xml:lang="fr">Connaître et utiliser les repères</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;capacite"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#decrire -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;decrire">
+        <rdfs:label xml:lang="fr">Décrire</rdfs:label>
+        <owl:equivalentClass rdf:resource="http://shadok.enst.fr/ilot/ontologies/bloom#décrire"/>
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;capacite"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#demarche -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;demarche"/>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#expliquer -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;expliquer">
+        <rdfs:label xml:lang="fr">Expliquer</rdfs:label>
+        <owl:equivalentClass rdf:resource="http://shadok.enst.fr/ilot/ontologies/bloom#expliquer"/>
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;capacite"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#niveau -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;niveau"/>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#periodeCE1 -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;periodeCE1">
+        <rdfs:subClassOf rdf:resource="&organisation-systeme-scolaire-francais;periodeCycle2"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#periodeCE2 -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;periodeCE2">
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;periodeCycle3"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#periodeCM1 -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;periodeCM1">
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;periodeCycle3"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#periodeCM2 -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;periodeCM2">
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;periodeCycle3"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#periodeCP -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;periodeCP">
+        <rdfs:subClassOf rdf:resource="&organisation-systeme-scolaire-francais;periodeCycle2"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#periodeCycle3 -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;periodeCycle3">
+        <rdfs:subClassOf rdf:resource="&organisation-systeme-scolaire-francais;periodePrimaire"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#programmeDescription -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;programmeDescription"/>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#raconter -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;raconter">
+        <rdfs:label xml:lang="fr">Raconter</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;capacite"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#reconnaitre -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;reconnaitre">
+        <rdfs:label xml:lang="fr">Reconnaître</rdfs:label>
+        <owl:equivalentClass rdf:resource="http://shadok.enst.fr/ilot/ontologies/bloom#identifier"/>
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;capacite"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#soustheme -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;soustheme">
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;theme"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#sujet -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;sujet"/>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme -->
+
+    <owl:Class rdf:about="&programme_histoire_college_france;theme">
+        <rdfs:subClassOf rdf:resource="&programme_histoire_college_france;programmeDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shadok.enst.fr/ilot/ontologies/bloom#décrire -->
+
+    <rdf:Description rdf:about="http://shadok.enst.fr/ilot/ontologies/bloom#décrire"/>
+    
+
+
+    <!-- http://shadok.enst.fr/ilot/ontologies/bloom#expliquer -->
+
+    <rdf:Description rdf:about="http://shadok.enst.fr/ilot/ontologies/bloom#expliquer"/>
+    
+
+
+    <!-- http://shadok.enst.fr/ilot/ontologies/bloom#identifier -->
+
+    <rdf:Description rdf:about="http://shadok.enst.fr/ilot/ontologies/bloom#identifier"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#periode3eme -->
+
+    <rdf:Description rdf:about="&organisation-systeme-scolaire-francais;periode3eme"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#periode4eme -->
+
+    <rdf:Description rdf:about="&organisation-systeme-scolaire-francais;periode4eme"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#periode5eme -->
+
+    <rdf:Description rdf:about="&organisation-systeme-scolaire-francais;periode5eme"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#periode6eme -->
+
+    <rdf:Description rdf:about="&organisation-systeme-scolaire-francais;periode6eme"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#periodeCycle2 -->
+
+    <owl:Class rdf:about="&organisation-systeme-scolaire-francais;periodeCycle2">
+        <rdfs:subClassOf rdf:resource="&organisation-systeme-scolaire-francais;periodePrimaire"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#1ereGenerale -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;1ereGenerale">
+        <rdf:type rdf:resource="&organisation-systeme-scolaire-francais;periode1ere"/>
+        <organisation-systeme-scolaire-francais:aPeriodeSuivante rdf:resource="&programme_histoire_college_france;1ereGenerale"/>
+        <owl:sameAs rdf:resource="&organisation-systeme-scolaire-francais;1ereGenerale"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#2emeGenerale -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;2emeGenerale">
+        <rdf:type rdf:resource="&organisation-systeme-scolaire-francais;periode2eme"/>
+        <organisation-systeme-scolaire-francais:aPeriodeSuivante rdf:resource="&programme_histoire_college_france;2emeGenerale"/>
+        <owl:sameAs rdf:resource="&organisation-systeme-scolaire-francais;2ereGenerale"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Des_grands_récits_de_la_Bible -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Des_grands_récits_de_la_Bible">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuJudaisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Des_grands_écrits_de_la_tradition -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Des_grands_écrits_de_la_tradition">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuJudaisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Du_mythe_à_l’histoire_:_l’Enéide_et_la_légende_de_Romulus_et_Remus -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Du_mythe_à_l’histoire_:_l’Enéide_et_la_légende_de_Romulus_et_Remus">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_originesALaFin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Empire_de_l’occident_carolingien -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Empire_de_l’occident_carolingien">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Empire_de_l’orient_byzantin -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Empire_de_l’orient_byzantin">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#La_Chine_des_Han -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;La_Chine_des_Han">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_chineDesHans"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#La_République_romaine -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;La_République_romaine">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_originesALaFin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#La_diaspora -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;La_diaspora">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuJudaisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#La_dynastie_des_Gupta -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;La_dynastie_des_Gupta">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_indeClassique"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#La_paix_romaine -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;La_paix_romaine">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_empire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#La_romanisation -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;La_romanisation">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_empire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#La_route_de_la_soie -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;La_route_de_la_soie">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_chineDesHans"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Le_personnage_d’Alexandre -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Le_personnage_d’Alexandre">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <rdfs:label xml:lang="fr">Le personnage d’Alexandre</rdfs:label>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_alexandreLeGrand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Le_site_étudié -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Le_site_étudié"/>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Les_Hébreux_du_royaume_de_Juda -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Les_Hébreux_du_royaume_de_Juda">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuJudaisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Les_chrétiens_sont_abordés_dans_le_cadre_l’empire_romain -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Les_chrétiens_sont_abordés_dans_le_cadre_l’empire_romain">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuJudaisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Les_citoyens -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Les_citoyens">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_citeDesAtheniens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Les_foyers_de_la_civilisation_grecque_aux_VIIIe_-_VIIe_siècle -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Les_foyers_de_la_civilisation_grecque_aux_VIIIe_-_VIIe_siècle">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_fondementDeLaGrece"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Les_habitants_de_la_cité -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Les_habitants_de_la_cité">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_citeDesAtheniens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Les_relations_du_christianisme_et_de_l’empire_romain -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Les_relations_du_christianisme_et_de_l’empire_romain">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuJudaisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Les_sanctuaires_panhelléniques -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Les_sanctuaires_panhelléniques">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_fondementDeLaGrece"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#Les_savants_grecs -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Les_savants_grecs">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_laGreceDesSavants"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#L’Iliade_et_l’Odyssée -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;L’Iliade_et_l’Odyssée">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_fondementDeLaGrece"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#L’Urbs,_capitale_de_l’Empire -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;L’Urbs,_capitale_de_l’Empire">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_empire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#L’apogée_de_la_civilisation_de_l’Inde_classique -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;L’apogée_de_la_civilisation_de_l’Inde_classique">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_indeClassique"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#L’art_indien_d’inspiration_hindou_et_bouddhiste -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;L’art_indien_d’inspiration_hindou_et_bouddhiste">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <rdfs:label xml:lang="fr">Capacité
+</rdfs:label>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_indeClassique"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#L’empereur -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;L’empereur">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_empire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#L’enchaînement_des_conquêtes -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;L’enchaînement_des_conquêtes">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_originesALaFin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#L’exemple_d’une_cité_hellénistique -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;L’exemple_d’une_cité_hellénistique">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <organisation-systeme-scolaire-francais:aPeriodeSuivante rdf:resource="&programme_histoire_college_france;theme_alexandreLeGrand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#L’unité_de_la_cité_des_Athéniens -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;L’unité_de_la_cité_des_Athéniens">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_citeDesAtheniens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#alexandreLeGrand -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;alexandreLeGrand">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Alexandre le Grand, 333-323 av. J.-C.</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_alexandreLeGrand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#aspectsDeLaVieDuSavant -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;aspectsDeLaVieDuSavant">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;raconter"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_laGreceDesSavants"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#attique -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;attique">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">L’Attique, territoire de la cité</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_citeDesAtheniens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#basiliqueChretienne -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;basiliqueChretienne">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;decrire"/>
+        <programme_histoire_college_france:estUnePartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuChristianisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#caracteriser -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;caracteriser">
+        <rdf:type rdf:resource="&programme_histoire_college_france;caracteriser"/>
+        <rdfs:label xml:lang="fr">Caractériser</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#carriereDeCesar -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;carriereDeCesar">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;expliquer"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_originesALaFin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#ce1 -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;ce1">
+        <rdf:type rdf:resource="&programme_histoire_college_france;periodeCE1"/>
+        <organisation-systeme-scolaire-francais:aPeriodeSuivante rdf:resource="&programme_histoire_college_france;ce2"/>
+        <owl:sameAs rdf:resource="&organisation-systeme-scolaire-francais;ce1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#ce2 -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;ce2">
+        <rdf:type rdf:resource="&programme_histoire_college_france;periodeCE2"/>
+        <organisation-systeme-scolaire-francais:aPeriodeSuivante rdf:resource="&programme_histoire_college_france;cm1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#chineDesHan206Av -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;chineDesHan206Av">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">La Chine des Han, 206 av. J.-C. – 220</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_chineDesHans"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#chineDesHanSonApogee -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;chineDesHanSonApogee">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">La Chine des Han à son apogée sur une carte de l’Asie</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_chineDesHans"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#christianisationDeLempireRomain -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;christianisationDeLempireRomain">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;expliquer"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuChristianisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#citeHellenistique -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;citeHellenistique">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdfs:label xml:lang="fr">Décrire la cité hellénistique étudiée</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;decrire"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_alexandreLeGrand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#cm1 -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;cm1">
+        <rdf:type rdf:resource="&programme_histoire_college_france;periodeCM1"/>
+        <organisation-systeme-scolaire-francais:aPeriodeSuivante rdf:resource="&programme_histoire_college_france;cm2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#cm2 -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;cm2">
+        <rdf:type rdf:resource="&programme_histoire_college_france;periodeCM2"/>
+        <organisation-systeme-scolaire-francais:aPeriodeSuivante rdf:resource="&organisation-systeme-scolaire-francais;6eme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#connaitreCivilisationGrecque -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;connaitreCivilisationGrecque">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#connaitreDebutJudaismeEtChristianisme -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;connaitreDebutJudaismeEtChristianisme">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#connaitreEmpiresChretiens -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;connaitreEmpiresChretiens">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#connaitreEtUtiliserLesReperes -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;connaitreEtUtiliserLesReperes">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <rdfs:label xml:lang="fr">Connaître et utiliser les repères</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#connaitreLesMondesLointains -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;connaitreLesMondesLointains">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#connaitreOrientAncien -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;connaitreOrientAncien">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <rdfs:label xml:lang="fr">L’Orient ancien au IIIe millénaire av. J.-C. : premières écritures et
+premiers États.</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#connaitreRome -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;connaitreRome">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#couronnementCharlemagne -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;couronnementCharlemagne">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Le couronnement de Charlemagne : 800</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_empiresChretiensduHautMoyenAge"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#cp -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;cp">
+        <rdf:type rdf:resource="&programme_histoire_college_france;periodeCP"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#cycle2 -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;cycle2">
+        <rdf:type rdf:resource="&organisation-systeme-scolaire-francais;periodeCycle2"/>
+        <rdfs:label xml:lang="fr">Cycle 2 ou cycle des apprentissages fondamentaux</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#cycle3 -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;cycle3">
+        <rdf:type rdf:resource="&programme_histoire_college_france;periodeCycle3"/>
+        <rdfs:label xml:lang="fr">Cycle 3 ou cycle des approfondissements
+</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#debatEcclesia -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;debatEcclesia">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;expliquer"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_citeDesAtheniens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#decrire -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;decrire">
+        <rdf:type rdf:resource="&programme_histoire_college_france;decrire"/>
+        <rdfs:label xml:lang="fr">Décrire</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#decrireMonumentEgypte -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;decrireMonumentEgypte">
+        <rdf:type rdf:resource="&programme_histoire_college_france;capacite"/>
+        <rdf:type rdf:resource="&programme_histoire_college_france;decrire"/>
+        <rdfs:label xml:lang="fr">Décrire un monument d’Égypte</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#decrireMonumentMesopotamie -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;decrireMonumentMesopotamie">
+        <rdf:type rdf:resource="&programme_histoire_college_france;capacite"/>
+        <rdf:type rdf:resource="&programme_histoire_college_france;decrire"/>
+        <rdfs:label xml:lang="fr">Décrire un monument de Mésopotamie</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#diaspora -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;diaspora">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;expliquer"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuJudaisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#ecritureDeLaBible -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;ecritureDeLaBible">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Début de l’écriture de la Bible : VIIIe siècle av. J.-C.</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuJudaisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#ecritureEvangiles -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;ecritureEvangiles">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Écriture des Évangiles : 1er siècle</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuChristianisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#editDeCaracalla -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;editDeCaracalla">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">L’édit de Caracalla, 212</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_empire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#editDeMilan -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;editDeMilan">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Édit de Milan : 313</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuChristianisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#empireAlexandre -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;empireAlexandre">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">L’empire d’Alexandre, Alexandrie ou Pergame sur une carte de l’Orient hellénistique</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_alexandreLeGrand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#empireByzantin -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;empireByzantin">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">L’empire byzantin : IV e –XV e siècle</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_empiresChretiensduHautMoyenAge"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#empireCarolingien -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;empireCarolingien">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">L’empire carolingien, l’empire byzantin sur la carte de l’Europe au IXe siècle</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_empiresChretiensduHautMoyenAge"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#epopeeAlexandre -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;epopeeAlexandre">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;raconter"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_alexandreLeGrand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#etudeSiteEgypte -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;etudeSiteEgypte">
+        <rdf:type rdf:resource="&programme_histoire_college_france;demarche"/>
+        <rdfs:label xml:lang="fr">Etudier un site ou un monument d&apos;Egypte du IIIe millénaire av. J.-C.. (oeuvres de référence à l’école
+primaire : une sculpture égyptienne, un bas-relief mésopotamien…)
+Cette étude est remise en perspective dans l’espace de l’Orient ancien.</rdfs:label>
+        <rdfs:comment xml:lang="fr">Etudier un site ou un monument de Mésopotamie</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#etudeSiteMesopotamie -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;etudeSiteMesopotamie">
+        <rdf:type rdf:resource="&programme_histoire_college_france;demarche"/>
+        <rdfs:label xml:lang="fr">Etudier un site ou un monument de Mésopotamie</rdfs:label>
+        <rdfs:comment xml:lang="fr">Etudier un site ou un monument de Mésopotamie du IIIe millénaire av. J.-C.. (oeuvres de référence à l’école
+primaire : une sculpture égyptienne, un bas-relief mésopotamien…)
+Cette étude est remise en perspective dans l’espace de l’Orient ancien.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#exemplesCivilisationChineHan -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;exemplesCivilisationChineHan">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdfs:label xml:lang="fr">un ou deux exemples de la civilisation de la Chine de Han (une oeuvre d’art, une invention…)</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;decrire"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_chineDesHans"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#expliquer -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;expliquer">
+        <rdf:type rdf:resource="&programme_histoire_college_france;expliquer"/>
+        <rdfs:label xml:lang="fr">Expliquer</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#expliquerRoleEcriture -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;expliquerRoleEcriture">
+        <rdf:type rdf:resource="&programme_histoire_college_france;capacite"/>
+        <rdf:type rdf:resource="&programme_histoire_college_france;expliquer"/>
+        <rdfs:label xml:lang="fr">Expliquer le rôle de l’écriture</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#feteDesPanathenees -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;feteDesPanathenees">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;raconter"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_citeDesAtheniens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#fondationDeRome -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;fondationDeRome">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">La fondation de Rome au VIIIe siècle av. J.-C.</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_originesALaFin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#fondationDuneCite -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;fondationDuneCite">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;raconter"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_fondementDeLaGrece"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#fondationLegendaireRome -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;fondationLegendaireRome">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;raconter"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_originesALaFin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#forumALaFinDeLaRepublique -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;forumALaFinDeLaRepublique">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdfs:label xml:lang="fr">forumALaFinDeLaRepublique</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;decrire"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_originesALaFin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#grandesCaracteristiquesEmpireCarolingien -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;grandesCaracteristiquesEmpireCarolingien">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;decrire"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;theme_empiresChretiensduHautMoyenAge"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#guerresMediques -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;guerresMediques">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;raconter"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_citeDesAtheniens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#histoire3eme -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;histoire3eme">
+        <rdf:type rdf:resource="&programme_histoire_college_france;programmeDescription"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#histoire4eme -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;histoire4eme">
+        <rdf:type rdf:resource="&programme_histoire_college_france;programmeDescription"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#histoire5eme -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;histoire5eme">
+        <rdf:type rdf:resource="&programme_histoire_college_france;programmeDescription"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#histoire6eme -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;histoire6eme">
+        <rdf:type rdf:resource="&programme_histoire_college_france;programmeDescription"/>
+        <owl:sameAs rdf:resource="&organisation-systeme-scolaire-francais;programmeHistoire6eme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#homere -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;homere">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Homère, VIIIe siècle av. J.-C.</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_fondementDeLaGrece"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#indeDesGupta -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;indeDesGupta">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">L’Inde des Gupta, IVe – Ve siècle</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_indeClassique"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#jeuxOlympiques -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;jeuxOlympiques">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;raconter"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_fondementDeLaGrece"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#journeeDunCitoyenRomain -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;journeeDunCitoyenRomain">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;decrire"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;theme_originesALaFin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#julesCesar -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;julesCesar">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Jules César et Vercingétorix : Alésia, 52 av. J.-C.</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#lieuxEtMonuments -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;lieuxEtMonuments">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;reconnaitre"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_citeDesAtheniens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#mesopotamieEtEgypte -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;mesopotamieEtEgypte">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Le site étudié, la Mésopotamie et l’Égypte, sur une carte</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_orientAncien"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#mondeGrecSurUneCarte -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;mondeGrecSurUneCarte">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Le monde grec sur une carte du bassin méditerranéen aux VIIIe - VIIe siècle av. J.-C.</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_fondementDeLaGrece"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#monumentMesopotamieOuEgypte -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;monumentMesopotamieOuEgypte">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;decrire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#monumentsDeUrbs -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;monumentsDeUrbs">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;reconnaitre"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_empire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#mortDeJesus -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;mortDeJesus">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">La mort de Jésus vers 30</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuChristianisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#mytheHindou -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;mytheHindou">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;raconter"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_indeClassique"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#oeuvreArtByzantine -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;oeuvreArtByzantine">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;reconnaitre"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_empiresChretiensduHautMoyenAge"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#paixRomaine -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;paixRomaine">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">« Paix romaine », Ier et IIe siècles</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_empire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#palestineEtJerusalem -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;palestineEtJerusalem">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">La Palestine, Jérusalem sur une carte de l’empire romain</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuJudaisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#palestineJerusalemRome -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;palestineJerusalemRome">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">La Palestine, Jérusalem, Rome, Constantinople sur une carte du monde romain au IVe siècle</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuChristianisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#pericles -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;pericles">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Périclès, Ve siècle av. J.-C.</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_citeDesAtheniens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#premieresCivilisations -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;premieresCivilisations">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Les premières civilisations (IIIe millénaire av. J.-C.)</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_orientAncien"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#principatAuguste -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;principatAuguste">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Le principat d’Auguste, 27 av. J.-C. - 14</rdfs:label>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_empire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#programmeHistoire1ere -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;programmeHistoire1ere">
+        <rdf:type rdf:resource="&organisation-systeme-scolaire-francais;programmePeriodeMatiere"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#programmeHistoire2de -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;programmeHistoire2de">
+        <rdf:type rdf:resource="&organisation-systeme-scolaire-francais;programmePeriodeMatiere"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#programmeHistoire3eme -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;programmeHistoire3eme">
+        <rdf:type rdf:resource="&organisation-systeme-scolaire-francais;programmePeriodeMatiere"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#programmeHistoire4eme -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;programmeHistoire4eme">
+        <rdf:type rdf:resource="&organisation-systeme-scolaire-francais;programmePeriodeMatiere"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#programmeHistoire5eme -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;programmeHistoire5eme">
+        <rdf:type rdf:resource="&organisation-systeme-scolaire-francais;programmePeriodeMatiere"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#programmeHistoireTerminale -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;programmeHistoireTerminale">
+        <rdf:type rdf:resource="&organisation-systeme-scolaire-francais;programmePeriodeMatiere"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#raconter -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;raconter">
+        <rdf:type rdf:resource="&programme_histoire_college_france;raconter"/>
+        <rdfs:label xml:lang="fr">Raconter</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#recitsDeLaBible -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;recitsDeLaBible">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;expliquer"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuJudaisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#recitsNouveauTestament -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;recitsNouveauTestament">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;expliquer"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuChristianisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#reconnaitre -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;reconnaitre">
+        <rdf:type rdf:resource="&programme_histoire_college_france;reconnaitre"/>
+        <rdfs:label xml:lang="fr">Reconnaître</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#reperePermieresCivilisations -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;reperePermieresCivilisations">
+        <rdf:type rdf:resource="&programme_histoire_college_france;capacite"/>
+        <rdfs:label xml:lang="fr">Les premières civilisations (IIIe millénaire av. J.-C.)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#repererSiteEgypte -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;repererSiteEgypte">
+        <rdf:type rdf:resource="&programme_histoire_college_france;capacite"/>
+        <rdfs:label xml:lang="fr">Repérer un site d&apos;Egypte sur une carte</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#repererSiteMesopotamie -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;repererSiteMesopotamie">
+        <rdf:type rdf:resource="&programme_histoire_college_france;capacite"/>
+        <rdfs:label xml:lang="fr">Repérer un site de Mésopotamie sur une carte</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#roleAuguste -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;roleAuguste">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;expliquer"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_empire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#roleDeEcriture -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;roleDeEcriture">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdfs:label xml:lang="fr">Rôle de l&apos;écriture</rdfs:label>
+        <rdfs:comment xml:lang="fr">Doit conduire à être capable d&apos;expliquer le rôle de l&apos;écriture</rdfs:comment>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;expliquer"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_orientAncien"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#romeItalieLaGaule -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;romeItalieLaGaule">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Rome, l’Italie, la Gaule, sur une carte du bassin méditerranéen au Ier siècle av J.-C.</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_originesALaFin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#sanctuaireDelphes -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;sanctuaireDelphes">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;decrire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#secondTemple -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;secondTemple">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Destruction du second Temple : 70</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;connaitreEtUtiliserLesReperes"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuJudaisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#siegeAlesia -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;siegeAlesia">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;raconter"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_originesALaFin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#siteEpoqueGupta -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;siteEpoqueGupta">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;decrire"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;theme_indeClassique"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#statutDesCitoyens -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;statutDesCitoyens">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;travailSurCapaciteDe"/>
+                <owl:someValuesFrom rdf:resource="&programme_histoire_college_france;caracteriser"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:label xml:lang="fr">Le statut des citoyens, des femmes et des esclaves</rdfs:label>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;caracteriser"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_citeDesAtheniens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#terminaleGenerale -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;terminaleGenerale">
+        <rdf:type rdf:resource="&organisation-systeme-scolaire-francais;periodeTerminale"/>
+        <organisation-systeme-scolaire-francais:aPeriodeSuivante rdf:resource="&programme_histoire_college_france;terminaleGenerale"/>
+        <owl:sameAs rdf:resource="&organisation-systeme-scolaire-francais;terminaleGenerale"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_LaGreceDesSavants -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_LaGreceDesSavants">
+        <rdf:type rdf:resource="&programme_histoire_college_france;soustheme"/>
+        <rdfs:label xml:lang="fr">La Grèce des savants</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_alexandreLeGrand -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_alexandreLeGrand">
+        <rdf:type rdf:resource="&programme_histoire_college_france;soustheme"/>
+        <rdfs:label xml:lang="fr">Alexandre Le Grand</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_chineDesHans -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_chineDesHans">
+        <rdf:type rdf:resource="&programme_histoire_college_france;soustheme"/>
+        <rdfs:label xml:lang="fr">La Chine des Han à son apogée</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_citeDesAtheniens -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_citeDesAtheniens">
+        <rdf:type rdf:resource="&programme_histoire_college_france;soustheme"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_civilisationGrecque"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_civilisationGrecque -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_civilisationGrecque">
+        <rdf:type rdf:resource="&programme_histoire_college_france;theme"/>
+        <rdfs:label xml:lang="fr">La civilisation greque</rdfs:label>
+        <programme_histoire_college_france:aDureeRelative rdf:datatype="&xsd;decimal">25</programme_histoire_college_france:aDureeRelative>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;histoire6eme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_debutDuChristianisme -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_debutDuChristianisme">
+        <rdf:type rdf:resource="&programme_histoire_college_france;soustheme"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;estUnePartieDe"/>
+                <owl:onClass rdf:resource="&programme_histoire_college_france;theme"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <programme_histoire_college_france:estUnePartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuJudaismeEtduChristianisme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_debutDuJudaisme -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_debutDuJudaisme">
+        <rdf:type rdf:resource="&programme_histoire_college_france;soustheme"/>
+        <rdfs:label xml:lang="fr">Les débuts du judaïsme </rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_debutDuJudaismeEtduChristianisme -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_debutDuJudaismeEtduChristianisme">
+        <rdf:type rdf:resource="&programme_histoire_college_france;theme"/>
+        <rdfs:label xml:lang="fr">Les débuts du judaïsme et du christianisme</rdfs:label>
+        <programme_histoire_college_france:aDureeRelative rdf:datatype="&xsd;decimal">20</programme_histoire_college_france:aDureeRelative>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;histoire6eme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_empire -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_empire">
+        <rdf:type rdf:resource="&programme_histoire_college_france;soustheme"/>
+        <rdfs:label xml:lang="fr">L’empire : l’empereur, la ville, la romanisation</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_empiresChretiensduHautMoyenAge -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_empiresChretiensduHautMoyenAge">
+        <rdf:type rdf:resource="&programme_histoire_college_france;theme"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&programme_histoire_college_france;faitPartieDe"/>
+                <owl:onClass rdf:resource="&programme_histoire_college_france;college_6eme"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdf:type>
+        <programme_histoire_college_france:aDureeRelative rdf:datatype="&xsd;decimal">10</programme_histoire_college_france:aDureeRelative>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;histoire6eme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_fondementDeLaGrece -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_fondementDeLaGrece">
+        <rdf:type rdf:resource="&programme_histoire_college_france;soustheme"/>
+        <rdfs:label xml:lang="fr">Au fondement de la Grèce : cités, mythes, panhéllenisme. </rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_indeClassique -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_indeClassique">
+        <rdf:type rdf:resource="&programme_histoire_college_france;soustheme"/>
+        <rdfs:label xml:lang="fr">L&apos;Inde classique aux IV° et V° siècles</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_laGreceDesSavants -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_laGreceDesSavants">
+        <rdf:type rdf:resource="&programme_histoire_college_france;soustheme"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_civilisationGrecque"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_orientAncien -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_orientAncien">
+        <rdf:type rdf:resource="&programme_histoire_college_france;theme"/>
+        <rdfs:label xml:lang="fr">L’Orient ancien au IIIe millénaire av. J.-C.</rdfs:label>
+        <programme_histoire_college_france:aDureeRelative rdf:datatype="&xsd;decimal">10</programme_histoire_college_france:aDureeRelative>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;histoire6eme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_originesALaFin -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_originesALaFin">
+        <rdf:type rdf:resource="&programme_histoire_college_france;soustheme"/>
+        <rdfs:label xml:lang="fr">Des origines à la fin de la République : fondation, organisation poitique, conquête</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_regardsSurLesmondesLointains -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_regardsSurLesmondesLointains">
+        <rdf:type rdf:resource="&programme_histoire_college_france;theme"/>
+        <rdfs:label xml:lang="fr">Regards sur des mondes lointains</rdfs:label>
+        <programme_histoire_college_france:aDureeRelative rdf:datatype="&xsd;decimal">10</programme_histoire_college_france:aDureeRelative>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;histoire6eme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_rome -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_rome">
+        <rdf:type rdf:resource="&programme_histoire_college_france;theme"/>
+        <programme_histoire_college_france:aDureeRelative rdf:datatype="&xsd;decimal">25</programme_histoire_college_france:aDureeRelative>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;histoire6eme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#unJourDelections -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;unJourDelections">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;decrire"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;theme_originesALaFin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#unMytheGrec -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;unMytheGrec">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;raconter"/>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_fondementDeLaGrece"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#villeGalloRomaine -->
+
+    <owl:NamedIndividual rdf:about="&programme_histoire_college_france;villeGalloRomaine">
+        <rdf:type rdf:resource="&programme_histoire_college_france;sujet"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;decrire"/>
+        <programme_histoire_college_france:travailSurCapaciteDe rdf:resource="&programme_histoire_college_france;theme_empire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#1ereGenerale -->
+
+    <rdf:Description rdf:about="&organisation-systeme-scolaire-francais;1ereGenerale"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#2ereGenerale -->
+
+    <rdf:Description rdf:about="&organisation-systeme-scolaire-francais;2ereGenerale"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#ce1 -->
+
+    <rdf:Description rdf:about="&organisation-systeme-scolaire-francais;ce1"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#programmeHistoire6eme -->
+
+    <rdf:Description rdf:about="&organisation-systeme-scolaire-francais;programmeHistoire6eme"/>
+    
+
+
+    <!-- http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#terminaleGenerale -->
+
+    <rdf:Description rdf:about="&organisation-systeme-scolaire-francais;terminaleGenerale"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&programme_histoire_college_france;college_3eme"/>
+            <rdf:Description rdf:about="&programme_histoire_college_france;college_4eme"/>
+            <rdf:Description rdf:about="&programme_histoire_college_france;college_5eme"/>
+            <rdf:Description rdf:about="&programme_histoire_college_france;college_6eme"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&programme_histoire_college_france;capacite"/>
+            <rdf:Description rdf:about="&programme_histoire_college_france;connaissance"/>
+            <rdf:Description rdf:about="&programme_histoire_college_france;niveau"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.5.1928) http://owlapi.sourceforge.net -->
+
