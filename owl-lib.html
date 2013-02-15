@@ -9,10 +9,48 @@
   <script type="text/javascript" charset="utf-8">
       $(document).ready(function () {
 			OwlLib.loadOwl("http://localhost:8888/OwlProject/programmeHistoire6emeV2.owl");
-			var namedIndividuals = OwlLib.getNamedIndividuals("theme", "programme_histoire_college_france");
+			
+			/*
+			var namedIndividuals = OwlLib.getNamedIndividuals();
+			alert(namedIndividuals.length);
+			OwlLib.getAllThemes(namedIndividuals);
+			OwlLib.getAllSubThemes(namedIndividuals);
+			*/
+			
+			
+			var themes = OwlLib.getNamedIndividuals("theme", "programme_histoire_college_france");
+			for (var i = 0; i < themes.length; i++) {
+				var theme = themes[i];
+				console.log(i + "  ------------------------------")
+				for (var key in theme) {
+					console.log("	key:   " + key);
+					console.log("	value: " + theme[key]);
+				}
+			}
+			
+			
 			console.log("********************************************");
+			console.log("********************************************");
+			
+			
+			var subThemes = OwlLib.getNamedIndividuals("soustheme", "programme_histoire_college_france");
+			for (var i = 0; i < subThemes.length; i++) {
+				var subTheme = subThemes[i];
+				console.log(i + "  ------------------------------")
+				for (var key in subTheme) {
+					console.log("	key:   " + key);
+					console.log("	value: " + subTheme[key]);
+				}
+			}
+			
+			
+			
+			console.log("********************************************");
+			console.log("********************************************");
+			OwlLib.getSubThemesOf("file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#theme_civilisationGrecque");
 			// OwlLib.getAllThemes(namedIndividuals);
 			// OwlLib.getAllSubThemes(namedIndividuals);
+			
 		});
   </script>
   

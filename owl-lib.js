@@ -2,6 +2,7 @@
 OwlLib = {};
 
 OwlLib.constant = {
+	ABOUT: "rdf:about",
 	TYPE : "rdf:type", 
 	RESOURCE : "rdf:resource", 
 	LABEL : "rdfs:label", 
@@ -10,6 +11,9 @@ OwlLib.constant = {
 	ORGANIZATION : "organisation-systeme-scolaire-francais"
 }
 
+/**
+ * Load
+ */
 OwlLib.loadOwl = function(url) {
 	// TODO: Regrex to test url
 	var xhr = {}; // XHR object
@@ -36,13 +40,25 @@ OwlLib.loadOwl = function(url) {
 }
 
 /**
- * Load all namespaces in the owl file
+ * Load all namespaces in the owl file, the result it an object contains all 
+ * namspaces and its full names.
+ * For example, if we have:
+ * owl is actually "http://www.w3.org/2002/07/owl#"
+ * xsd is actually "http://www.w3.org/2001/XMLSchema#"
+ * and so on...
+ * then we have an object namspaces where: 
+ * namespaces[owl] = "http://www.w3.org/2002/07/owl#"
+ * namespaces[xsd] = "http://www.w3.org/2001/XMLSchema#"
  */
 OwlLib.loadNameSpace = function() {
 	console.log("[OwlLib] [getNameSpace] - begin");
 	var result = {}; // store the result
 	
-	// inner function to get name space
+	/**
+	 * Inner function to parse name space
+	 * @param nameSpaceStr the namespaceStr used to parse
+	 * @returns an object contain all namespaces.
+	 */
 	var getNs = function(nameSpaceStr) {
 		var nameSpace = {};
 		var subNameSpace = {};
@@ -111,7 +127,12 @@ OwlLib.loadNameSpace = function() {
 }
 
 /**
- * Get all named individual triples in this file
+ * Get all NamedIndividual triples in this owl file
+ * @param type type of named individual
+ * @param nameSpaceOfType name space of the current type
+ * @returns all satisfied NamedIndividual triples
+ * ex: themes = getNamedIndividuals("theme", "programme_histoire_college_france");
+ * will return all NamedIndividual whose type is "theme" 
  */
 OwlLib.getNamedIndividuals = function(type, nameSpaceOfType) {
 	console.log("[OwlLib] [getNamedIndidualTriples] - begin");
@@ -171,9 +192,15 @@ OwlLib.getNamedIndividuals = function(type, nameSpaceOfType) {
 			isNull = false; // marked as not null
 		}
 		
+		// Verify and return the result
 		if (isNull) {
 			return null; 
 		} else {
+			// Add more details to this item and then return it
+			var about = niElement.getAttribute(OwlLib.constant.ABOUT) 
+			if (about != null) {
+				item[OwlLib.constant.ABOUT] = about; 
+			}
 			return item;
 		}
 	}
@@ -195,37 +222,145 @@ OwlLib.getNamedIndividuals = function(type, nameSpaceOfType) {
 		
 	}
 	
-	for (var i = 0; i < namedIndividuals.length; i++) {
-		var namedIndividual = namedIndividuals[i];
-		console.log(i + "  ------------------------------")
-		for (var key in namedIndividual) {
-			console.log("	key:   " + key);
-			console.log("	value: " + namedIndividual[key]);
-		}
-	}
+//	for (var i = 0; i < namedIndividuals.length; i++) {
+//		var namedIndividual = namedIndividuals[i];
+//		console.log(i + "  ------------------------------")
+//		for (var key in namedIndividual) {
+//			console.log("	key:   " + key);
+//			console.log("	value: " + namedIndividual[key]);
+//		}
+//	}
 	
 	return namedIndividuals;
 }
 
+
+//OwlLib.getSubThemesOf = function (theme, nameSpaceOfTheme) {
+//	var subThemes = OwlLib.getNamedIndividuals("soustheme", 
+//			"programme_histoire_college_france"); // get all subthemes
+//	
+//	// NamedIndividual theme (full name)
+//	var fullName = null;
+//	if ((theme != null) && (nameSpaceOfTheme != null)) {
+//		var namespace = OwlLib.nameSpaces[nameSpaceOfTheme];
+//		fullName = namespace + theme;
+//	}
+//	
+//	var result = []; // store result
+//	for (var i = 0; i < subThemes.length; i++) {
+//		var subTheme = subThemes[i];
+//		var faitPartieDe = subTheme[OwlLib.constant.FAIT_PARTIE_DE];
+//		if ((faitPartieDe != null) && (faitPartieDe == fullName)) {
+//			result.push(subTheme);
+//		}
+//	}
+//	
+//	
+//	console.log("********************************************");
+//	console.log("SubThemes of: " + theme);
+//	console.log("********************************************");
+//	
+//	for (var i = 0; i < result.length; i++) {
+//		var subTheme = result[i];
+//		console.log(i + "  ------------------------------")
+//		for (var key in subTheme) {
+//			console.log("	key:   " + key);
+//			console.log("	value: " + subTheme[key]);
+//		}
+//	}
+//	
+//	return result;
+//}
+
+OwlLib.getSubThemesOf = function (theme) {
+	var subThemes = OwlLib.getNamedIndividuals("soustheme", 
+			"programme_histoire_college_france"); // get all subthemes
+	
+	var result = []; // store result
+	for (var i = 0; i < subThemes.length; i++) {
+		var subTheme = subThemes[i];
+		var faitPartieDe = subTheme[OwlLib.constant.FAIT_PARTIE_DE];
+		if ((faitPartieDe != null) && (faitPartieDe == theme)) {
+			result.push(subTheme);
+		}
+	}
+	
+	
+	console.log("********************************************");
+	console.log("SubThemes of: " + theme);
+	console.log("********************************************");
+	
+	for (var i = 0; i < result.length; i++) {
+		var subTheme = result[i];
+		console.log(i + "  ------------------------------")
+		for (var key in subTheme) {
+			console.log("	key:   " + key);
+			console.log("	value: " + subTheme[key]);
+		}
+	}
+	
+	return result;
+}
+
+
+
 /**
  * Get all themes
  */
-OwlLib.getAllThemes = function () {
-	// Named Individual elements
-	niElements = OwlLib.xmlDoc.getElementsByTagName("owl:NamedIndividual");*
+OwlLib.getAllThemes = function (namedIndividuals) {
+	var themes = [];
 	
-}
-
-OwlLib.getSubThemesOf = function (theme) {
+	// Get name space
+	var themeNs = OwlLib.nameSpaces[OwlLib.constant.PROGRAM];
+	var themeType = themeNs + "theme";
+	// Loop all namedIndividuals
+	for (var i = 0; i < namedIndividuals.length; i++) {
+		var ni = namedIndividuals[i];
+		// If found a namedIndividuals with type = themeType, save it!
+		if (ni[OwlLib.constant.TYPE] == themeType) {
+			themes.push(ni);
+		}
+	}
 	
+	for (var i = 0; i < themes.length; i++) {
+		var theme = themes[i];
+		console.log(i + "  ------------------------------")
+		for (var key in theme) {
+			console.log("	key:   " + key);
+			console.log("	value: " + theme[key]);
+		}
+	}
+	
+	return themes;
+	
+} 
+
+OwlLib.getAllSubThemes = function (namedIndividuals) {
+	var subThemes = [];
+	
+	// Get name space
+	var subThemeNs = OwlLib.nameSpaces[OwlLib.constant.PROGRAM];
+	var subThemeType = subThemeNs + "soustheme";
+	// Loop all namedIndividuals
+	for (var i = 0; i < namedIndividuals.length; i++) {
+		var ni = namedIndividuals[i];
+		// If found a namedIndividuals with type = themeType, save it!
+		if (ni[OwlLib.constant.TYPE] == subThemeType) {
+			subThemes.push(ni);
+		}
+	}
+	
+	for (var i = 0; i < subThemes.length; i++) {
+		var subTheme = subThemes[i];
+		console.log(i + "  ------------------------------")
+		for (var key in subTheme) {
+			console.log("	key:   " + key);
+			console.log("	value: " + subTheme[key]);
+		}
+	}
+	
+	return subThemes;
 }
-
-
-
-
-
-
-
 
 
 
