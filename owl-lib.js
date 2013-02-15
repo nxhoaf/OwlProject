@@ -1,5 +1,15 @@
 
 OwlLib = {};
+
+OwlLib.constant = {
+	TYPE : "rdf:type", 
+	RESOURCE : "rdf:resource", 
+	LABEL : "rdfs:label", 
+	FAIT_PARTIE_DE : "programme_histoire_college_france:faitPartieDe", 
+	PROGRAM : "programme_histoire_college_france", 
+	ORGANIZATION : "organisation-systeme-scolaire-francais"
+}
+
 OwlLib.loadOwl = function(url) {
 	// TODO: Regrex to test url
 	var xhr = {}; // XHR object
@@ -17,8 +27,7 @@ OwlLib.loadOwl = function(url) {
 		if ((xhr.readyState == 4) && (xhr.status == 200)) {
 			xmlDoc = xhr.responseXML
 			OwlLib.xmlDoc = xmlDoc;
-			
-			// OwlLib.getNamedIndividuals();
+			OwlLib.nameSpaces = OwlLib.loadNameSpace();
 		}
 	}
 	
@@ -27,34 +36,10 @@ OwlLib.loadOwl = function(url) {
 }
 
 /**
- * Get all named individual triples in this file
+ * Load all namespaces in the owl file
  */
-OwlLib.getNamedIndividuals = function() {
-	console.log("[OwlLib] [getNamedIndidualTriples] - begin");
-	tags = OwlLib.xmlDoc.getElementsByTagName("owl:NamedIndividual");
-	
-	// Inner function to get NamedIndividual
-	var getNamedIndividual = function(namedIndividual) {
-		var item = {};
-		
-		// Get rdfType predicate and its value
-		var rdfType = namedIndividual.getElementsByTagName("rdf:type")[0];
-		var value = rdfType.getAttribute("rdf:resource");
-		if ((value != null) && (value.length != 0)) {
-			item["rdf:type"] = value;
-		}
-		
-		var label = namedIndividual.getElementsByTagName("rdf:type")[0];
-	}
-	
-	getNamedIndividual(tags[120]);
-}
-
-
-/**
- * Get all namespaces in the owl file
- */
-OwlLib.getNameSpace = function() {
+OwlLib.loadNameSpace = function() {
+	console.log("[OwlLib] [getNameSpace] - begin");
 	var result = {}; // store the result
 	
 	// inner function to get name space
@@ -78,7 +63,9 @@ OwlLib.getNameSpace = function() {
 			var item = nameSpaceStr.substring(begin, end); // ok, get one item
 			item = item.trim();
 			var keyValue = item.split(" ");
-			nameSpace[keyValue[0]] = keyValue[1];
+			
+			// Replace all double quote, here I mean first and last double quote
+			nameSpace[keyValue[0]] = keyValue[1].replace(/"/g,'');
 			
 			// Continue searching with the rest
 			var tail = nameSpaceStr.substring(end + 1);
@@ -100,7 +87,6 @@ OwlLib.getNameSpace = function() {
 		}
 	}
 	
-	
 	if ((OwlLib.xmlDoc == null) // Don't have xmldoc
 			|| (OwlLib.xmlDoc.doctype == null) // Don't have doctype
 			// Don't have internalSubset
@@ -120,6 +106,118 @@ OwlLib.getNameSpace = function() {
 	for (var key in result) {
 		console.log("key: " + key + " value: " + result[key]);
 	}
+	console.log("[OwlLib] [getNameSpace] - begin");
+	return result;
+}
+
+/**
+ * Get all named individual triples in this file
+ */
+OwlLib.getNamedIndividuals = function(type, nameSpaceOfType) {
+	console.log("[OwlLib] [getNamedIndidualTriples] - begin");
+	
+	// Store result
+	var namedIndividuals = [];
+	// Named Individual elements
+	niElements = OwlLib.xmlDoc.getElementsByTagName("owl:NamedIndividual");
+	
+	/**
+	 * Inner function to get NamedIndividual
+	 * @niElement : namedIndividual Element
+	 * @niType : named Individual Type (full name) 
+	 */
+	var getNamedIndividual = function(niElement, niType) {
+		var item = {};
+		var isNull = true; // check if item is null;
+		var value; // Store temporary value
+		
+		
+		// Get rdfType, if any
+		var rdfType = niElement.
+				getElementsByTagName(OwlLib.constant.TYPE)[0];
+		if ((rdfType != null) // found type attribute 
+				&& (rdfType.getAttribute(OwlLib.constant.RESOURCE) != null)) {
+			// current type
+			currentType = rdfType.getAttribute(OwlLib.constant.RESOURCE);
+			
+			// Found a type, but not matched, skip it
+			if ((niType != null) && (niType != currentType)) {
+				return;
+			}
+			
+			// else (niType == null), just get all type
+			item[OwlLib.constant.TYPE] = currentType;
+			isNull = false; // marked as not null
+		}
+		
+		
+		// get label, if any
+		var label = niElement.
+				getElementsByTagName(OwlLib.constant.LABEL)[0];
+		if (label != null) {
+			item[OwlLib.constant.LABEL] = label.textContent;
+			isNull = false; // marked as not null
+		}
+		
+		
+		// get "faitPartieDe" attribute, if any
+		var faitPartieDe = niElement.
+				getElementsByTagName(OwlLib.constant.FAIT_PARTIE_DE)[0];
+		if ((faitPartieDe != null) 
+				&& (faitPartieDe.
+						getAttribute(OwlLib.constant.RESOURCE) != null)) {
+			value = faitPartieDe.getAttribute(OwlLib.constant.RESOURCE);
+			item[OwlLib.constant.FAIT_PARTIE_DE] = value;
+			isNull = false; // marked as not null
+		}
+		
+		if (isNull) {
+			return null; 
+		} else {
+			return item;
+		}
+	}
+	
+	// Create Named individual type (full name)
+	var niType = null;
+	if ((type != null) && (nameSpaceOfType != null)) {
+		// Named individual name space
+		var niNameSpace = OwlLib.nameSpaces[nameSpaceOfType];
+		niType = niNameSpace + type;
+	}
+	
+	// Get all Named Individual which match the type
+	for (var i = 0; i < niElements.length; i++) {
+		var ni = getNamedIndividual(niElements[i], niType);
+		if (ni != null) {
+			namedIndividuals.push(ni);
+		}
+		
+	}
+	
+	for (var i = 0; i < namedIndividuals.length; i++) {
+		var namedIndividual = namedIndividuals[i];
+		console.log(i + "  ------------------------------")
+		for (var key in namedIndividual) {
+			console.log("	key:   " + key);
+			console.log("	value: " + namedIndividual[key]);
+		}
+	}
+	
+	return namedIndividuals;
+}
+
+/**
+ * Get all themes
+ */
+OwlLib.getAllThemes = function () {
+	// Named Individual elements
+	niElements = OwlLib.xmlDoc.getElementsByTagName("owl:NamedIndividual");*
+	
+}
+
+OwlLib.getSubThemesOf = function (theme) {
+	
 }
 
 

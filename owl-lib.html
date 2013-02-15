@@ -9,9 +9,13 @@
   <script type="text/javascript" charset="utf-8">
       $(document).ready(function () {
 			OwlLib.loadOwl("http://localhost:8888/OwlProject/programmeHistoire6emeV2.owl");
-			OwlLib.getNamedIndividuals();
+			var namedIndividuals = OwlLib.getNamedIndividuals("theme", "programme_histoire_college_france");
+			console.log("********************************************");
+			// OwlLib.getAllThemes(namedIndividuals);
+			// OwlLib.getAllSubThemes(namedIndividuals);
 		});
   </script>
+  
 </head>
 
 <body>
