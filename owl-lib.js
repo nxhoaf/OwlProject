@@ -39,7 +39,7 @@ OwlLib.getNamedIndividuals = function() {
 		
 		// Get rdfType predicate and its value
 		var rdfType = namedIndividual.getElementsByTagName("rdf:type")[0];
-		var value = $(rdfType).attr("rdf:resource");
+		var value = rdfType.getAttribute("rdf:resource");
 		if ((value != null) && (value.length != 0)) {
 			item["rdf:type"] = value;
 		}
@@ -75,7 +75,7 @@ OwlLib.getNameSpace = function() {
 			
 			// Get the content and save it to nameSpace variable
 			begin = begin + "<!ENTITY".length; 
-			var item = nameSpaceStr.substring(begin, end); // ok, get one item*
+			var item = nameSpaceStr.substring(begin, end); // ok, get one item
 			item = item.trim();
 			var keyValue = item.split(" ");
 			nameSpace[keyValue[0]] = keyValue[1];
@@ -100,6 +100,7 @@ OwlLib.getNameSpace = function() {
 		}
 	}
 	
+	
 	if ((OwlLib.xmlDoc == null) // Don't have xmldoc
 			|| (OwlLib.xmlDoc.doctype == null) // Don't have doctype
 			// Don't have internalSubset
@@ -115,6 +116,10 @@ OwlLib.getNameSpace = function() {
 	
 	// Parse it to get the result
 	result = getNs(nameSpaceStr);
+	console.log("*************");
+	for (var key in result) {
+		console.log("key: " + key + " value: " + result[key]);
+	}
 }
 
 
