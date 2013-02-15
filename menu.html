@@ -54,11 +54,8 @@
     <script type="text/javascript">
     <!--
     $(document).ready( function () {
-    	
-    	
-    	
-    	
-    	
+    	init();
+		
         // On cache les sous-menus
         // sauf celui qui porte la classe "open_at_load" :
         $("ul.subMenu:not('.open_at_load')").hide();
@@ -90,25 +87,7 @@
     } ) ;
     
     init = function() {
-    	OwlLib.loadOwl("http://localhost:8888/OwlProject/programmeHistoire6emeV2.owl");
-    	
-    	/*
-    	var li = document.createElement("li");
-    	
-    	var a = document.createElement("a");
-    	a.href = "google.com";
-    	a.setAttribute("title", "");
-    	a.textContent = "Item 1";
-    	li.appendChild(a);
-    	
-    	document.getElementById("navigation").appendChild(li);
-    	*/
-    	
-    	var li; // li tag
-    	var span; // span tag
-    	var ul; // ul tag
-    	var subLi; // sub li tag
-    	var subA; // sub a tag
+    	OwlLib.loadOwl("http://localhost:8888/OwlProject/programmeHistoire6emeV2.owl");   	
     	
     	var themes = OwlLib.getNamedIndividuals("theme", 
     			"programme_histoire_college_france");
@@ -117,16 +96,19 @@
 			
 			// Get theme label and display it if not null
 			li = document.createElement("li");
-			li.class = "toggleSubMenu";
-			li.textContent = theme[OwlLib.constant.ABOUT];
+			li.setAttribute("class","toggleSubMenu");
+			span = document.createElement("span");
+			span.textContent = theme[OwlLib.constant.ABOUT];
+			li.appendChild(span);
 			
-			var subThemes = OwlLib.getNamedIndividuals("soustheme", 
-					"programme_histoire_college_france");
+			var subThemes = OwlLib.getSubThemesOf(theme[OwlLib.constant.ABOUT]);
 			if ((subThemes != null) && (subThemes.length != 0)) {
-				for (var j = 0; j < subThemes; j++) {
+				// Has Sub Theme, create list of sub theme
+				ul = document.createElement("ul");
+				ul.setAttribute("class", "subMenu");
+				for (var j = 0; j < subThemes.length; j++) {
 					var subTheme = subThemes[j];
-					ul = document.createElement("ul");
-					ul.class = "subMenu";
+					
 					subLi = document.createElement("li");
 					subA = document.createElement("a");
 					subA.href = "";
@@ -137,18 +119,19 @@
 					ul.appendChild(subLi);	
 				}
 				li.appendChild(ul);
-				
 			}
-			
-			
 			document.getElementById("navigation").appendChild(li);
 		}
+		
     }
     // -->
     </script>
 </head>
-<body onload="init();">
+<body onload>
     <ul id="navigation">
+    </ul>   
+</body>
+</html>
     	
     	<!--
         <li>
@@ -170,6 +153,35 @@
         </li>
         <li><a href="" title="">Item 4</a></li>
        -->
-    </ul>   
-</body>
-</html>
+
+
+<!--
+var li; // li tag
+var span; // span tag
+var ul; // ul tag
+var subLi; // sub li tag
+var subA; // sub a tag
+
+for (var i = 0; i < 3; i++) {
+	li = document.createElement("li");
+	li.class = "toggleSubMenu";
+	span = document.createElement("span");
+	span.textContent = "Theme no" + i;
+	li.appendChild(span);
+	
+	ul = document.createElement("ul");
+	ul.class = "subMenu";
+	for (var j = 0; j < 3; j++) {
+		subLi = document.createElement("li");
+		subA = document.createElement("a");
+		subA.href = "";
+		subA.title = "";
+		subA.textContent = "Sub Theme no" + j;
+		
+		subLi.appendChild(subA);
+		ul.appendChild(subLi);	
+	}
+	li.appendChild(ul);
+	document.getElementById("navigation").appendChild(li);
+}
+ -->
