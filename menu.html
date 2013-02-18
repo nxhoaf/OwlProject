@@ -21,15 +21,15 @@
 			padding: 4px 10px;
 			color: #fff;
 			text-decoration: none;
-			background: #000 url(menu-item.png) left bottom no-repeat;
+			background: #000 url(resource/menu-item.png) left bottom no-repeat;
 		}
 		
 		#navigation .toggleSubMenu a, #navigation .toggleSubMenu span {
-			background-image: url(menu-item-deroule.png);
+			background-image: url(resource/menu-item-deroule.png);
 		}
 		
 		#navigation .open a, #navigation .open span {
-			background-image: url(menu-item-enroule.png);
+			background-image: url(resource/menu-item-enroule.png);
 		}
 		
 		#navigation a:hover, #navigation a:focus, #navigation a:active {
@@ -38,7 +38,7 @@
 		
 		#navigation .subMenu {
 			font-size: .8em;
-			background: #ccc url(subMenu.png) 0 0 repeat-x;
+			background: #ccc url(resource/subMenu.png) 0 0 repeat-x;
 			font-size: .9em;
 			margin: 0;
 			padding: 0;
@@ -93,7 +93,7 @@
     } ) ;
     
     init = function() {
-    	OwlLib.loadOwl("./programmeHistoire6emeV2.owl");   	
+    	OwlLib.loadOwl("resource/programmeHistoire6emeV2.owl");   	
     	
     	var themes = OwlLib.getNamedIndividuals("theme", 
     			"programme_histoire_college_france");

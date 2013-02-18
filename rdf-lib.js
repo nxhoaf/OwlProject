@@ -46,6 +46,9 @@ RdfLib.getTriple = function(target) {
 	/**
 	 * Inner function, given a set of attributes, return the subject of RDFa 
 	 * if any. Otherwise, return null
+	 * @returns the subject object in which
+	 * subject.key = subject name
+	 * subject.value = subject value
 	 */
 	var getSubject = function(attributes) {
 		console.log("[RdfLib][getClickedField][getSubject] ");
@@ -77,6 +80,9 @@ RdfLib.getTriple = function(target) {
 	/**
 	 * Inner function, given a set of attributes, return the predicate of RDFa 
 	 * if any. Otherwise, return null
+	 * @returns the predicate object in which
+	 * predicate.key = predicate name
+	 * predicate.value = predicate value
 	 */
 	var getPredicate = function(attributes) {
 		console.log("[RdfLib][getClickedField][getPredicate] ");
@@ -108,7 +114,11 @@ RdfLib.getTriple = function(target) {
 	/**
 	 * Inner function, given a set of attributes, return the object of RDFa if 
 	 * any. Otherwise, return null
+	 * @returns the object in which
+	 * object.key = object name
+	 * object.value = object value
 	 */
+	
 	var getObject = function(target) {
 		console.log("[RdfLib][getClickedField][getObject] ");
 		result = {};
@@ -244,9 +254,18 @@ RdfLib.getAllTriples = function(element) {
 
 /**
  * Get all prefixes in the HTML page
+ * @returns an array contains all prefix in this HTML page. If the array name is
+ * prefixes, then we have, for example:
+ * prefixes[0].prefix = dc
+ * prefixes[0].fullName = http://purl.org/dc/terms/ schema: http://schema.org/
+ * 
+ * prefixes[1].prefix = foaf
+ * prefixes[1].fullName = http://xmlns.com/foaf/0.1/
+ * 
+ * and so on...
  */
 RdfLib.getAllPrefixes = function() {
-	var prefixes = []; // All prefixes will be stored here
+	var prefixes = {}; // All prefixes will be stored here
 	console.log("[RdfLib] [getAllPrefixes] - begin");
 	
 	// Get all elements in the currents documents
@@ -277,10 +296,10 @@ RdfLib.getAllPrefixes = function() {
 				}
 				
 				for (var k = 0; k < parsedPrefix.length; k+=2) {
-					var current = {};
-					current.prefix = parsedPrefix[k];
-					current.fullName = parsedPrefix[k + 1];
-					prefixes.push(current);
+					var prefix = parsedPrefix[k];
+					var fullName = parsedPrefix[k + 1];
+					
+					prefixes[prefix] = fullName;
 					console.log("prefix: " + parsedPrefix[k] + " fullName: " + 
 							parsedPrefix[k+1]);
 				}
@@ -291,27 +310,39 @@ RdfLib.getAllPrefixes = function() {
 	return prefixes;	
 }
 
+
 /**
  * Initialization. This function gets called when we first load the page.
  */
 RdfLib.init = function () {
 	// Get all prefixes
 	var prefixes = RdfLib.getAllPrefixes();
-	var output = "<b>All Prefixes: </b><br>";
-	for (var i = 0; i < prefixes.length; i++) {
-		output += "&nbsp&nbsp&nbsp&nbsp" + prefixes[i].prefix + 
-		"   " + prefixes[i].fullName + " <br>";
-	}
+	RdfLib.prefixes = prefixes;
 	
+	// Get all triple and store in a {key,value} data structure where key is 
+	// a subject and value is an predicate, which has its own value, for example
+	// 
+	// key (subject) = http://example.org/nxhoaf/#me
+	// value (predicate) = profile
+	// value of value (object) = http://www.w3.org/1999/xhtml/vocab
+	// rdfa[http://example.org/nxhoaf/#me][profile] = 
+	// 								'http://www.w3.org/1999/xhtml/vocab'
+	//
+	// key (subject) = http://example.org/nxhoaf/#me
+	// value (predicate) = dc:creator
+	// value of value (object) = Hoa Nguyen
+	// rdfa[http://example.org/nxhoaf/#me][dc:creator] = 'Hoa Nguyen'
+	
+	// rdfa[http://example.org/nxhoaf/#me][dc:creator].
+	//						value = 'Hoa Nguyen''
 	// Get all triples
 	var html = document.getElementsByTagName("html")[0];
 	var triples = RdfLib.getAllTriples(html);
-	var rdfa = {};
-	
 	if ((triples == null) && (triples.length == 0)) {
+		RdfLib.rdfa = null;
 		return;
 	}
-
+	var rdfa = {};
 	// Loop over all triples to store them in hash map-like
 	// data structure: 
 	for (var i = 0; i < triples.length; i++) {
@@ -319,9 +350,9 @@ RdfLib.init = function () {
 		var triple = triples[i]; // Get the current triple
 		var property = "";
 		
-		if (triple.subject == null) {
-			continue;
-		}
+		// By pass the triple that doesn't have subject
+		if (triple.subject == null) { 
+			continue;		}
 		
 		var key = triple.subject.value;				
 		// Create a new entry if it doesn't exist
@@ -329,77 +360,60 @@ RdfLib.init = function () {
 			rdfa[key] = [];
 		}
 		
-		property += "'" + triple.predicate.value + "' : '" + 
-				triple.object.value + "'";
-		rdfa[key].push(property);
-	}
-	
-	
-	output += "<b>All attributes: </b><br>";
-	for (var key in rdfa) {
-	    output += key + "<br>";
-	    for (var i = 0; i < rdfa[key].length; i++) {
-	    	output += "&nbsp&nbsp&nbsp&nbsp" + rdfa[key][i] + " <br>";
-	    }
-	}
-	
-	var log = document.createElement("div");
-	log.id = "log";
-	$('body').append(log);
-	$("#log").html(output);
-}
-
-RdfLib.enableEventListener = function() {
-	var output;
-	$("body").click(function(event) {
-		var triple = RdfLib.getTriple(event.target);
-		var output = "All triples <br>";
-		output += "----------------------- <br>"
-		if (triple == null ||  
-			((triple.predicate == null) && (triple.subject == null))) {
-			$("#log").html("this element: " + 
-					"<br> name: " + event.target.nodeName +  
-					"<br> value: " + event.target.textContent + 
-					"<br> doesn't contain any valid triples");
-			return;
-		}
+		var predicate = triple.predicate.value;
+		var object = triple.object.value;
 		
-		if (triple.subject == null) {
-			triple.subject = RdfLib.getSubjectTriple(event.target).subject;
-			output += "subject: " + triple.subject.key + ":" + triple.subject.value;
-			output += "<br>";
-			
-			output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
-			output += "<br>";
-			
-			output += "object: " +  triple.object.key + ":" + triple.object.value;
-			output += "<br>";
-			
-			$("#log").html(output);
-		} else {
-				var triples = RdfLib.getAllTriples(event.target);
-				for (var i = 0; i < triples.length; i++) {
-					triple = triples[i];
-					if (triple.subject != null) {
-						output += "subject: " + triple.subject.key + ":" + triple.subject.value;
-						output += "<br>";	
-					}
-					
-					if (triple.predicate != null) {
-						output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
-						output += "<br>";
-					}
-					
-					if (triple.object != null) {
-						output += "object: " +  triple.object.key + ":" + triple.object.value;
-						output += "<br>";
-					}	
-					output += "------------------------------<br>";
-				}
-				$("#log").html(output);
+		if (predicate != null) {
+			rdfa[key][predicate] = object;
 		}
-	});
-	
-	console.log("[person.html] - end");
+	}
+	RdfLib.rdfa = rdfa;
 }
 
+
+
+//RdfLib.getAllPrefixes = function() {
+//var prefixes = []; // All prefixes will be stored here
+//console.log("[RdfLib] [getAllPrefixes] - begin");
+//
+//// Get all elements in the currents documents
+//var allElements = document.getElementsByTagName("*");
+//for (var i = 0; i < allElements.length; i++) {
+//	// For each elements, get all of its set of attributes
+//	var attributes = allElements[i].attributes;
+//	if (attributes == null || attributes.length == 0) {
+//		continue;
+//	} 
+//	
+//	// For each set of attribute
+//	for (var j = 0; j < attributes.length; j++) {
+//		var attr = attributes.item(j);
+//		
+//		// Found a prefix
+//		if (attr.nodeName == "prefix") {
+//			var prefix = attr.nodeValue;
+//			console.log("current prefix: " + prefix);
+//			// remove double space
+//			htmlPrefix = prefix.replace(/\s{2,}/g, " ");
+//			var parsedPrefix = prefix.split(" ") // Then, split by space
+//			
+//			// should be in pair {key, value}
+//			if (parsedPrefix.length % 2 !== 0) {
+//				console.log("invalid prefix: " + htmlPrefix);
+//				continue;
+//			}
+//			
+//			for (var k = 0; k < parsedPrefix.length; k+=2) {
+//				var current = {};
+//				current.prefix = parsedPrefix[k];
+//				current.fullName = parsedPrefix[k + 1];
+//				prefixes.push(current);
+//				console.log("prefix: " + parsedPrefix[k] + " fullName: " + 
+//						parsedPrefix[k+1]);
+//			}
+//		}
+//	}
+//}
+//console.log("[RdfLib] [getAllPrefixes] - end");
+//return prefixes;	
+//}
