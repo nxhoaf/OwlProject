@@ -1,13 +1,22 @@
+/**
+ * Literal js object, used to hold attributes which are considered subject
+ */
 var subject = {
 	about: "about",
 	resource: "resource"
 };
 
+/**
+ * Literal js object, used to hold attributes which are considered predicate
+ */
 var predicate = {
 	rel: "rel",
 	property: "property",
 }
 
+/**
+ * Literal js object, used to hold attributes which are considered object
+ */
 var object = {
 	href : "href",
 	content : "content",
@@ -16,6 +25,9 @@ var object = {
 	literal : "literal"  
 }
 
+/**
+ * Triple constants
+ */
 var triple = {
 	SUBJECT: "SUBJECT",
 	PREDICATE: "PREDICATE",
@@ -24,10 +36,17 @@ var triple = {
 
 var RdfLib = function() {};
 
+/**
+ * Get triple of the target (clicked event)
+ * @param target the clicked tag
+ * @returns triple in clicked tag (if any), otherwise, return null
+ */
 RdfLib.getTriple = function(target) {
 	
-	// Inner function, given a set of attributes, return the subject of RDFa if 
-	// any. Otherwise, return null
+	/**
+	 * Inner function, given a set of attributes, return the subject of RDFa 
+	 * if any. Otherwise, return null
+	 */
 	var getSubject = function(attributes) {
 		console.log("[RdfLib][getClickedField][getSubject] ");
 		result = {};
@@ -55,8 +74,10 @@ RdfLib.getTriple = function(target) {
 		return null;
 	}
 	
-	// Inner function, given a set of attributes, return the predicate of RDFa 
-	// if any. Otherwise, return null
+	/**
+	 * Inner function, given a set of attributes, return the predicate of RDFa 
+	 * if any. Otherwise, return null
+	 */
 	var getPredicate = function(attributes) {
 		console.log("[RdfLib][getClickedField][getPredicate] ");
 		result = {};
@@ -84,8 +105,10 @@ RdfLib.getTriple = function(target) {
 		return null;
 	}
 	
-	// Inner function, given a set of attributes, return the object of RDFa if 
-	// any. Otherwise, return null
+	/**
+	 * Inner function, given a set of attributes, return the object of RDFa if 
+	 * any. Otherwise, return null
+	 */
 	var getObject = function(target) {
 		console.log("[RdfLib][getClickedField][getObject] ");
 		result = {};
@@ -152,6 +175,8 @@ RdfLib.getTriple = function(target) {
 
 /**
  * Get subject triple (if any) of the current element
+ * @element current element, which has only predicat and subject.
+ * @returns its subject if any, or null
  */
 RdfLib.getSubjectTriple = function (element) {
 	var parent = element.parentNode;
@@ -190,6 +215,7 @@ RdfLib.getSubjectTriple = function (element) {
 
 /**
  * Get all triples in a specific HTML element
+ * @param the HTML element to get all triples
  */
 RdfLib.getAllTriples = function(element) {
 	console.log("[RdfLib] [getAllAttributeTriples] - begin");
@@ -265,6 +291,9 @@ RdfLib.getAllPrefixes = function() {
 	return prefixes;	
 }
 
+/**
+ * Initialization. This function gets called when we first load the page.
+ */
 RdfLib.init = function () {
 	// Get all prefixes
 	var prefixes = RdfLib.getAllPrefixes();
@@ -373,112 +402,4 @@ RdfLib.enableEventListener = function() {
 	
 	console.log("[person.html] - end");
 }
-
-// Get prefix in html container itself
-//var htmlPrefix = $("html").attr("prefix");
-
-// prefixes = getPrefix(htmlPrefix);
-
-//// remove double space
-//htmlPrefix = htmlPrefix.replace(/\s{2,}/g, " ");
-//var result = htmlPrefix.split(" ") // Then, split by space
-//
-//// should be in pair {key, value}
-//if (result.length % 2 !== 0) {
-//	console.log("invalid prefix: " + htmlPrefix);
-//}
-//
-//for (var i = 0; i < result.length; i+=2) {
-//	var current = {};
-//	current.prefix = result[i];
-//	current.fullName = result[i + 1];
-//	prefixes[i] = current;
-//}
-
-//var getPrefix = function(prefixData) {
-//	console.log("[RdfLib] [getAllPrefixes] - getPrefix");
-////	this = that; // restore the context
-//	var prefixes = [];
-//	
-//	// remove double space
-//	prefixData = prefixData.replace(/\s{2,}/g, " ");
-//	
-//	var result = prefixData.split(" ") // Then, split by space
-//	
-//	// should be in pair {key, value}
-//	if (result.length % 2 !== 0) {
-//		console.log("invalid prefix: " + htmlPrefix);
-//	}
-//	
-//	for (var i = 0; i < result.length; i+=2) {
-//		var current = {};
-//		current.prefix = result[i];
-//		current.fullName = result[i + 1];
-//		prefixes[i] = current;
-//		console.log("prefix: " + result[i] + " fullName: " + result[i+1]);
-//	}
-//	
-//	return prefixes;
-//}
-
-//
-//field = {}; // Used to store clicked field
-//
-//
-//var target = event.target;
-//
-//// Get all properties of the current tag
-//for (var attr, i=0, attrs=element.attributes, l=attrs.length; i<l; i++){
-//    attr = attrs.item(i)
-//    
-//    // This element has predicate
-//    if (PREDICATE_TYPE.indexOf(attr.nodeName) > -1) {
-//    	predicate.name = attr.nodeName;
-//    	predicate.value = attr.nodeValue;
-//    	return predicate;
-//    }
-//}
-
-///**
-//* Get the predicate of a specific tag
-//*/
-//RdfLib.getPredicate = function(element) {
-//	console.log("[RdfLib] [getPredicate] - begin");
-//	var predicate = {};
-//	// Get all properties of the current tag
-//	
-//	console.log("**************element: " + element + ", found attributes: ");
-//	for (var attr, i=0, attrs=element.attributes, l=attrs.length; i<l; i++){
-//	    attr = attrs.item(i)
-//	    
-//	    console.log(attr.nodeName + ": " + attr.nodeValue);
-//	    
-//	    // This element has predicate
-//	    if (PREDICATE_TYPE.indexOf(attr.nodeName) > -1) {
-//	    	predicate.name = attr.nodeName;
-//	    	predicate.value = attr.nodeValue;
-//	    	return predicate;
-//	    }
-//	}
-//	console.log("[RdfLib] [getPredicate] - end");
-//	return null;
-//}
-
-////In Rdfa, predicate type must be "property" or "rel" attribute
-//var SUBJECT_TYPE = [
-//  "about",
-//  "resource"
-//];
-//
-//var PREDICATE_TYPE = [
-//	"property",
-//	"rel"
-//];
-//
-//var OBJECT_TYPE = [
-// "href",
-// // The combination of "property" and "resource" will make resource becomes
-// // object instead of subject
-// "resource" 
-//];
 

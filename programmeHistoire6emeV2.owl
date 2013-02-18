@@ -7,19 +7,19 @@
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY organisation-systeme-scolaire-francais "http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#" >
-    <!ENTITY programme_histoire_college_france "file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#" >
+    <!ENTITY programme_histoire_college_france "Programme_Histoire_College_France#" >
 ]>
 
 
 <rdf:RDF xmlns="Programme_Histoire_College_France#"
      xml:base="Programme_Histoire_College_France"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:programme_histoire_college_france="file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#"
+     xmlns:programme_histoire_college_france="Programme_Histoire_College_France#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:organisation-systeme-scolaire-francais="http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#">
-    <owl:Ontology rdf:about="file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France">
+    <owl:Ontology rdf:about="Programme_Histoire_College_France">
         <rdfs:label xml:lang="fr">Ontologie du programme scolaire en matière Histoire au Collège en France. </rdfs:label>
         <rdfs:comment xml:lang="fr">La concption de l&apos;ontologie du programme scolaire en matière Histoire au Collège en France est basée sur le programme officiel du Ministère de l&apos;Education Nationale. (Cf: http://www.education.gouv.fr/cid22116/mene0817481a.html )
 

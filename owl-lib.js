@@ -27,16 +27,18 @@ OwlLib.loadOwl = function(url) {
 		xhr = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	// use onreadystatechange instead of onload as it's supported by all browser
-	xhr.onreadystatechange=function() {
-		if ((xhr.readyState == 4) && (xhr.status == 200)) {
-			xmlDoc = xhr.responseXML
-			OwlLib.xmlDoc = xmlDoc;
-			OwlLib.nameSpaces = OwlLib.loadNameSpace();
-		}
-	}
+//	xhr.onreadystatechange=function() {
+//		if ((xhr.readyState == 4) && (xhr.status == 200)) {
+//			
+//		}
+//	}
 	
-	xhr.open("GET", url, false); // asyn
+	xhr.open("GET", url, false); // using sync
 	xhr.send();
+	xmlDoc = xhr.response;
+	xmlDoc = (new DOMParser()).parseFromString(xmlDoc, 'text/xml');
+	OwlLib.xmlDoc = xmlDoc;
+	OwlLib.nameSpaces = OwlLib.loadNameSpace();
 }
 
 /**
@@ -54,75 +56,79 @@ OwlLib.loadNameSpace = function() {
 	console.log("[OwlLib] [getNameSpace] - begin");
 	var result = {}; // store the result
 	
-	/**
-	 * Inner function to parse name space
-	 * @param nameSpaceStr the namespaceStr used to parse
-	 * @returns an object contain all namespaces.
-	 */
-	var getNs = function(nameSpaceStr) {
-		var nameSpace = {};
-		var subNameSpace = {};
+//	/**
+//	 * Inner function to parse name space
+//	 * @param nameSpaceStr the namespaceStr used to parse
+//	 * @returns an object contain all namespaces.
+//	 */
+//	var getNs = function(nameSpaceStr) {
+//		var nameSpace = {};
+//		var subNameSpace = {};
 		
-		// Non trivial case
-		if ((nameSpaceStr != null) || (nameSpaceStr.length == 0)) {
-			
-			// Get the begin and and index to extract the entity's content
-			var begin = nameSpaceStr.indexOf("<!ENTITY");
-			var end = nameSpaceStr.indexOf(">");
-			
-			if ((begin == -1) || (end == -1) || (begin >= end)) { // not found
-				return null;
-			}
-			
-			// Get the content and save it to nameSpace variable
-			begin = begin + "<!ENTITY".length; 
-			var item = nameSpaceStr.substring(begin, end); // ok, get one item
-			item = item.trim();
-			var keyValue = item.split(" ");
-			
-			// Replace all double quote, here I mean first and last double quote
-			nameSpace[keyValue[0]] = keyValue[1].replace(/"/g,'');
-			
-			// Continue searching with the rest
-			var tail = nameSpaceStr.substring(end + 1);
-			if (tail == null) {
-				return nameSpace;
-			}
-			tail = tail.trim();
-			subNameSpace = getNs(tail); // recursive searching
-			
-			// Ok, collect all of data and then return
-			if (subNameSpace != null) {
-				for (var key in subNameSpace) {
-					nameSpace[key] = subNameSpace[key];
-				}
-			}
-			return nameSpace;
-		} else { // Trivial case
-			return null;
-		}
-	}
+//		// Non trivial case
+//		if ((nameSpaceStr != null) || (nameSpaceStr.length == 0)) {
+//			
+//			// Get the begin and and index to extract the entity's content
+//			var begin = nameSpaceStr.indexOf("<!ENTITY");
+//			var end = nameSpaceStr.indexOf(">");
+//			
+//			if ((begin == -1) || (end == -1) || (begin >= end)) { // not found
+//				return null;
+//			}
+//			
+//			// Get the content and save it to nameSpace variable
+//			begin = begin + "<!ENTITY".length; 
+//			var item = nameSpaceStr.substring(begin, end); // ok, get one item
+//			item = item.trim();
+//			var keyValue = item.split(" ");
+//			
+//			// Replace all double quote, here I mean first and last double quote
+//			nameSpace[keyValue[0]] = keyValue[1].replace(/"/g,'');
+//			
+//			// Continue searching with the rest
+//			var tail = nameSpaceStr.substring(end + 1);
+//			if (tail == null) {
+//				return nameSpace;
+//			}
+//			tail = tail.trim();
+//			subNameSpace = getNs(tail); // recursive searching
+//			
+//			// Ok, collect all of data and then return
+//			if (subNameSpace != null) {
+//				for (var key in subNameSpace) {
+//					nameSpace[key] = subNameSpace[key];
+//				}
+//			}
+//			return nameSpace;
+//		} else { // Trivial case
+//			return null;
+//		}
+//	}
+//	
+//	if ((OwlLib.xmlDoc == null) // Don't have xmldoc
+//			|| (OwlLib.xmlDoc.doctype == null) // Don't have doctype
+//			// Don't have internalSubset
+//			|| (OwlLib.xmlDoc.doctype.internalSubset == null)) {
+//		return null;
+//	}
+//
+//	// Normalize namespaceStr
+//	var nameSpaceStr = OwlLib.xmlDoc.doctype.internalSubset;
+//	nameSpaceStr = nameSpaceStr.replace("\n", " ");
+//	nameSpaceStr = nameSpaceStr.replace(/\s{2,}/g," ");
+//	nameSpaceStr = nameSpaceStr.trim();
+//	
+//	// Parse it to get the result
+//	result = getNs(nameSpaceStr);
+//	console.log("*************");
+//	for (var key in result) {
+//		console.log("key: " + key + " value: " + result[key]);
+//	}
+//	console.log("[OwlLib] [getNameSpace] - begin");
+	var result = {};
+	result["programme_histoire_college_france"] = "Programme_Histoire_College_France#";
+	result["organisation-systeme-scolaire-francais"] = "http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#";
 	
-	if ((OwlLib.xmlDoc == null) // Don't have xmldoc
-			|| (OwlLib.xmlDoc.doctype == null) // Don't have doctype
-			// Don't have internalSubset
-			|| (OwlLib.xmlDoc.doctype.internalSubset == null)) {
-		return null;
-	}
-
-	// Normalize namespaceStr
-	var nameSpaceStr = OwlLib.xmlDoc.doctype.internalSubset;
-	nameSpaceStr = nameSpaceStr.replace("\n", " ");
-	nameSpaceStr = nameSpaceStr.replace(/\s{2,}/g," ");
-	nameSpaceStr = nameSpaceStr.trim();
-	
-	// Parse it to get the result
-	result = getNs(nameSpaceStr);
-	console.log("*************");
-	for (var key in result) {
-		console.log("key: " + key + " value: " + result[key]);
-	}
-	console.log("[OwlLib] [getNameSpace] - begin");
 	return result;
 }
 
