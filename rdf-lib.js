@@ -1,5 +1,7 @@
 /**
  * Literal js object, used to hold attributes which are considered subject
+ * for more information about which properties are considered "rdfa" property, 
+ * see here: http://www.w3.org/TR/xhtml-rdfa-primer/
  */
 var subject = {
 	about: "about",
@@ -372,48 +374,3 @@ RdfLib.init = function () {
 
 
 
-//RdfLib.getAllPrefixes = function() {
-//var prefixes = []; // All prefixes will be stored here
-//console.log("[RdfLib] [getAllPrefixes] - begin");
-//
-//// Get all elements in the currents documents
-//var allElements = document.getElementsByTagName("*");
-//for (var i = 0; i < allElements.length; i++) {
-//	// For each elements, get all of its set of attributes
-//	var attributes = allElements[i].attributes;
-//	if (attributes == null || attributes.length == 0) {
-//		continue;
-//	} 
-//	
-//	// For each set of attribute
-//	for (var j = 0; j < attributes.length; j++) {
-//		var attr = attributes.item(j);
-//		
-//		// Found a prefix
-//		if (attr.nodeName == "prefix") {
-//			var prefix = attr.nodeValue;
-//			console.log("current prefix: " + prefix);
-//			// remove double space
-//			htmlPrefix = prefix.replace(/\s{2,}/g, " ");
-//			var parsedPrefix = prefix.split(" ") // Then, split by space
-//			
-//			// should be in pair {key, value}
-//			if (parsedPrefix.length % 2 !== 0) {
-//				console.log("invalid prefix: " + htmlPrefix);
-//				continue;
-//			}
-//			
-//			for (var k = 0; k < parsedPrefix.length; k+=2) {
-//				var current = {};
-//				current.prefix = parsedPrefix[k];
-//				current.fullName = parsedPrefix[k + 1];
-//				prefixes.push(current);
-//				console.log("prefix: " + parsedPrefix[k] + " fullName: " + 
-//						parsedPrefix[k+1]);
-//			}
-//		}
-//	}
-//}
-//console.log("[RdfLib] [getAllPrefixes] - end");
-//return prefixes;	
-//}
