@@ -95,7 +95,11 @@ var JOT_siteRelTimeStrs = ["il y a une minute","il y a __duration__ minutes","il
 				for (var subject in rdfa) {
 				    output += subject + "<br>";
 				    for (var predicate in rdfa[subject]) {
-				    	output += "&nbsp&nbsp&nbsp&nbsp'" + predicate + "' : '" + rdfa[subject][predicate] + "' <br>";
+				    	var object = rdfa[subject][predicate];
+				    	// alert(object.length)
+				    	for (var i = 0; i < object.length; i++) {
+				    		output += "&nbsp&nbsp&nbsp&nbsp'" + predicate + "' : '" + object[i] + "' <br>";	
+				    	}
 				    }
 				}	
 			}

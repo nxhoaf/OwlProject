@@ -62,7 +62,6 @@ RdfLib.getTriple = function(target) {
 	 * subject.value = subject value
 	 */
 	var getSubject = function(attributes) {
-		console.log("[RdfLib][getClickedField][getSubject] ");
 		result = {};
 		var i;
 		var attribute;
@@ -96,7 +95,6 @@ RdfLib.getTriple = function(target) {
 	 * predicate.value = predicate value
 	 */
 	var getPredicate = function(attributes) {
-		console.log("[RdfLib][getClickedField][getPredicate] ");
 		result = {};
 		var i;
 		var attribute;
@@ -112,12 +110,29 @@ RdfLib.getTriple = function(target) {
 			}
 			attribute = attributes[i];
 			
-			if ((attribute.nodeName == predicate.rel) 
-					|| (attribute.nodeName == predicate.property)) {
+			
+			if ((attribute.nodeName == predicate.rel)
+				|| (attribute.nodeName == predicate.property)) {
 				result.key = attribute.nodeName;
 				result.value = attribute.nodeValue;
 				return result;
 			}
+			
+			// predicate is object, it has many objects
+//			if (attribute.nodeName == predicate.rel ) {
+//				result.key = attribute.nodeName;
+//				result.value = [];
+//				
+//				// Loop over attribute to get all these attributes other than 
+//				// predicate.rel and save them.
+//				for (var j = 0; j < attributes.length; j++) {
+//					if (attributes[j].nodeName != predicate.rel) {
+//						console.log("[getPredicate] predicate:  " + predicate.rel + " : " + attributes[j].nodeName);
+//						result.value.push(attributes[j].nodeName);
+//					}
+//				}
+//				return result;
+//			}
 		}
 		return null;
 	}
@@ -130,41 +145,71 @@ RdfLib.getTriple = function(target) {
 	 * object.value = object value
 	 */
 	
-	var getObject = function(target) {
-		console.log("[RdfLib][getClickedField][getObject] ");
+	var getObject = function(target, predicateType) {
 		result = {};
 		var i;
 		var attributes = target.attributes;
 		if ((attributes == null) || (attributes.length == 0)) {
 			return null;
 		}
-		var attribute;
 		
+		var attribute;
+		console.log("______________________ predicateType " + predicateType);
+
+		// if predicate is property (case 2), it has only one object, if it's
+		// rel (case 1), it can have many object
+		// see 2.2.4 Alternative for setting the property: rel 
+		// in http://www.w3.org/TR/xhtml-rdfa-primer/
+		// for more info
+		
+		// case 1
+		if (predicateType == predicate.rel) {
+			result.value = [];
+			
+			// Loop over attribute to get all these attributes other than 
+			// predicate.rel and save them.
+			for (i = 0; i < attributes.length; i++) {
+				attribute = attributes[i];
+				if ((attribute != null) 
+						&& (attribute.nodeName != predicate.rel)) {
+					result.value.push(attribute.nodeName);
+					console.log(attribute.nodeName)
+				}
+			}
+			console.log("______________________ " + attributes[i]);
+			return result;
+		}
+		
+		// case 2
+		// Get all attribute of predicate
 		for (i = 0; i < attributes.length; i++) {
 			// Must be not null
-			if ((attributes[i] == 'undefined') && (attributes[i] == null) ) {
+			if (attributes[i] == null ) {
 				continue;
 			}
 			attribute = attributes[i];
-			
+
+			// see '2.2.1 Using the content attribute' 
 			if ((attribute.nodeName == object.content) 
 					|| (attribute.nodeName == object.href)) {
 				result.key = attribute.nodeName;
-				result.value = attribute.nodeValue;
+				result.value = [];
+				result.value.push(attribute.nodeValue);
 				return result;
 			}
 		}
 		
+		// Not found, attribute is the literal text between the tags.
 		result.key = object.literal;
 		var text = target.textContent;
 		// Normalize
 		text = text.replace("\n", " ");
 		text = text.replace(/\s{2,}/g," ");
-		result.value = text;
+		result.value = [];
+		result.value.push(text);
 		return result;
 	}
 	
-	console.log("[RdfLib] [getClickedField] - begin");
 	var triple = {}; // Represent the triple in RDF {subject, predicate, object}
 	
 	triple.subject = null;
@@ -189,10 +234,16 @@ RdfLib.getTriple = function(target) {
 		triple.object = triple.subject;
 		triple.subject = null;
 	} else {
-		triple.object = getObject(target);
+		var predicateType;
+		if (triple.predicate == null) {
+			predicateType = null;
+		} else {
+			predicateType = triple.predicate.key;
+		}
+		
+		triple.object = getObject(target, predicateType);
 	}
 	
-	console.log("[RdfLib] [getClickedField] - end");
 	if ((triple.subject == null) 
 			&& (triple.predicate == null)) {
 		return null;
@@ -218,7 +269,7 @@ RdfLib.getSubjectTriple = function (element) {
 	// 		((triple == null) || (triple.subject == null))
 	// and we still have parent element
 	// 		(parent.parentNode != null)
-	// then we continue searching
+	// then we continue searching (recursive)
 	while ((parent.parentNode != document) 
 			&& ((triple == null) || (triple.subject == null))) {
 		triple = RdfLib.getSubjectTriple(element.parentNode);
@@ -365,11 +416,11 @@ RdfLib.init = function () {
 	for (var i = 0; i < triples.length; i++) {
 		
 		var triple = triples[i]; // Get the current triple
-		var property = "";
 		
-		// By pass the triple that doesn't have subject
+		// Omit the triple that doesn't have subject
 		if (triple.subject == null) { 
-			continue;		}
+			continue;		
+		}
 		
 		var key = triple.subject.value;				
 		// Create a new entry if it doesn't exist
@@ -378,10 +429,11 @@ RdfLib.init = function () {
 		}
 		
 		var predicate = triple.predicate.value;
-		var object = triple.object.value;
 		
+		// Get object array of that triple and store it
+		var objectArray = triple.object.value;
 		if (predicate != null) {
-			rdfa[key][predicate] = object;
+			rdfa[key][predicate] = objectArray;
 		}
 	}
 	RdfLib.rdfa = rdfa;
