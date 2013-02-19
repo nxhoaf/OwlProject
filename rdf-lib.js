@@ -39,14 +39,23 @@ var triple = {
 var RdfLib = function() {};
 
 /**
- * Get triple of the target (clicked event)
- * @param target the clicked tag
- * @returns triple in clicked tag (if any), otherwise, return null
+ * Get triple of the target (which is clicked event)
+ * @param target the clicked area
+ * @returns triple in clicked area (if any), otherwise, return null. The data
+ * structure is as follow: (actually, key mean type)
+ * triple.subject.key = about
+ * triple.subject.value = "http://example.org/nxhoaf/#me"
+ * 
+ * triple.predicate.key = property
+ * triple.predicate.value = foaf:nick
+ * 
+ * triple.object.key = literal
+ * triple.object.value = nxhoaf
  */
 RdfLib.getTriple = function(target) {
 	
 	/**
-	 * Inner function, given a set of attributes, return the subject of RDFa 
+	 * Inner function, given a set of attributes, return its subject
 	 * if any. Otherwise, return null
 	 * @returns the subject object in which
 	 * subject.key = subject name
@@ -80,7 +89,7 @@ RdfLib.getTriple = function(target) {
 	}
 	
 	/**
-	 * Inner function, given a set of attributes, return the predicate of RDFa 
+	 * Inner function, given a set of attributes, return its predicate 
 	 * if any. Otherwise, return null
 	 * @returns the predicate object in which
 	 * predicate.key = predicate name
@@ -114,7 +123,7 @@ RdfLib.getTriple = function(target) {
 	}
 	
 	/**
-	 * Inner function, given a set of attributes, return the object of RDFa if 
+	 * Inner function, given a set of attributes, return its object 
 	 * any. Otherwise, return null
 	 * @returns the object in which
 	 * object.key = object name
@@ -166,7 +175,13 @@ RdfLib.getTriple = function(target) {
 	triple.subject = getSubject(target.attributes);
 	triple.predicate = getPredicate(target.attributes);
 	
-	// Special case, subject becomes object
+	// Special case, subject becomes object, see 2.2.3 Alternative for setting 
+	// the context in http://www.w3.org/TR/xhtml-rdfa-primer/
+	// - quote -: 
+	// "The role of the resource attribute in the div element is to set the 
+	// "context", i.e., the subject for all the subsequent statements. Also, 
+	// when combined with the property attribute, resource can be used to set 
+	// the "target", i.e., the object for the statement (much as href). 
 	if ((triple.subject != null) &&
 			(triple.predicate != null) &&
 			(triple.subject.key == subject.resource) && 
