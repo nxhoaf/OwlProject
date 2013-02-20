@@ -1,23 +1,72 @@
 
 OwlLib = {};
+OwlLib.constant = {};
 
-OwlLib.constant = {
+// For now, our library works only with chrome and firefox
+OwlLib.constant.firefox = {
 	ABOUT: "rdf:about",
 	TYPE : "rdf:type", 
 	RESOURCE : "rdf:resource", 
 	LABEL : "rdfs:label", 
-	FAIT_PARTIE_DE : "programme_histoire_college_france:faitPartieDe", 
+	FAIT_PARTIE_DE : "programme_histoire_college_france:faitPartieDe",
+	NAMED_INVIDUAL : "owl:NamedIndividual",
 	PROGRAM : "programme_histoire_college_france", 
 	ORGANIZATION : "organisation-systeme-scolaire-francais"
 }
+
+OwlLib.constant.chrome = {
+	ABOUT: "rdf:about",
+	TYPE : "type", 
+	RESOURCE : "rdf:resource", 
+	LABEL : "label", 
+	FAIT_PARTIE_DE : "faitPartieDe",
+	NAMED_INVIDUAL : "NamedIndividual",
+	PROGRAM : "programme_histoire_college_france", 
+	ORGANIZATION : "organisation-systeme-scolaire-francais"
+}
+
 
 /**
  * Load
  */
 OwlLib.loadOwl = function(url) {
+	console.log("[OwlLib] [loadOwl] - begin");
 	// TODO: Regrex to test url
 	var xhr = {}; // XHR object
 	var xmlDoc; // result
+	
+	var browserInfo = OwlLib.getBrowserInfo();
+	OwlLib.browser = {};
+	OwlLib.browser.name = browserInfo[0];
+	OwlLib.browser.version = browserInfo[1];
+	
+	// Config constant based on browser type
+	if ("firefox" === OwlLib.browser.name.toLowerCase()) {
+		OwlLib.constant = {
+			ABOUT: OwlLib.constant.firefox.ABOUT,
+			TYPE : OwlLib.constant.firefox.TYPE, 
+			RESOURCE : OwlLib.constant.firefox.RESOURCE, 
+			LABEL : OwlLib.constant.firefox.LABEL, 
+			FAIT_PARTIE_DE : OwlLib.constant.firefox.FAIT_PARTIE_DE, 
+			NAMED_INVIDUAL : OwlLib.constant.firefox.NAMED_INVIDUAL, 
+			PROGRAM : OwlLib.constant.firefox.PROGRAM, 
+			ORGANIZATION : OwlLib.constant.firefox.ORGANIZATION
+		}
+	} else { // chrome
+		OwlLib.constant = {
+			ABOUT: OwlLib.constant.chrome.ABOUT,
+			TYPE : OwlLib.constant.chrome.TYPE, 
+			RESOURCE : OwlLib.constant.chrome.RESOURCE, 
+			LABEL : OwlLib.constant.chrome.LABEL, 
+			FAIT_PARTIE_DE : OwlLib.constant.chrome.FAIT_PARTIE_DE, 
+			NAMED_INVIDUAL : OwlLib.constant.chrome.NAMED_INVIDUAL,
+			PROGRAM : OwlLib.constant.chrome.PROGRAM, 
+			ORGANIZATION : OwlLib.constant.chrome.ORGANIZATION
+		}
+	}
+	
+	console.log("[OwlLib] [loadOwl] - Browser: " + browserInfo[0] + " " + 
+			browserInfo[1]);
 	
 	// Create a new XmlHttpRequest Object
 	if (window.XMLHttpRequest) {
@@ -26,12 +75,6 @@ OwlLib.loadOwl = function(url) {
 	} else {// code for IE6, IE5
 		xhr = new ActiveXObject("Microsoft.XMLHTTP");
 	}
-	// use onreadystatechange instead of onload as it's supported by all browser
-//	xhr.onreadystatechange=function() {
-//		if ((xhr.readyState == 4) && (xhr.status == 200)) {
-//			
-//		}
-//	}
 	
 	xhr.open("GET", url, false); // using sync
 	xhr.send();
@@ -39,6 +82,8 @@ OwlLib.loadOwl = function(url) {
 	xmlDoc = (new DOMParser()).parseFromString(xmlDoc, 'text/xml');
 	OwlLib.xmlDoc = xmlDoc;
 	OwlLib.nameSpaces = OwlLib.loadNameSpace();
+	
+	console.log("[OwlLib] [loadOwl] - end");
 }
 
 /**
@@ -53,7 +98,7 @@ OwlLib.loadOwl = function(url) {
  * namespaces[xsd] = "http://www.w3.org/2001/XMLSchema#"
  */
 OwlLib.loadNameSpace = function() {
-	console.log("[OwlLib] [getNameSpace] - begin");
+	console.log("[OwlLib] [loadNameSpace] - begin");
 	var result = {}; // store the result
 	
 //	/**
@@ -129,6 +174,7 @@ OwlLib.loadNameSpace = function() {
 	result["programme_histoire_college_france"] = "Programme_Histoire_College_France#";
 	result["organisation-systeme-scolaire-francais"] = "http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#";
 	
+	console.log("[OwlLib] [loadNameSpace] - end");
 	return result;
 }
 
@@ -143,11 +189,6 @@ OwlLib.loadNameSpace = function() {
 OwlLib.getNamedIndividuals = function(type, nameSpaceOfType) {
 	console.log("[OwlLib] [getNamedIndidualTriples] - begin");
 	
-	// Store result
-	var namedIndividuals = [];
-	// Named Individual elements
-	niElements = OwlLib.xmlDoc.getElementsByTagName("owl:NamedIndividual");
-	
 	/**
 	 * Inner function to get NamedIndividual
 	 * @niElement : namedIndividual Element
@@ -157,11 +198,10 @@ OwlLib.getNamedIndividuals = function(type, nameSpaceOfType) {
 		var item = {};
 		var isNull = true; // check if item is null;
 		var value; // Store temporary value
-		
-		
-		// Get rdfType, if any
 		var rdfType = niElement.
 				getElementsByTagName(OwlLib.constant.TYPE)[0];
+		
+		// Get rdfType, if any
 		if ((rdfType != null) // found type attribute 
 				&& (rdfType.getAttribute(OwlLib.constant.RESOURCE) != null)) {
 			// current type
@@ -211,6 +251,15 @@ OwlLib.getNamedIndividuals = function(type, nameSpaceOfType) {
 		}
 	}
 	
+	var document = $(OwlLib.xmlDoc);
+	
+	// Store result
+	var namedIndividuals = [];
+	
+	// Named Individual elements
+	var niElements = OwlLib.xmlDoc.
+			getElementsByTagName(OwlLib.constant.NAMED_INVIDUAL);
+	
 	// Create Named individual type (full name)
 	var niType = null;
 	if ((type != null) && (nameSpaceOfType != null)) {
@@ -225,8 +274,10 @@ OwlLib.getNamedIndividuals = function(type, nameSpaceOfType) {
 		if (ni != null) {
 			namedIndividuals.push(ni);
 		}
-		
 	}
+	
+//	var ni = getNamedIndividual(niElements[120]);
+	
 	
 //	for (var i = 0; i < namedIndividuals.length; i++) {
 //		var namedIndividual = namedIndividuals[i];
@@ -236,47 +287,9 @@ OwlLib.getNamedIndividuals = function(type, nameSpaceOfType) {
 //			console.log("	value: " + namedIndividual[key]);
 //		}
 //	}
-	
+	console.log("[OwlLib] [getNamedIndidualTriples] - end");
 	return namedIndividuals;
 }
-
-
-//OwlLib.getSubThemesOf = function (theme, nameSpaceOfTheme) {
-//	var subThemes = OwlLib.getNamedIndividuals("soustheme", 
-//			"programme_histoire_college_france"); // get all subthemes
-//	
-//	// NamedIndividual theme (full name)
-//	var fullName = null;
-//	if ((theme != null) && (nameSpaceOfTheme != null)) {
-//		var namespace = OwlLib.nameSpaces[nameSpaceOfTheme];
-//		fullName = namespace + theme;
-//	}
-//	
-//	var result = []; // store result
-//	for (var i = 0; i < subThemes.length; i++) {
-//		var subTheme = subThemes[i];
-//		var faitPartieDe = subTheme[OwlLib.constant.FAIT_PARTIE_DE];
-//		if ((faitPartieDe != null) && (faitPartieDe == fullName)) {
-//			result.push(subTheme);
-//		}
-//	}
-//	
-//	
-//	console.log("********************************************");
-//	console.log("SubThemes of: " + theme);
-//	console.log("********************************************");
-//	
-//	for (var i = 0; i < result.length; i++) {
-//		var subTheme = result[i];
-//		console.log(i + "  ------------------------------")
-//		for (var key in subTheme) {
-//			console.log("	key:   " + key);
-//			console.log("	value: " + subTheme[key]);
-//		}
-//	}
-//	
-//	return result;
-//}
 
 OwlLib.getSubThemesOf = function (theme) {
 	var subThemes = OwlLib.getNamedIndividuals("soustheme", 
@@ -290,7 +303,6 @@ OwlLib.getSubThemesOf = function (theme) {
 			result.push(subTheme);
 		}
 	}
-	
 	
 	console.log("********************************************");
 	console.log("SubThemes of: " + theme);
@@ -369,9 +381,58 @@ OwlLib.getAllSubThemes = function (namedIndividuals) {
 }
 
 
+/**
+ * Get browser info
+ * http://stackoverflow.com/questions/5916900/detect-version-of-browser
+ */
+OwlLib.getBrowserInfo = function() {
+	var N = navigator.appName, ua = navigator.userAgent, tem;
+	var M = ua
+			.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+	if (M && (tem = ua.match(/version\/([\.\d]+)/i)) != null)
+		M[2] = tem[1];
+	M = M ? [ M[1], M[2] ] : [ N, navigator.appVersion, '-?' ];
+	
+	return M;
+};
 
 
-
+//OwlLib.getSubThemesOf = function (theme, nameSpaceOfTheme) {
+//var subThemes = OwlLib.getNamedIndividuals("soustheme", 
+//		"programme_histoire_college_france"); // get all subthemes
+//
+//// NamedIndividual theme (full name)
+//var fullName = null;
+//if ((theme != null) && (nameSpaceOfTheme != null)) {
+//	var namespace = OwlLib.nameSpaces[nameSpaceOfTheme];
+//	fullName = namespace + theme;
+//}
+//
+//var result = []; // store result
+//for (var i = 0; i < subThemes.length; i++) {
+//	var subTheme = subThemes[i];
+//	var faitPartieDe = subTheme[OwlLib.constant.FAIT_PARTIE_DE];
+//	if ((faitPartieDe != null) && (faitPartieDe == fullName)) {
+//		result.push(subTheme);
+//	}
+//}
+//
+//
+//console.log("********************************************");
+//console.log("SubThemes of: " + theme);
+//console.log("********************************************");
+//
+//for (var i = 0; i < result.length; i++) {
+//	var subTheme = result[i];
+//	console.log(i + "  ------------------------------")
+//	for (var key in subTheme) {
+//		console.log("	key:   " + key);
+//		console.log("	value: " + subTheme[key]);
+//	}
+//}
+//
+//return result;
+//}
 
 
 

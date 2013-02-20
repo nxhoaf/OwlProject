@@ -73,44 +73,44 @@ var JOT_siteRelTimeStrs = ["il y a une minute","il y a __duration__ minutes","il
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="../rdf-lib.js"></script>
 <script>
-		$(document).ready(function () {
-			RdfLib.init();
-			var prefixes = RdfLib.prefixes;
-			var output = "";
-			
-			if (prefixes != null) {
-				output = "<b>All Prefixes: </b><br>";
-				for (var prefix in prefixes) {
-					output += "&nbsp&nbsp&nbsp&nbsp" + prefix + 
-					"   " + prefixes[prefix] + " <br>";
-				}
+	$(document).ready(function () {
+		RdfLib.init();
+		var prefixes = RdfLib.prefixes;
+		var output = "";
+		
+		if (prefixes != null) {
+			output = "<b>All Prefixes: </b><br>";
+			for (var prefix in prefixes) {
+				output += "&nbsp&nbsp&nbsp&nbsp" + prefix + 
+				"   " + prefixes[prefix] + " <br>";
 			}
-			
-			
-			
-			var rdfa = RdfLib.rdfa;
-			
-			if (rdfa != null) {
-				output += "<b>All attributes: </b><br>";
-				for (var subject in rdfa) {
-				    output += subject + "<br>";
-				    for (var predicate in rdfa[subject]) {
-				    	var object = rdfa[subject][predicate];
-				    	// alert(object.length)
-				    	for (var i = 0; i < object.length; i++) {
-				    		output += "&nbsp&nbsp&nbsp&nbsp'" + predicate + "' : '" + object[i] + "' <br>";	
-				    	}
-				    }
-				}	
-			}
-			
-			
-			var log = document.createElement("div");
-			log.id = "log";
-			$('body').append(log);
-			$("#logOwl").html(output);
-		});
-	</script>
+		}
+		
+		
+		
+		var rdfa = RdfLib.rdfa;
+		
+		if (rdfa != null) {
+			output += "<b>All attributes: </b><br>";
+			for (var subject in rdfa) {
+			    output += subject + "<br>";
+			    for (var predicate in rdfa[subject]) {
+			    	var object = rdfa[subject][predicate];
+			    	// alert(object.length)
+			    	for (var i = 0; i < object.length; i++) {
+			    		output += "&nbsp&nbsp&nbsp&nbsp'" + predicate + "' : '" + object[i] + "' <br>";	
+			    	}
+			    }
+			}	
+		}
+		
+		
+		var log = document.createElement("div");
+		log.id = "log";
+		$('body').append(log);
+		$("#logOwl").html(output);
+	});
+</script>
 
 
 
