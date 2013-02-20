@@ -645,6 +645,7 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Les_relations_du_christianisme_et_de_l’empire_romain">
         <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+		<rdfs:label xml:lang="fr">Les relations du christianisme et de l'empire romain</rdfs:label>
         <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_debutDuJudaisme"/>
     </owl:NamedIndividual>
     
@@ -1880,6 +1881,7 @@ Cette étude est remise en perspective dans l’espace de l’Orient ancien.</rd
 
     <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_citeDesAtheniens">
         <rdf:type rdf:resource="&programme_histoire_college_france;soustheme"/>
+		<rdfs:label xml:lang="fr">La cité Des Atheniens</rdfs:label>
         <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_civilisationGrecque"/>
     </owl:NamedIndividual>
     
@@ -1889,7 +1891,7 @@ Cette étude est remise en perspective dans l’espace de l’Orient ancien.</rd
 
     <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_civilisationGrecque">
         <rdf:type rdf:resource="&programme_histoire_college_france;theme"/>
-        <rdfs:label xml:lang="fr">La civilisation greque</rdfs:label>
+        <rdfs:label xml:lang="fr">Civilisation greque</rdfs:label>
         <programme_histoire_college_france:aDureeRelative rdf:datatype="&xsd;decimal">25</programme_histoire_college_france:aDureeRelative>
         <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;histoire6eme"/>
     </owl:NamedIndividual>
@@ -1916,7 +1918,7 @@ Cette étude est remise en perspective dans l’espace de l’Orient ancien.</rd
 
     <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_debutDuJudaisme">
         <rdf:type rdf:resource="&programme_histoire_college_france;soustheme"/>
-        <rdfs:label xml:lang="fr">Les débuts du judaïsme </rdfs:label>
+        <rdfs:label xml:lang="fr">Débuts du judaïsme </rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1952,6 +1954,7 @@ Cette étude est remise en perspective dans l’espace de l’Orient ancien.</rd
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdf:type>
+		<rdfs:label xml:lang="fr">Empires Chretiens du Haut Moyen Age</rdfs:label>
         <programme_histoire_college_france:aDureeRelative rdf:datatype="&xsd;decimal">10</programme_histoire_college_france:aDureeRelative>
         <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;histoire6eme"/>
     </owl:NamedIndividual>
@@ -1980,6 +1983,7 @@ Cette étude est remise en perspective dans l’espace de l’Orient ancien.</rd
 
     <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_laGreceDesSavants">
         <rdf:type rdf:resource="&programme_histoire_college_france;soustheme"/>
+		<rdfs:label xml:lang="fr">La Grece Des Savants</rdfs:label>
         <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_civilisationGrecque"/>
     </owl:NamedIndividual>
     
@@ -1989,7 +1993,7 @@ Cette étude est remise en perspective dans l’espace de l’Orient ancien.</rd
 
     <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_orientAncien">
         <rdf:type rdf:resource="&programme_histoire_college_france;theme"/>
-        <rdfs:label xml:lang="fr">L’Orient ancien au IIIe millénaire av. J.-C.</rdfs:label>
+        <rdfs:label xml:lang="fr">Orient ancien au IIIe millénaire av. J.-C.</rdfs:label>
         <programme_histoire_college_france:aDureeRelative rdf:datatype="&xsd;decimal">10</programme_histoire_college_france:aDureeRelative>
         <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;histoire6eme"/>
     </owl:NamedIndividual>
@@ -2020,6 +2024,7 @@ Cette étude est remise en perspective dans l’espace de l’Orient ancien.</rd
 
     <owl:NamedIndividual rdf:about="&programme_histoire_college_france;theme_rome">
         <rdf:type rdf:resource="&programme_histoire_college_france;theme"/>
+		<rdfs:label xml:lang="fr">Rome</rdfs:label>
         <programme_histoire_college_france:aDureeRelative rdf:datatype="&xsd;decimal">25</programme_histoire_college_france:aDureeRelative>
         <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;histoire6eme"/>
     </owl:NamedIndividual>

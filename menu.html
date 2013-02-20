@@ -12,7 +12,7 @@
 			list-style: none;
 			background: #000;
 			color: #fff;
-			width: 800px;
+			width: 600px;
 			font: 1.2em "Trebuchet MS", sans-serif;
 		}
 		
@@ -25,7 +25,8 @@
 		}
 		
 		#navigation .toggleSubMenu a, #navigation .toggleSubMenu span {
-			background-image: url(resource/menu-item-deroule.png);
+			background-image: url(resource/menu-item-deroule.png) ;
+			
 		}
 		
 		#navigation .open a, #navigation .open span {
@@ -104,7 +105,7 @@
 			li = document.createElement("li");
 			li.setAttribute("class","toggleSubMenu");
 			span = document.createElement("span");
-			span.textContent = theme[OwlLib.constant.ABOUT];
+			span.textContent = theme[OwlLib.constant.LABEL];
 			li.appendChild(span);
 			
 			var subThemes = OwlLib.getSubThemesOf(theme[OwlLib.constant.ABOUT]);
@@ -119,7 +120,7 @@
 					subA = document.createElement("a");
 					subA.href = "";
 					subA.title = "";
-					subA.textContent = subTheme[OwlLib.constant.ABOUT];
+					subA.textContent = subTheme[OwlLib.constant.LABEL];
 					
 					subLi.appendChild(subA);
 					ul.appendChild(subLi);	
@@ -138,6 +139,10 @@
     </ul>   
 </body>
 </html>
+    	
+    	
+    	
+    	
     	
     	<!--
         <li>
