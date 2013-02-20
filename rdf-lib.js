@@ -172,8 +172,8 @@ RdfLib.getTriple = function(target) {
 				attribute = attributes[i];
 				if ((attribute != null) 
 						&& (attribute.nodeName != predicate.rel)) {
-					result.value.push(attribute.nodeName);
-					console.log(attribute.nodeName)
+					result.value.push(attribute.nodeValue);
+					console.log(attribute.nodeValue)
 				}
 			}
 			console.log("______________________ " + attributes[i]);
