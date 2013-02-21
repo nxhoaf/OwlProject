@@ -104,9 +104,10 @@
 			// Get theme label and display it if not null
 			li = document.createElement("li");
 			li.setAttribute("class","toggleSubMenu");
-			span = document.createElement("span");
-			span.textContent = theme[OwlLib.constant.ABOUT];
-			li.appendChild(span);
+			a = document.createElement("a");
+			a.title = "";
+			a.textContent = theme[OwlLib.constant.ABOUT];
+			li.appendChild(a);
 			
 			var subThemes = OwlLib.getSubThemesOf(theme[OwlLib.constant.ABOUT]);
 			if ((subThemes != null) && (subThemes.length != 0)) {
@@ -125,9 +126,11 @@
 						var knowledge = OwlLib.
 								getKnowledgeOf(this.textContent);
 								
-						var knowledgeList = document.getElementById("knowledgeList");
+						var knowledgeList = document.
+								getElementById("knowledgeList");
 						knowledgeList.innerHTML = ""; // clear content
-						var knowledgeLabel = document.getElementById("knowledgeLabel");
+						var knowledgeLabel = document.
+								getElementById("knowledgeLabel");
 						knowledgeLabel.style.visibility = 'visible';
 						
 						for (var k = 0; k < knowledge.length; k++) {
@@ -162,7 +165,9 @@
 				}
 				li.appendChild(ul);
 			} else {
-				
+				a.onclick = function () {
+					alert(a.textContent + " don't have sub elements");
+			};
 			}
 			document.getElementById("navigation").appendChild(li);
 		}
@@ -177,7 +182,7 @@
     <br>
     <br>
     <br>
-    <h2 id="knowledgeLabel" style="visibility: hidden;">Required knowledge: </h2>
+    <h2 id="knowledgeLabel" style="visibility: hidden;">Required knowledge:</h2>
     <div id="knowledgeList"></div>   
 </body>
 </html>
