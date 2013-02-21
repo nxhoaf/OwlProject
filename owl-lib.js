@@ -109,7 +109,6 @@ OwlLib.loadNameSpace = function() {
 //	var getNs = function(nameSpaceStr) {
 //		var nameSpace = {};
 //		var subNameSpace = {};
-		
 //		// Non trivial case
 //		if ((nameSpaceStr != null) || (nameSpaceStr.length == 0)) {
 //			
@@ -169,7 +168,7 @@ OwlLib.loadNameSpace = function() {
 //	for (var key in result) {
 //		console.log("key: " + key + " value: " + result[key]);
 //	}
-//	console.log("[OwlLib] [getNameSpace] - begin");
+	console.log("[OwlLib] [getNameSpace] - begin");
 	var result = {};
 	result["programme_histoire_college_france"] = "Programme_Histoire_College_France#";
 	result["organisation-systeme-scolaire-francais"] = "http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#";
@@ -304,6 +303,35 @@ OwlLib.getSubThemesOf = function (theme) {
 		}
 	}
 	
+//	console.log("********************************************");
+//	console.log("SubThemes of: " + theme);
+//	console.log("********************************************");
+//	
+//	for (var i = 0; i < result.length; i++) {
+//		var subTheme = result[i];
+//		console.log(i + "  ------------------------------")
+//		for (var key in subTheme) {
+//			console.log("	key:   " + key);
+//			console.log("	value: " + subTheme[key]);
+//		}
+//	}
+	
+	return result;
+}
+
+OwlLib.getKnowledgeOf = function (theme) {
+	var knowledge = OwlLib.getNamedIndividuals("connaissance", 
+			"programme_histoire_college_france");
+	
+	var result = []; // store result
+	for (var i = 0; i < knowledge.length; i++) {
+		var item = knowledge[i];
+		var faitPartieDe = item[OwlLib.constant.FAIT_PARTIE_DE];
+		if ((faitPartieDe != null) && (faitPartieDe == theme)) {
+			result.push(item);
+		}
+	}
+	
 	console.log("********************************************");
 	console.log("SubThemes of: " + theme);
 	console.log("********************************************");
@@ -319,8 +347,6 @@ OwlLib.getSubThemesOf = function (theme) {
 	
 	return result;
 }
-
-
 
 /**
  * Get all themes
@@ -376,7 +402,6 @@ OwlLib.getAllSubThemes = function (namedIndividuals) {
 			console.log("	value: " + subTheme[key]);
 		}
 	}
-	
 	return subThemes;
 }
 

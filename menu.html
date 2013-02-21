@@ -105,7 +105,7 @@
 			li = document.createElement("li");
 			li.setAttribute("class","toggleSubMenu");
 			span = document.createElement("span");
-			span.textContent = theme[OwlLib.constant.LABEL];
+			span.textContent = theme[OwlLib.constant.ABOUT];
 			li.appendChild(span);
 			
 			var subThemes = OwlLib.getSubThemesOf(theme[OwlLib.constant.ABOUT]);
@@ -117,15 +117,52 @@
 					var subTheme = subThemes[j];
 					
 					subLi = document.createElement("li");
-					subA = document.createElement("a");
-					subA.href = "";
-					subA.title = "";
-					subA.textContent = subTheme[OwlLib.constant.LABEL];
 					
+					subA = document.createElement("a");
+					// subA.href = "";
+					subA.title = "";
+					subA.onclick = function () {
+						var knowledge = OwlLib.
+								getKnowledgeOf(this.textContent);
+								
+						var knowledgeList = document.getElementById("knowledgeList");
+						knowledgeList.innerHTML = ""; // clear content
+						var knowledgeLabel = document.getElementById("knowledgeLabel");
+						knowledgeLabel.style.visibility = 'visible';
+						
+						for (var k = 0; k < knowledge.length; k++) {
+							
+							var checkbox = document.createElement('input');
+							checkbox.type = "checkbox";
+							checkbox.name = "knowledge";
+							checkbox.value = knowledge[k];
+							checkbox.id = "knowledge_" + k;
+							
+							var label = document.createElement('label')
+							label.htmlFor = "id";
+							label.appendChild(document.createTextNode(
+									knowledge[k][OwlLib.constant.ABOUT]));
+							
+							var br = document.createElement("br");
+								
+							knowledgeList.appendChild(checkbox);
+							knowledgeList.appendChild(label);
+							knowledgeList.appendChild(br);
+							
+						}
+								
+								
+					};
+					subA.textContent = subTheme[OwlLib.constant.ABOUT];
 					subLi.appendChild(subA);
+					
+					// subLi.textContent = subTheme[OwlLib.constant.ABOUT];
+					
 					ul.appendChild(subLi);	
 				}
 				li.appendChild(ul);
+			} else {
+				
 			}
 			document.getElementById("navigation").appendChild(li);
 		}
@@ -134,65 +171,33 @@
     // -->
     </script>
 </head>
-<body onload>
+<body>
     <ul id="navigation">
-    </ul>   
+    </ul>
+    <br>
+    <br>
+    <br>
+    <h2 id="knowledgeLabel" style="visibility: hidden;">Required knowledge: </h2>
+    <div id="knowledgeList"></div>   
 </body>
 </html>
-    	
-    	
-    	
-    	
-    	
-    	<!--
-        <li>
-        	<a href="" title="">Item 1</a>
-    	</li>
-        <li class="toggleSubMenu">
-        	<span>Item 2</span>
-            <ul class="subMenu">
-                <li><a href="" title="">Item 2.1</a></li>
-                <li><a href="" title="">Item 2.2</a></li>
-                <li><a href="" title="">Item 2.3</a></li>
-            </ul>
-        </li>
-        <li class="toggleSubMenu"><span>Item 3</span>
-            <ul class="subMenu">
-                <li><a href="" title="">Item 3.1</a></li>
-                <li><a href="" title="">Item 3.2</a></li>
-            </ul>
-        </li>
-        <li><a href="" title="">Item 4</a></li>
-       -->
-
 
 <!--
-var li; // li tag
-var span; // span tag
-var ul; // ul tag
-var subLi; // sub li tag
-var subA; // sub a tag
-
-for (var i = 0; i < 3; i++) {
-	li = document.createElement("li");
-	li.class = "toggleSubMenu";
-	span = document.createElement("span");
-	span.textContent = "Theme no" + i;
-	li.appendChild(span);
-	
-	ul = document.createElement("ul");
-	ul.class = "subMenu";
-	for (var j = 0; j < 3; j++) {
-		subLi = document.createElement("li");
-		subA = document.createElement("a");
-		subA.href = "";
-		subA.title = "";
-		subA.textContent = "Sub Theme no" + j;
-		
-		subLi.appendChild(subA);
-		ul.appendChild(subLi);	
-	}
-	li.appendChild(ul);
-	document.getElementById("navigation").appendChild(li);
-}
- -->
+<ul id="navigation">
+    <li><a href="" title="">Item 1</a></li>
+    <li class="toggleSubMenu"><span>Item 2</span>
+        <ul class="subMenu">
+            <li><a href="" title="">Item 2.1</a></li>
+            <li><a href="" title="">Item 2.2</a></li>
+            <li><a href="" title="">Item 2.3</a></li>
+        </ul>
+    </li>
+    <li class="toggleSubMenu"><span>Item 3</span>
+        <ul class="subMenu">
+            <li><a href="" title="">Item 3.1</a></li>
+            <li><a href="" title="">Item 3.2</a></li>
+        </ul>
+    </li>
+    <li><a href="" title="">Item 4</a></li>
+</ul> 
+-->
