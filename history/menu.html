@@ -4,6 +4,7 @@
     <title>Menu accordéon avec jQuery</title>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="./owl-lib.js"></script>
+    <script src="./french-history-lib.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<style type="text/css">
 		#navigation {
@@ -96,8 +97,8 @@
     init = function() {
     	OwlLib.loadOwl("resource/programmeHistoire6emeV2.owl");   	
     	
-    	var themes = OwlLib.getNamedIndividuals("theme", 
-    			"programme_histoire_college_france");
+    	var themes = OwlLib.getNamedIndividuals(
+    		"Programme_Histoire_College_France#theme");
     	for (var i = 0; i < themes.length; i++) {
 			var theme = themes[i];
 			
@@ -109,7 +110,7 @@
 			a.textContent = theme[OwlLib.constant.ABOUT];
 			li.appendChild(a);
 			
-			var subThemes = OwlLib.getSubThemesOf(theme[OwlLib.constant.ABOUT]);
+			var subThemes = FrHistoryLib.getSubThemesOf(a.textContent);
 			if ((subThemes != null) && (subThemes.length != 0)) {
 				// Has Sub Theme, create list of sub theme
 				ul = document.createElement("ul");
@@ -122,7 +123,7 @@
 					subA = document.createElement("a");
 					subA.title = "";
 					subA.onclick = function () {
-						var knowledge = OwlLib.
+						var knowledge = FrHistoryLib.
 								getKnowledgeOf(this.textContent);
 								
 						var knowledgeList = document.
@@ -166,7 +167,7 @@
 			} else {
 				a.onclick = function () {
 					console.log(a.textContent + " don't have sub elements");
-					var knowledge = OwlLib.
+					var knowledge = FrHistoryLib.
 								getKnowledgeOf(this.textContent);
 					var knowledgeList = document.
 							getElementById("knowledgeList");
