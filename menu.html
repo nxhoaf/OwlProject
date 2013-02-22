@@ -120,7 +120,6 @@
 					subLi = document.createElement("li");
 					
 					subA = document.createElement("a");
-					// subA.href = "";
 					subA.title = "";
 					subA.onclick = function () {
 						var knowledge = OwlLib.
@@ -166,8 +165,46 @@
 				li.appendChild(ul);
 			} else {
 				a.onclick = function () {
-					alert(a.textContent + " don't have sub elements");
-			};
+					console.log(a.textContent + " don't have sub elements");
+					var knowledge = OwlLib.
+								getKnowledgeOf(this.textContent);
+					var knowledgeList = document.
+							getElementById("knowledgeList");
+					knowledgeList.innerHTML = ""; // clear content
+					var knowledgeLabel = document.
+							getElementById("knowledgeLabel");
+					knowledgeLabel.style.visibility = 'visible';
+					
+					// Knowledge not found
+					if ((knowledge == null) || (knowledge.length == 0)) {
+						var notFound = document.createTextNode("None");
+						knowledgeList.appendChild(notFound);
+						
+					} else {
+						for (var k = 0; k < knowledge.length; k++) {
+						
+						var checkbox = document.createElement('input');
+						checkbox.type = "checkbox";
+						checkbox.name = "knowledge";
+						checkbox.value = knowledge[k];
+						checkbox.id = "knowledge_" + k;
+						
+						var label = document.createElement('label')
+						label.htmlFor = "id";
+						label.appendChild(document.createTextNode(
+								knowledge[k][OwlLib.constant.ABOUT]));
+						
+						notFound
+							
+						knowledgeList.appendChild(checkbox);
+						knowledgeList.appendChild(label);
+						knowledgeList.appendChild(br);
+						
+					}
+					}
+					
+					
+				};
 			}
 			document.getElementById("navigation").appendChild(li);
 		}

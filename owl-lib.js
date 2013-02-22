@@ -4,25 +4,29 @@ OwlLib.constant = {};
 
 // For now, our library works only with chrome and firefox
 OwlLib.constant.firefox = {
-	ABOUT: "rdf:about",
-	TYPE : "rdf:type", 
-	RESOURCE : "rdf:resource", 
-	LABEL : "rdfs:label", 
-	FAIT_PARTIE_DE : "programme_histoire_college_france:faitPartieDe",
-	NAMED_INVIDUAL : "owl:NamedIndividual",
-	PROGRAM : "programme_histoire_college_france", 
-	ORGANIZATION : "organisation-systeme-scolaire-francais"
+	ABOUT			: "rdf:about",
+	LABEL 			: "rdfs:label",
+	NAMED_INVIDUAL 	: "owl:NamedIndividual",
+	RDF				: "rdf:RDF", 
+	RESOURCE 		: "rdf:resource", 
+	TYPE 			: "rdf:type",  
+	
+	FAIT_PARTIE_DE 	: "programme_histoire_college_france:faitPartieDe",
+	ORGANIZATION 	: "organisation-systeme-scolaire-francais",
+	PROGRAM 		: "programme_histoire_college_france"
 }
 
 OwlLib.constant.chrome = {
-	ABOUT: "rdf:about",
-	TYPE : "type", 
-	RESOURCE : "rdf:resource", 
-	LABEL : "label", 
-	FAIT_PARTIE_DE : "faitPartieDe",
-	NAMED_INVIDUAL : "NamedIndividual",
-	PROGRAM : "programme_histoire_college_france", 
-	ORGANIZATION : "organisation-systeme-scolaire-francais"
+	ABOUT			: "rdf:about",
+	LABEL 			: "label",
+	NAMED_INVIDUAL 	: "NamedIndividual",
+	RDF				: "RDF",
+	RESOURCE 		: "rdf:resource",
+	TYPE 			: "type", 
+	
+	FAIT_PARTIE_DE 	: "faitPartieDe",
+	ORGANIZATION 	: "organisation-systeme-scolaire-francais",
+	PROGRAM 		: "programme_histoire_college_france"
 }
 
 
@@ -43,25 +47,29 @@ OwlLib.loadOwl = function(url) {
 	// Config constant based on browser type
 	if ("firefox" === OwlLib.browser.name.toLowerCase()) {
 		OwlLib.constant = {
-			ABOUT: OwlLib.constant.firefox.ABOUT,
-			TYPE : OwlLib.constant.firefox.TYPE, 
-			RESOURCE : OwlLib.constant.firefox.RESOURCE, 
-			LABEL : OwlLib.constant.firefox.LABEL, 
-			FAIT_PARTIE_DE : OwlLib.constant.firefox.FAIT_PARTIE_DE, 
-			NAMED_INVIDUAL : OwlLib.constant.firefox.NAMED_INVIDUAL, 
-			PROGRAM : OwlLib.constant.firefox.PROGRAM, 
-			ORGANIZATION : OwlLib.constant.firefox.ORGANIZATION
+			ABOUT			: OwlLib.constant.firefox.ABOUT,
+			LABEL 			: OwlLib.constant.firefox.LABEL,
+			NAMED_INVIDUAL 	: OwlLib.constant.firefox.NAMED_INVIDUAL,
+			RDF 			: OwlLib.constant.firefox.RDF,
+			RESOURCE 		: OwlLib.constant.firefox.RESOURCE,
+			TYPE 			: OwlLib.constant.firefox.TYPE,
+			 
+			FAIT_PARTIE_DE 	: OwlLib.constant.firefox.FAIT_PARTIE_DE, 
+			ORGANIZATION 	: OwlLib.constant.firefox.ORGANIZATION, 
+			PROGRAM 		: OwlLib.constant.firefox.PROGRAM 
 		}
 	} else { // chrome
 		OwlLib.constant = {
-			ABOUT: OwlLib.constant.chrome.ABOUT,
-			TYPE : OwlLib.constant.chrome.TYPE, 
-			RESOURCE : OwlLib.constant.chrome.RESOURCE, 
-			LABEL : OwlLib.constant.chrome.LABEL, 
-			FAIT_PARTIE_DE : OwlLib.constant.chrome.FAIT_PARTIE_DE, 
-			NAMED_INVIDUAL : OwlLib.constant.chrome.NAMED_INVIDUAL,
-			PROGRAM : OwlLib.constant.chrome.PROGRAM, 
-			ORGANIZATION : OwlLib.constant.chrome.ORGANIZATION
+			ABOUT			: OwlLib.constant.chrome.ABOUT,
+			LABEL 			: OwlLib.constant.chrome.LABEL,
+			NAMED_INVIDUAL 	: OwlLib.constant.chrome.NAMED_INVIDUAL,
+			RDF 			: OwlLib.constant.chrome.RDF,
+			RESOURCE 		: OwlLib.constant.chrome.RESOURCE,
+			TYPE 			: OwlLib.constant.chrome.TYPE,
+			 
+			FAIT_PARTIE_DE 	: OwlLib.constant.chrome.FAIT_PARTIE_DE, 
+			ORGANIZATION 	: OwlLib.constant.chrome.ORGANIZATION, 
+			PROGRAM 		: OwlLib.constant.chrome.PROGRAM 
 		}
 	}
 	
@@ -86,6 +94,7 @@ OwlLib.loadOwl = function(url) {
 	console.log("[OwlLib] [loadOwl] - end");
 }
 
+
 /**
  * Load all namespaces in the owl file, the result it an object contains all 
  * namspaces and its full names.
@@ -100,80 +109,23 @@ OwlLib.loadOwl = function(url) {
 OwlLib.loadNameSpace = function() {
 	console.log("[OwlLib] [loadNameSpace] - begin");
 	var result = {}; // store the result
-	
-//	/**
-//	 * Inner function to parse name space
-//	 * @param nameSpaceStr the namespaceStr used to parse
-//	 * @returns an object contain all namespaces.
-//	 */
-//	var getNs = function(nameSpaceStr) {
-//		var nameSpace = {};
-//		var subNameSpace = {};
-//		// Non trivial case
-//		if ((nameSpaceStr != null) || (nameSpaceStr.length == 0)) {
-//			
-//			// Get the begin and and index to extract the entity's content
-//			var begin = nameSpaceStr.indexOf("<!ENTITY");
-//			var end = nameSpaceStr.indexOf(">");
-//			
-//			if ((begin == -1) || (end == -1) || (begin >= end)) { // not found
-//				return null;
-//			}
-//			
-//			// Get the content and save it to nameSpace variable
-//			begin = begin + "<!ENTITY".length; 
-//			var item = nameSpaceStr.substring(begin, end); // ok, get one item
-//			item = item.trim();
-//			var keyValue = item.split(" ");
-//			
-//			// Replace all double quote, here I mean first and last double quote
-//			nameSpace[keyValue[0]] = keyValue[1].replace(/"/g,'');
-//			
-//			// Continue searching with the rest
-//			var tail = nameSpaceStr.substring(end + 1);
-//			if (tail == null) {
-//				return nameSpace;
-//			}
-//			tail = tail.trim();
-//			subNameSpace = getNs(tail); // recursive searching
-//			
-//			// Ok, collect all of data and then return
-//			if (subNameSpace != null) {
-//				for (var key in subNameSpace) {
-//					nameSpace[key] = subNameSpace[key];
-//				}
-//			}
-//			return nameSpace;
-//		} else { // Trivial case
-//			return null;
-//		}
-//	}
-//	
-//	if ((OwlLib.xmlDoc == null) // Don't have xmldoc
-//			|| (OwlLib.xmlDoc.doctype == null) // Don't have doctype
-//			// Don't have internalSubset
-//			|| (OwlLib.xmlDoc.doctype.internalSubset == null)) {
-//		return null;
-//	}
-//
-//	// Normalize namespaceStr
-//	var nameSpaceStr = OwlLib.xmlDoc.doctype.internalSubset;
-//	nameSpaceStr = nameSpaceStr.replace("\n", " ");
-//	nameSpaceStr = nameSpaceStr.replace(/\s{2,}/g," ");
-//	nameSpaceStr = nameSpaceStr.trim();
-//	
-//	// Parse it to get the result
-//	result = getNs(nameSpaceStr);
-//	console.log("*************");
-//	for (var key in result) {
-//		console.log("key: " + key + " value: " + result[key]);
-//	}
-	console.log("[OwlLib] [getNameSpace] - begin");
-	var result = {};
-	result["programme_histoire_college_france"] = "Programme_Histoire_College_France#";
-	result["organisation-systeme-scolaire-francais"] = "http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#";
-	
-	console.log("[OwlLib] [loadNameSpace] - end");
+	// Named Individual elements
+	var rdf= OwlLib.xmlDoc.
+			getElementsByTagName(OwlLib.constant.RDF)[0];
+	var attributes = rdf.attributes;
+	for (var i = 0; i < attributes.length; i++) {
+		attribute = attributes[i];
+		
+		// Must be not null
+		if ((attribute == 'undefined') && (attribute == null) ) {
+			continue;
+		}
+		
+		var attName = attribute.nodeName;
+		attName = attName.replace("xmlns:", ""); // remove default namespace
+		
+		result[attName] = attribute.nodeValue;
+	}
 	return result;
 }
 
@@ -460,4 +412,93 @@ OwlLib.getBrowserInfo = function() {
 //}
 
 
-
+///**
+//* Load all namespaces in the owl file, the result it an object contains all 
+//* namspaces and its full names.
+//* For example, if we have:
+//* owl is actually "http://www.w3.org/2002/07/owl#"
+//* xsd is actually "http://www.w3.org/2001/XMLSchema#"
+//* and so on...
+//* then we have an object namspaces where: 
+//* namespaces[owl] = "http://www.w3.org/2002/07/owl#"
+//* namespaces[xsd] = "http://www.w3.org/2001/XMLSchema#"
+//*/
+//OwlLib.loadNameSpace = function() {
+//	console.log("[OwlLib] [loadNameSpace] - begin");
+//	var result = {}; // store the result
+//	
+//	/**
+//	 * Inner function to parse name space
+//	 * @param nameSpaceStr the namespaceStr used to parse
+//	 * @returns an object contain all namespaces.
+//	 */
+//	var getNs = function(nameSpaceStr) {
+//		var nameSpace = {};
+//		var subNameSpace = {};
+//		// Non trivial case
+//		if ((nameSpaceStr != null) || (nameSpaceStr.length == 0)) {
+//			
+//			// Get the begin and and index to extract the entity's content
+//			var begin = nameSpaceStr.indexOf("<!ENTITY");
+//			var end = nameSpaceStr.indexOf(">");
+//			
+//			if ((begin == -1) || (end == -1) || (begin >= end)) { // not found
+//				return null;
+//			}
+//			
+//			// Get the content and save it to nameSpace variable
+//			begin = begin + "<!ENTITY".length; 
+//			var item = nameSpaceStr.substring(begin, end); // ok, get one item
+//			item = item.trim();
+//			var keyValue = item.split(" ");
+//			
+//			// Replace all double quote, here I mean first and last double quote
+//			nameSpace[keyValue[0]] = keyValue[1].replace(/"/g,'');
+//			
+//			// Continue searching with the rest
+//			var tail = nameSpaceStr.substring(end + 1);
+//			if (tail == null) {
+//				return nameSpace;
+//			}
+//			tail = tail.trim();
+//			subNameSpace = getNs(tail); // recursive searching
+//			
+//			// Ok, collect all of data and then return
+//			if (subNameSpace != null) {
+//				for (var key in subNameSpace) {
+//					nameSpace[key] = subNameSpace[key];
+//				}
+//			}
+//			return nameSpace;
+//		} else { // Trivial case
+//			return null;
+//		}
+//	}
+//	
+//	if ((OwlLib.xmlDoc == null) // Don't have xmldoc
+//			|| (OwlLib.xmlDoc.doctype == null) // Don't have doctype
+//			// Don't have internalSubset
+//			|| (OwlLib.xmlDoc.doctype.internalSubset == null)) {
+//		return null;
+//	}
+//
+//	// Normalize namespaceStr
+//	var nameSpaceStr = OwlLib.xmlDoc.doctype.internalSubset;
+//	nameSpaceStr = nameSpaceStr.replace("\n", " ");
+//	nameSpaceStr = nameSpaceStr.replace(/\s{2,}/g," ");
+//	nameSpaceStr = nameSpaceStr.trim();
+//	
+//	// Parse it to get the result
+//	result = getNs(nameSpaceStr);
+//	console.log("*************");
+//	for (var key in result) {
+//		console.log("key: " + key + " value: " + result[key]);
+//	}
+////	console.log("[OwlLib] [getNameSpace] - begin");
+////	var result = {};
+////	result["programme_histoire_college_france"] = "Programme_Histoire_College_France#";
+////	result["organisation-systeme-scolaire-francais"] = "http://www.semanticweb.org/deslis/ontologies/2013/1/organisation-systeme-scolaire-francais#";
+//	
+//	console.log("[OwlLib] [loadNameSpace] - end");
+//	return result;
+//}
