@@ -71,6 +71,7 @@
 		var triple = RdfLib.getTriple(event.target);
 		var output = "All triples <br>";
 		output += "----------------------- <br>"
+		
 		if (triple == null ||  
 			((triple.predicate == null) && (triple.subject == null))) {
 			$("#log").html("this element: " + 
