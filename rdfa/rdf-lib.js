@@ -3,40 +3,78 @@
  * for more information about which properties are considered "rdfa" property, 
  * see here: http://www.w3.org/TR/xhtml-rdfa-primer/
  */
-var subject = {
-	about: "about",
-	resource: "resource"
+var SUBJECT = {
+	ABOUT: "about",
+	RESOURCE: "resource"
 };
 
 /**
  * Literal js object, used to hold attributes which are considered predicate
  */
-var predicate = {
-	rel: "rel",
-	property: "property",
+var PREDICATE = {
+	REL: "rel",
+	PROPERTY: "property",
 }
 
 /**
  * Literal js object, used to hold attributes which are considered object
  */
-var object = {
-	href : "href",
-	content : "content",
+var OBJECT = {
+	HREF : "href",
+	CONTENT : "content",
 	// actually, it isn't an object, we use it to indicate that the object
 	// is the text between current tag.
-	literal : "literal"  
+	LITERAL : "literal"  
 }
 
 /**
  * Triple constants
  */
-var triple = {
+var TRIPLE = {
 	SUBJECT: "SUBJECT",
 	PREDICATE: "PREDICATE",
 	OBJECT: "OBJECT"
 };
 
 var RdfLib = function() {};
+
+RdfLib.addToIgnoreArray = function(ignoreArray) {
+	if ((ignoreArray == null) && (ignoreArray.length == 0)) {
+		return null;
+	}
+	
+	if (RdfLib.ignoreArray == null) {
+		RdfLib.ignoreArray = [];
+	}
+	for (var i = 0; i < ignoreArray.length; i++) {
+		item = ignoreArray[i];
+		RdfLib.ignoreArray.push(item);
+	}
+}
+
+RdfLib.isTriple = function(triple) {
+	
+	// Is Null ? 
+	if ((triple.subject == null) 
+			&& (triple.predicate == null)) {
+		return false;
+	}
+	
+	if ((RdfLib.ignoreArray != null) && (RdfLib.ignoreArray.length != 0)) {
+//		for (var i = 0; i < RdfLib.ignoreArray.length; i++) {
+//			var item = RdfLib.ignoreArray[i];
+//			if (triple.predicate.value == item) {
+//				return false;
+//			}
+//		}
+		if (RdfLib.ignoreArray.indexOf(triple.predicate.value) != -1) {
+			return false;
+		}
+	}
+	
+	// Passed, return true
+	return true;
+}
 
 /**
  * Get triple of the target (which is clicked event)
@@ -77,8 +115,8 @@ RdfLib.getTriple = function(target) {
 			}
 			attribute = attributes[i];
 			
-			if ((attribute.nodeName == subject.about) 
-					|| (attribute.nodeName == subject.resource)) {
+			if ((attribute.nodeName == SUBJECT.ABOUT) 
+					|| (attribute.nodeName == SUBJECT.RESOURCE)) {
 				result.key = attribute.nodeName;
 				result.value = attribute.nodeValue;
 				return result;
@@ -111,23 +149,23 @@ RdfLib.getTriple = function(target) {
 			attribute = attributes[i];
 			
 			
-			if ((attribute.nodeName == predicate.rel)
-				|| (attribute.nodeName == predicate.property)) {
+			if ((attribute.nodeName == PREDICATE.REL)
+				|| (attribute.nodeName == PREDICATE.PROPERTY)) {
 				result.key = attribute.nodeName;
 				result.value = attribute.nodeValue;
 				return result;
 			}
 			
 			// predicate is object, it has many objects
-//			if (attribute.nodeName == predicate.rel ) {
+//			if (attribute.nodeName == PREDICATE.REL ) {
 //				result.key = attribute.nodeName;
 //				result.value = [];
 //				
 //				// Loop over attribute to get all these attributes other than 
-//				// predicate.rel and save them.
+//				// PREDICATE.REL and save them.
 //				for (var j = 0; j < attributes.length; j++) {
-//					if (attributes[j].nodeName != predicate.rel) {
-//						console.log("[getPredicate] predicate:  " + predicate.rel + " : " + attributes[j].nodeName);
+//					if (attributes[j].nodeName != PREDICATE.REL) {
+//						console.log("[getPredicate] predicate:  " + PREDICATE.REL + " : " + attributes[j].nodeName);
 //						result.value.push(attributes[j].nodeName);
 //					}
 //				}
@@ -163,7 +201,7 @@ RdfLib.getTriple = function(target) {
 		// for more info
 		
 		// case 1
-		if (predicateType == predicate.rel) {
+		if (predicateType == PREDICATE.REL) {
 			result.value = [];
 			
 			// Loop over attribute to get all these attributes other than 
@@ -171,7 +209,7 @@ RdfLib.getTriple = function(target) {
 			for (i = 0; i < attributes.length; i++) {
 				attribute = attributes[i];
 				if ((attribute != null) 
-						&& (attribute.nodeName != predicate.rel)) {
+						&& (attribute.nodeName != PREDICATE.REL)) {
 					result.value.push(attribute.nodeValue);
 					console.log(attribute.nodeValue)
 				}
@@ -190,8 +228,8 @@ RdfLib.getTriple = function(target) {
 			attribute = attributes[i];
 
 			// see '2.2.1 Using the content attribute' 
-			if ((attribute.nodeName == object.content) 
-					|| (attribute.nodeName == object.href)) {
+			if ((attribute.nodeName == OBJECT.CONTENT) 
+					|| (attribute.nodeName == OBJECT.HREF)) {
 				result.key = attribute.nodeName;
 				result.value = [];
 				result.value.push(attribute.nodeValue);
@@ -200,7 +238,7 @@ RdfLib.getTriple = function(target) {
 		}
 		
 		// Not found, attribute is the literal text between the tags.
-		result.key = object.literal;
+		result.key = OBJECT.LITERAL;
 		var text = target.textContent;
 		// Normalize
 		text = text.replace("\n", " ");
@@ -229,8 +267,8 @@ RdfLib.getTriple = function(target) {
 	// the "target", i.e., the object for the statement (much as href). 
 	if ((triple.subject != null) &&
 			(triple.predicate != null) &&
-			(triple.subject.key == subject.resource) && 
-			(triple.predicate.key == predicate.property)) {
+			(triple.subject.key == SUBJECT.RESOURCE) && 
+			(triple.predicate.key == PREDICATE.PROPERTY)) {
 		triple.object = triple.subject;
 		triple.subject = null;
 	} else {
@@ -244,11 +282,13 @@ RdfLib.getTriple = function(target) {
 		triple.object = getObject(target, predicateType);
 	}
 	
-	if ((triple.subject == null) 
-			&& (triple.predicate == null)) {
+	// Not a real triple
+	if (!RdfLib.isTriple(triple)) {
 		return null;
+	} else {
+		return triple;
 	}
-	return triple;
+	
 }
 
 /**

@@ -74,7 +74,18 @@ var JOT_siteRelTimeStrs = ["il y a une minute","il y a __duration__ minutes","il
 <script src="../rdf-lib.js"></script>
 <script>
 	$(document).ready(function () {
+		// some elements which aren't considered as a rdfa
+		var ignoreArray = [
+			"shortcut icon",
+			"apple-touch-icon",
+			"stylesheet",
+			"canonical",
+			"nofollow"
+		];
+		
+		RdfLib.addToIgnoreArray(ignoreArray);
 		RdfLib.init();
+		
 		var prefixes = RdfLib.prefixes;
 		var output = "";
 		
