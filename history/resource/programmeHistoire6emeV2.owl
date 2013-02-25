@@ -618,6 +618,7 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Les_citoyens">
         <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <rdfs:label xml:lang="fr">Les citoyens</rdfs:label>
         <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_citeDesAtheniens"/>
     </owl:NamedIndividual>
     
@@ -636,6 +637,7 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Les_habitants_de_la_cité">
         <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <rdfs:label xml:lang="fr">Les habitans de la cité</rdfs:label>
         <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_citeDesAtheniens"/>
     </owl:NamedIndividual>
     
@@ -664,6 +666,7 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&programme_histoire_college_france;Les_savants_grecs">
         <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <rdfs:label xml:lang="fr">Les savants grecs</rdfs:label>
         <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_laGreceDesSavants"/>
     </owl:NamedIndividual>
     
@@ -738,11 +741,30 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&programme_histoire_college_france;L’unité_de_la_cité_des_Athéniens">
         <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <rdfs:label xml:lang="fr">L’unité de la cité des Athéniens</rdfs:label>
         <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_citeDesAtheniens"/>
     </owl:NamedIndividual>
     
+	<owl:NamedIndividual rdf:about="&programme_histoire_college_france;la_culture_romaine">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <rdfs:label xml:lang="fr">La culture romaine</rdfs:label>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_rome"/>
+    </owl:NamedIndividual>
 
-
+	<owl:NamedIndividual rdf:about="&programme_histoire_college_france;la_politique_romaine">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <rdfs:label xml:lang="fr">La politique romaine</rdfs:label>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_rome"/>
+    </owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&programme_histoire_college_france;la_societe_romaine">
+        <rdf:type rdf:resource="&programme_histoire_college_france;connaissance"/>
+        <rdfs:label xml:lang="fr">La société romaine</rdfs:label>
+        <programme_histoire_college_france:faitPartieDe rdf:resource="&programme_histoire_college_france;theme_rome"/>
+    </owl:NamedIndividual>
+	
+	
+	
     <!-- file:/C:/Users/deslis/Desktop/Test-protege/ILOT/programme_histoire_college_france/Programme_Histoire_College_France#alexandreLeGrand -->
 
     <owl:NamedIndividual rdf:about="&programme_histoire_college_france;alexandreLeGrand">

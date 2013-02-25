@@ -1,8 +1,10 @@
 OwlLib = {};
 OwlLib.constant = {};
 
+
+// ************ INITIALIZATION: create constant based on browser info***********
 /**
- * Get browser info
+ * Helper function: Get browser info
  * http://stackoverflow.com/questions/5916900/detect-version-of-browser
  */
 OwlLib.getBrowserInfo = function() {
@@ -70,18 +72,13 @@ if ("firefox" === browserName) {
 }
 console.log("[OwlLib] [loadOwl] - Browser: " + browserInfo[0] + " " + 
 		browserInfo[1]);
-
-
-OwlLib.setConstant = function () {
-	
-}
+//********************** END OF INITIALIZATION *********************************
 
 /**
  * Load Owl file
  */
 OwlLib.loadOwl = function(url) {
 	console.log("[OwlLib] [loadOwl] - begin");
-	OwlLib.setConstant(); // Must set all the constant at first
 	
 	// TODO: Regrex to test url
 	var xhr = {}; // XHR object
@@ -118,7 +115,7 @@ OwlLib.loadOwl = function(url) {
  * namespaces[xsd] = "http://www.w3.org/2001/XMLSchema#"
  */
 OwlLib.loadNameSpace = function() {
-	console.log("[OwlLib] [loadNameSpace] - begin");
+	console.log("[OwlLib] [loadNameSpace]");
 	var result = {}; // store the result
 	// Named Individual elements
 	var rdf= OwlLib.xmlDoc.
@@ -150,72 +147,6 @@ OwlLib.loadNameSpace = function() {
  * will return all NamedIndividual whose type is "theme" 
  */
 OwlLib.getNamedIndividuals = function(type) {
-	console.log("[OwlLib] [getNamedIndidualTriples] - begin");
-	
-	/**
-	 * Inner function to get NamedIndividual
-	 * @niElement : namedIndividual Element
-	 * @niType : named Individual Type (full name) 
-	 */
-	var getNamedIndividual = function(niElement, niType) {
-		var item = {};
-		var isNull = true; // check if item is null;
-		var value; // Store temporary value
-		var rdfType = niElement.
-				getElementsByTagName(OwlLib.constant.TYPE)[0];
-		
-		// Get rdfType, if any
-		if ((rdfType != null) // found type attribute 
-				&& (rdfType.getAttribute(OwlLib.constant.RESOURCE) != null)) {
-			// current type
-			currentType = rdfType.getAttribute(OwlLib.constant.RESOURCE);
-			
-			// Found a type, but not matched, skip it
-			if ((niType != null) && (niType != currentType)) {
-				return;
-			}
-			
-			// else (niType == null), just get all type
-			item[OwlLib.constant.TYPE] = currentType;
-			isNull = false; // marked as not null
-		}
-		
-		
-		// get label, if any
-		var label = niElement.
-				getElementsByTagName(OwlLib.constant.LABEL)[0];
-		if (label != null) {
-			item[OwlLib.constant.LABEL] = label.textContent;
-			isNull = false; // marked as not null
-		}
-		
-		
-		// get "faitPartieDe" attribute, if any
-		var faitPartieDe = niElement.
-				getElementsByTagName(OwlLib.constant.FAIT_PARTIE_DE)[0];
-		if ((faitPartieDe != null) 
-				&& (faitPartieDe.
-						getAttribute(OwlLib.constant.RESOURCE) != null)) {
-			value = faitPartieDe.getAttribute(OwlLib.constant.RESOURCE);
-			item[OwlLib.constant.FAIT_PARTIE_DE] = value;
-			isNull = false; // marked as not null
-		}
-		
-		// Verify and return the result
-		if (isNull) {
-			return null; 
-		} else {
-			// Add more details to this item and then return it
-			var about = niElement.getAttribute(OwlLib.constant.ABOUT) 
-			if (about != null) {
-				item[OwlLib.constant.ABOUT] = about; 
-			}
-			return item;
-		}
-	}
-	
-	// var document = $(OwlLib.xmlDoc);
-	
 	// Store result
 	var namedIndividuals = [];
 	
@@ -225,16 +156,143 @@ OwlLib.getNamedIndividuals = function(type) {
 	
 	// Get all Named Individual which match the type
 	for (var i = 0; i < niElements.length; i++) {
-		var ni = getNamedIndividual(niElements[i], type);
-		if (ni != null) {
-			namedIndividuals.push(ni);
+		// var ni = getNamedIndividual(niElements[i], type);
+		var niElement = niElements[i];
+		var rdfType = niElement.getElementsByTagName(OwlLib.constant.TYPE)[0];
+		// Get rdfType, if any
+		if (rdfType != null) { // found type attribute
+			var currentType = rdfType.getAttribute(OwlLib.constant.RESOURCE); 
+		}
+		
+		// Found a type, but not matched, skip it
+		if ((type != null) && (type == currentType)) {
+			namedIndividuals.push(niElement);
 		}
 	}
-	
-	console.log("[OwlLib] [getNamedIndidualTriples] - end");
 	return namedIndividuals;
 }
 
+OwlLib.getMetaData = function(namedIndividual) {
+	var properties = {};
+	var isEmpty = true;
+	
+	// Get element type
+	var rdfType = namedIndividual.getElementsByTagName(OwlLib.constant.TYPE)[0];
+	var elementType = rdfType.getAttribute(OwlLib.constant.RESOURCE);
+	
+	if (elementType != null) {
+		properties[OwlLib.constant.TYPE] = elementType;
+		isEmpty = false;
+	}
+	
+	
+	// get label, if any
+	var label = namedIndividual.getElementsByTagName(OwlLib.constant.LABEL)[0];
+	if (label != null) {
+		properties[OwlLib.constant.LABEL] = label.textContent;
+		isEmpty = false;
+	}
+	
+	if (!isEmpty) {
+		// Add more details to this item and then return it
+		var about = namedIndividual.getAttribute(OwlLib.constant.ABOUT) 
+		if (about != null) {
+			properties[OwlLib.constant.ABOUT] = about; 
+		}
+		return properties; 
+	} else {
+		return null;
+	}
+}
+
+
+///**
+// * Get all NamedIndividual triples in this owl file
+// * @param type type of named individual
+// * @param nameSpaceOfType name space of the current type
+// * @returns all satisfied NamedIndividual triples
+// * ex: themes = getNamedIndividuals("theme", "programme_histoire_college_france");
+// * will return all NamedIndividual whose type is "theme" 
+// */
+//OwlLib.getNamedIndividuals = function(type) {
+//	/**
+//	 * Inner function to get NamedIndividual
+//	 * @niElement : namedIndividual Element
+//	 * @niType : named Individual Type (full name) 
+//	 */
+//	var getNamedIndividual = function(niElement, niType) {
+//		var item = {};
+//		var isNull = true; // check if item is null;
+//		var value; // Store temporary value
+//		var rdfType = niElement.
+//				getElementsByTagName(OwlLib.constant.TYPE)[0];
+//		
+//		// Get rdfType, if any
+//		if ((rdfType != null) // found type attribute 
+//				&& (rdfType.getAttribute(OwlLib.constant.RESOURCE) != null)) {
+//			// current type
+//			currentType = rdfType.getAttribute(OwlLib.constant.RESOURCE);
+//			
+//			// Found a type, but not matched, skip it
+//			if ((niType != null) && (niType != currentType)) {
+//				return;
+//			}
+//			
+//			// else (niType == null), just get all type
+//			item[OwlLib.constant.TYPE] = currentType;
+//			isNull = false; // marked as not null
+//		}
+//		
+//		
+//		// get label, if any
+//		var label = niElement.
+//				getElementsByTagName(OwlLib.constant.LABEL)[0];
+//		if (label != null) {
+//			item[OwlLib.constant.LABEL] = label.textContent;
+//			isNull = false; // marked as not null
+//		}
+//		
+//		
+//		// get "faitPartieDe" attribute, if any
+//		var faitPartieDe = niElement.
+//				getElementsByTagName(OwlLib.constant.FAIT_PARTIE_DE)[0];
+//		if ((faitPartieDe != null) 
+//				&& (faitPartieDe.
+//						getAttribute(OwlLib.constant.RESOURCE) != null)) {
+//			value = faitPartieDe.getAttribute(OwlLib.constant.RESOURCE);
+//			item[OwlLib.constant.FAIT_PARTIE_DE] = value;
+//			isNull = false; // marked as not null
+//		}
+//		
+//		// Verify and return the result
+//		if (isNull) {
+//			return null; 
+//		} else {
+//			// Add more details to this item and then return it
+//			var about = niElement.getAttribute(OwlLib.constant.ABOUT) 
+//			if (about != null) {
+//				item[OwlLib.constant.ABOUT] = about; 
+//			}
+//			return item;
+//		}
+//	}
+//	
+//	// Store result
+//	var namedIndividuals = [];
+//	
+//	// Named Individual elements
+//	var niElements = OwlLib.xmlDoc.
+//			getElementsByTagName(OwlLib.constant.NAMED_INVIDUAL);
+//	
+//	// Get all Named Individual which match the type
+//	for (var i = 0; i < niElements.length; i++) {
+//		var ni = getNamedIndividual(niElements[i], type);
+//		if (ni != null) {
+//			namedIndividuals.push(ni);
+//		}
+//	}
+//	return namedIndividuals;
+//}
 
 
 

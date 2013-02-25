@@ -1,5 +1,7 @@
 FrHistoryLib = {};
 FrHistoryLib.constant = {};
+
+//************ INITIALIZATION: create constant based on browser info***********
 /**
  * Get browser info
  * http://stackoverflow.com/questions/5916900/detect-version-of-browser
@@ -34,11 +36,9 @@ var browserName = browserInfo[0];
 browserName = browserName.toLowerCase();
 var browserVersion = browserInfo[0];
 browserVersion = browserVersion.toLowerCase();
-
 // Config constant based on browser type
 if ("firefox" === browserName) {
 	FrHistoryLib.constant = {
-		 
 		FAIT_PARTIE_DE 	: FrHistoryLib.constant.firefox.FAIT_PARTIE_DE, 
 		ORGANIZATION 	: FrHistoryLib.constant.firefox.ORGANIZATION, 
 		PROGRAM 		: FrHistoryLib.constant.firefox.PROGRAM 
@@ -50,7 +50,24 @@ if ("firefox" === browserName) {
 		PROGRAM 		: FrHistoryLib.constant.chrome.PROGRAM 
 	}
 }
+//********************** END OF INITIALIZATION *********************************
 
+FrHistoryLib.getFaitPartieDe = function (element) {
+	var properties = {};
+	var isEmpty = true;
+
+	// get "faitPartieDe" attribute, if any
+	var faitPartieDe = element.
+			getElementsByTagName(FrHistoryLib.constant.FAIT_PARTIE_DE)[0];
+	if ((faitPartieDe != null) 
+			&& (faitPartieDe.
+					getAttribute(OwlLib.constant.RESOURCE) != null)) {
+		value = faitPartieDe.getAttribute(OwlLib.constant.RESOURCE);
+		// Found, return
+		return value;
+	}
+	return null;
+}
 
 FrHistoryLib.getSubThemesOf = function (theme) {
 	// get all subthemes
@@ -59,10 +76,19 @@ FrHistoryLib.getSubThemesOf = function (theme) {
 	var result = []; // store result
 	for (var i = 0; i < subThemes.length; i++) {
 		var subTheme = subThemes[i];
-		var faitPartieDe = subTheme[FrHistoryLib.constant.FAIT_PARTIE_DE];
-		if ((faitPartieDe != null) && (faitPartieDe == theme)) {
-			result.push(subTheme);
+		
+		// Get "faitPartieDe" property
+		var faitPartieDe = FrHistoryLib.getFaitPartieDe(subTheme);
+		// If this sub theme doesn't belong to the theme, we continue
+		if (faitPartieDe == null || faitPartieDe != theme) {
+			continue;
 		}
+		
+		// Found one, Get other properties
+		var stProperties = OwlLib.getMetaData(subTheme);
+		stProperties[FrHistoryLib.constant.FAIT_PARTIE_DE] = faitPartieDe;
+		// Save it
+		result.push(stProperties);
 	}
 	
 	return result;
@@ -75,9 +101,34 @@ FrHistoryLib.getKnowledgeOf = function (theme) {
 	var result = []; // store result
 	for (var i = 0; i < knowledge.length; i++) {
 		var item = knowledge[i];
-		var faitPartieDe = item[OwlLib.constant.FAIT_PARTIE_DE];
-		if ((faitPartieDe != null) && (faitPartieDe == theme)) {
-			result.push(item);
+		
+		// Get "faitPartieDe" property
+		var faitPartieDe = FrHistoryLib.getFaitPartieDe(item);
+		// If this sub theme doesn't belong to the theme, we continue
+		if (faitPartieDe == null || faitPartieDe != theme) {
+			continue;
+		}
+		
+		// Found one, Get other properties
+		var stProperties = OwlLib.getMetaData(item);
+		stProperties[FrHistoryLib.constant.FAIT_PARTIE_DE] = faitPartieDe;
+		// Save it
+		
+		result.push(stProperties);
+	}
+	
+	
+	
+	console.log("********************************************");
+	console.log("SubThemes of: " + theme);
+	console.log("********************************************");
+	
+	for (var i = 0; i < result.length; i++) {
+		var subTheme = result[i];
+		console.log(i + "  ------------------------------")
+		for (var key in subTheme) {
+			console.log("	key:   " + key);
+			console.log("	value: " + subTheme[key]);
 		}
 	}
 	return result;
