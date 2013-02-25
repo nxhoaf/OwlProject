@@ -117,7 +117,7 @@ First, we get the triple
 Black list a face triple
 
 
-See [person.html](./history/menu.html) to view full source code.
+See [person.html](./rdfa/person.html) to view full source code.
 ## OwlParser using owl-lib.js
 
 
