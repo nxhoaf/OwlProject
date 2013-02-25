@@ -61,12 +61,6 @@ RdfLib.isTriple = function(triple) {
 	}
 	
 	if ((RdfLib.ignoreArray != null) && (RdfLib.ignoreArray.length != 0)) {
-//		for (var i = 0; i < RdfLib.ignoreArray.length; i++) {
-//			var item = RdfLib.ignoreArray[i];
-//			if (triple.predicate.value == item) {
-//				return false;
-//			}
-//		}
 		if (RdfLib.ignoreArray.indexOf(triple.predicate.value) != -1) {
 			return false;
 		}
@@ -156,21 +150,6 @@ RdfLib.getTriple = function(target) {
 				return result;
 			}
 			
-			// predicate is object, it has many objects
-//			if (attribute.nodeName == PREDICATE.REL ) {
-//				result.key = attribute.nodeName;
-//				result.value = [];
-//				
-//				// Loop over attribute to get all these attributes other than 
-//				// PREDICATE.REL and save them.
-//				for (var j = 0; j < attributes.length; j++) {
-//					if (attributes[j].nodeName != PREDICATE.REL) {
-//						console.log("[getPredicate] predicate:  " + PREDICATE.REL + " : " + attributes[j].nodeName);
-//						result.value.push(attributes[j].nodeName);
-//					}
-//				}
-//				return result;
-//			}
 		}
 		return null;
 	}
@@ -362,13 +341,11 @@ RdfLib.getAllTriples = function(element) {
 
 /**
  * Get all prefixes in the HTML page
- * @returns an array contains all prefix in this HTML page. If the array name is
- * prefixes, then we have, for example:
- * prefixes[0].prefix = dc
- * prefixes[0].fullName = http://purl.org/dc/terms/ schema: http://schema.org/
  * 
- * prefixes[1].prefix = foaf
- * prefixes[1].fullName = http://xmlns.com/foaf/0.1/
+ * @returns an object contains all prefix in this HTML page. If the object name 
+ * is prefixes, then we have, for example:
+ * prefixes[dc] = http://purl.org/dc/terms/ schema: http://schema.org/
+ * prefixes[foaf] = http://xmlns.com/foaf/0.1/
  * 
  * and so on...
  */

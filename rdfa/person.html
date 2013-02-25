@@ -1,3 +1,5 @@
+<!Doctype html>
+
 <html prefix="dc: http://purl.org/dc/terms/ schema: http://schema.org/" lang="en">
   <head>
   	<script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -91,27 +93,27 @@
 			
 			$("#log").html(output);
 		} else {
-				var triples = RdfLib.getAllTriples(event.target);
-				for (var i = 0; i < triples.length; i++) {
-					triple = triples[i];
-					if (triple.subject != null) {
-						output += "subject: " + triple.subject.key + ":" + triple.subject.value;
-						output += "<br>";	
-					}
-					
-					if (triple.predicate != null) {
-						output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
-						output += "<br>";
-					}
-					
-					if (triple.object != null) {
-						output += "object: " +  triple.object.key + ":" + triple.object.value;
-						output += "<br>";
-					}	
-					output += "------------------------------<br>";
+			var triples = RdfLib.getAllTriples(event.target);
+			for (var i = 0; i < triples.length; i++) {
+				triple = triples[i];
+				if (triple.subject != null) {
+					output += "subject: " + triple.subject.key + ":" + triple.subject.value;
+					output += "<br>";	
 				}
-				$("#log").html(output);
-		}
+				
+				if (triple.predicate != null) {
+					output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
+					output += "<br>";
+				}
+				
+				if (triple.object != null) {
+					output += "object: " +  triple.object.key + ":" + triple.object.value;
+					output += "<br>";
+				}	
+				output += "------------------------------<br>";
+			}
+			$("#log").html(output);
+	}
 	});
 	
 	console.log("[person.html] - end");
