@@ -336,7 +336,7 @@ RdfLib.getAllTriples = function(element) {
 //				result.push(triple);
 //			}
 			
-		}  else {// trivial case, only get triple in the current node
+		}  // trivial case, only get triple in the current node
 			var triple = RdfLib.getTriple(children[i]);
 			if (triple != null) {
 				if (triple.subject == null) {
@@ -345,7 +345,7 @@ RdfLib.getAllTriples = function(element) {
 				}
 				result.push(triple);
 			}
-		}
+		
 		
 	}
 	console.log("[RdfLib] [getAllAttributeTriples] - end");
@@ -460,13 +460,14 @@ RdfLib.init = function () {
 			rdfa[key] = [];
 		}
 		
-		var predicate = triple.predicate.value;
-		
-		// Get object array of that triple and store it
-		var objectArray = triple.object.value;
-		if (predicate != null) {
+		if (triple.predicate != null) {
+			var predicate = triple.predicate.value;
+			
+			// Get object array of that triple and store it
+			var objectArray = triple.object.value;
 			rdfa[key][predicate] = objectArray;
 		}
+		
 	}
 	RdfLib.rdfa = rdfa;
 }
