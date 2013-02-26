@@ -55,8 +55,7 @@ RdfLib.addToIgnoreArray = function(ignoreArray) {
 RdfLib.isTriple = function(triple) {
 	
 	// Is Null ? 
-	if ((triple.subject == null) 
-			&& (triple.predicate == null)) {
+	if ((triple.subject == null) && (triple.predicate == null)) {
 		return false;
 	}
 	
@@ -320,11 +319,24 @@ RdfLib.getAllTriples = function(element) {
 	var children = $(element).children();
 	for (var i = 0; i < children.length; i++) {
 		var grandChildren = $(children[i]).children();
-		// non trivial case
+		
+		// non trivial case, children is a nested node
 		if ((grandChildren != null) && (grandChildren.length > 0)) { 
+			// First, get all triple in a sub node
 			var triples = RdfLib.getAllTriples(children[i]);
 			result = result.concat(triples);
-		} else { // trivial case
+			
+			// Then, get triple in this nested node itself
+//			var triple = RdfLib.getTriple(children[i]);
+//			if (triple != null) {
+//				if (triple.subject == null) {
+//					triple.subject = 
+//						RdfLib.getSubjectTriple(children[i]).subject
+//				}
+//				result.push(triple);
+//			}
+			
+		}  else {// trivial case, only get triple in the current node
 			var triple = RdfLib.getTriple(children[i]);
 			if (triple != null) {
 				if (triple.subject == null) {
@@ -334,6 +346,7 @@ RdfLib.getAllTriples = function(element) {
 				result.push(triple);
 			}
 		}
+		
 	}
 	console.log("[RdfLib] [getAllAttributeTriples] - end");
 	return result;
@@ -421,6 +434,8 @@ RdfLib.init = function () {
 	// rdfa[http://example.org/nxhoaf/#me][dc:creator].
 	//						value = 'Hoa Nguyen''
 	// Get all triples
+	
+	
 	var html = document.getElementsByTagName("html")[0];
 	var triples = RdfLib.getAllTriples(html);
 	if ((triples == null) && (triples.length == 0)) {

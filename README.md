@@ -153,7 +153,7 @@ will go up and the consider `<span resource="urn:ISBN:978-0321356680">` as its s
 	  book is the inspiring <br>
 	  <cite property="dc:title">Effective Java</cite> by
 	  <span property="dc:creator">Joshua Bloch</span>
-  </span>
+</span>
 ```
 As a result, we have: 
 ```
