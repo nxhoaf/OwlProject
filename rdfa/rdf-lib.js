@@ -326,7 +326,7 @@ RdfLib.getAllTriples = function(element) {
 			var triples = RdfLib.getAllTriples(children[i]);
 			result = result.concat(triples);
 			
-			// Then, get triple in this nested node itself
+//			// Then, get triple in this nested node itself
 //			var triple = RdfLib.getTriple(children[i]);
 //			if (triple != null) {
 //				if (triple.subject == null) {
@@ -436,40 +436,45 @@ RdfLib.init = function () {
 	// Get all triples
 	
 	
-	var html = document.getElementsByTagName("html")[0];
-	var triples = RdfLib.getAllTriples(html);
-	if ((triples == null) && (triples.length == 0)) {
-		RdfLib.rdfa = null;
-		return;
-	}
-	var rdfa = {};
-	// Loop over all triples to store them in hash map-like
-	// data structure: 
-	for (var i = 0; i < triples.length; i++) {
-		
-		var triple = triples[i]; // Get the current triple
-		
-		// Omit the triple that doesn't have subject
-		if (triple.subject == null) { 
-			continue;		
-		}
-		
-		var key = triple.subject.value;				
-		// Create a new entry if it doesn't exist
-		if (rdfa[key] == null ) {
-			rdfa[key] = [];
-		}
-		
-		if (triple.predicate != null) {
-			var predicate = triple.predicate.value;
-			
-			// Get object array of that triple and store it
-			var objectArray = triple.object.value;
-			rdfa[key][predicate] = objectArray;
-		}
-		
-	}
-	RdfLib.rdfa = rdfa;
+//	var html = document.getElementsByTagName("body")[0];
+//	var triples = RdfLib.getAllTriples(html);
+//	if ((triples == null) && (triples.length == 0)) {
+//		RdfLib.rdfa = null;
+//		return;
+//	}
+//	var rdfa = {};
+//	// Loop over all triples to store them in hash map-like
+//	// data structure: 
+//	for (var i = 0; i < triples.length; i++) {
+//		
+//		var triple = triples[i]; // Get the current triple
+//		
+//		// Omit the triple that doesn't have subject
+//		if (triple.subject == null) { 
+//			continue;		
+//		}
+//		
+//		var subject = triple.subject.value;				
+//		// Create a new entry if it doesn't exist
+//		if (rdfa[subject] == null ) {
+//			rdfa[subject] = [];
+//		}
+//		
+//		if (triple.predicate != null) {
+//			var predicate = triple.predicate.value;
+//			if (rdfa[subject][predicate] == null) {
+//				rdfa[subject][predicate] = [];
+//			}
+//			// Get object array of that triple and store it
+//			var objectArray = triple.object.value;
+//			for (var j = 0; j < objectArray.length; j++) {
+//				rdfa[subject][predicate].push(objectArray[j]);
+//			}
+//			
+//		}
+//		
+//	}
+//	RdfLib.rdfa = rdfa;
 }
 
 

@@ -25,7 +25,7 @@
 			}
 			
 			
-			
+			/*
 			var rdfa = RdfLib.rdfa;
 			
 			if (rdfa != null) {
@@ -33,7 +33,10 @@
 				for (var subject in rdfa) {
 				    output += subject + "<br>";
 				    for (var predicate in rdfa[subject]) {
-				    	output += "&nbsp&nbsp&nbsp&nbsp'" + predicate + "' : '" + rdfa[subject][predicate] + "' <br>";
+				    	for (var i = 0; i < rdfa[subject][predicate].length; i++) {
+				    		output += "&nbsp&nbsp&nbsp&nbsp'" + predicate + "' : '" + rdfa[subject][predicate][i] + "' <br>";	
+				    	}
+				    	
 				    }
 				}	
 			}
@@ -41,8 +44,8 @@
 			log.id = "log";
 			$('body').append(log);
 			$("#log").html(output);
+			*/
 			
-			/*
 			html = document.getElementsByTagName("html")[0];
 			var triples = RdfLib.getAllTriples(html);
 			output += "<b>All attributes: </b><br>";
@@ -56,6 +59,9 @@
 				if (triple.predicate != null) {
 					output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
 					output += "<br>";
+				} else {
+					output += "predicate: null";
+					output += "<br>";
 				}
 				
 				if (triple.object != null) {
@@ -64,8 +70,11 @@
 				}	
 				output += "------------------------------<br>";
 			}
+			var log = document.createElement("div");
+			log.id = "log";
+			$('body').append(log);
 			$("#log").html(output);
-			*/
+			
 			
 			
 					
@@ -74,12 +83,10 @@
   </head>
   <body about="http://example.org/nxhoaf/#me" prefix="foaf: http://xmlns.com/foaf/0.1/">
     <h1>Nxhoaf's Home Page</h1>
-    <!--
     <p>My name is <span property="foaf:nick">nxhoaf</span> and I like
       <a href="http://www.amazon.com/" property="foaf:interest"
         lang="en">Amazon</a>.
     </p>
-    -->
     <p>
       My 
       <span property="foaf:interest" resource="urn:ISBN:978-0321356680">
