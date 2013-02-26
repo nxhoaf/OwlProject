@@ -1,8 +1,8 @@
 ## OwlProject
 
 ## RdfaParser using rdf-lib.js
-In this part, we describle how to use rdf-lib.js to retrieve all rdfa attributes in
-an HTML page.
+In this part, we describle how to use rdf-lib.js to retrieve all rdfa attributes
+in an HTML page.
 
 Examples based on this simple HTML page (say person.js)
 ``` html
@@ -12,7 +12,8 @@ Examples based on this simple HTML page (say person.js)
 	<meta charset="UTF-8" />
     <title>Nxhoaf's Home Page</title>
   </head>
-  <body about="http://example.org/nxhoaf/#me" prefix="foaf: http://xmlns.com/foaf/0.1/">
+  <body about="http://example.org/nxhoaf/#me" 
+  		prefix="foaf: http://xmlns.com/foaf/0.1/">
     <h1>Nxhoaf's Home Page</h1>
     <p>My name is <span property="foaf:nick">nxhoaf</span> and I like
       <a href="http://www.amazon.com/" property="foaf:interest"
@@ -33,7 +34,8 @@ Examples based on this simple HTML page (say person.js)
 </html>
 ```
 
-First of all, as this library depends on jQuery, we must include jQuery in order to use it:
+First of all, as this library depends on jQuery, we must include jQuery in order
+to use it:
 ``` html
 <head>
 	<meta charset="UTF-8" />
@@ -43,18 +45,8 @@ First of all, as this library depends on jQuery, we must include jQuery in order
 </head>
 ```
 
-Now that we have jQuery, we use it to listen to the "ready" event. Whenever the page 
-is ready, we initialize our library. Note that **it should be the first statement**, 
-otherwise, this library may not work properly.
-
-``` html
-<script>
-	$(document).ready(function () {
-		RdfLib.init();
-	});
-</script>
-```
-From now, we can:
+Now that we have jQuery, we use it to listen to the "ready" event. Whenever the
+page is ready, we can perform these following actions:
 
 - Retrieve rdfa prefixes. 
 - Retrieve rdfa attributes.
@@ -63,15 +55,18 @@ From now, we can:
 
 ### Retrieve rdfa prefixes
 All rdfa prefixes can be retrieved via:
-`var prefixes = RdfLib.prefixes;`
-The result is an object containing all rdfa prefixes in the page. In our example, 
-we should have:
+`var prefixes = RdfLib.getAllPrefixes();`
+The result is an object containing all rdfa prefixes in the page. 
+In our example, we should have:
+
 ```
 prefixes[dc] = http://purl.org/dc/terms/
 prefixes[schema] = http://schema.org/
 prefixes[foaf] = http://xmlns.com/foaf/0.1/
 ```
-To loop over all properties, we can use: 
+
+To loop over all properties, we can use:
+ 
 ```
 for (var prefix in prefixes) {
 	console.log(prefix + ": " + prefixes[prefix]);
@@ -80,74 +75,128 @@ for (var prefix in prefixes) {
 
 ### Retrieve rdfa attributes
 
-After calling `RdfLib.init()`, we can also get all rdfa attributes located in the page via 
-`RdfLib.rdfa` attribute. This object is a triple-like {subject, predicate, object} data structure:
+With this library, we can also get all rdfa attributes located in the page via 
+`var triples = RdfLib.getAllTriples(html);` attribute. `triples` is an array of 
+triple. Each triple is a data structure which has three fields: 
+
 ```
-rdfa[subject] = [predicate_1, predicate_2, ......, predicate_n]
-predicate 	= [object_1, object_2, ............., object_n]
+triple.subject
+triple.predicate
+triple.object
 ```
-that is, for a given subject and predicate, we have an array of objects. (Note that 
-the term 'object' here is actually the **object** in the triple, not an JavaScript object): 
+
+in which each of `{subject, predicate, object}` is a `{key, value}` data
+structure: 
+
+`subject.key` is the title of the subject
+`subject.key` is the real value of the subject
+
+For `predicate` and `object`, it's exactely the same.
+ 
+
+Here is an example of how to loop over the rdfa data structure to display all 
+triples. Suppose that we have a 'div' element in our page whose id is "#log":
 ```
-rdfa[subject][predicate] = [object_1, object_2, ............., object_n]
-```
-Here is an example of how to loop over the rdfa data structure to display all triples. 
-Suppose that we have a 'div' element in our page whose id is "#log":
-```
-var output += "<b>All attributes: </b><br>";
-for (var subject in rdfa) {
-	output += subject + "<br>";
-	for (var predicate in rdfa[subject]) {
-		output += "&nbsp&nbsp&nbsp&nbsp'" + predicate + "' : '" + rdfa[subject][predicate] + "' <br>";
+html = document.getElementsByTagName("html")[0];
+	var triples = RdfLib.getAllTriples(html);
+	output += "<b>All attributes: </b><br>";
+	for (var i = 0; i < triples.length; i++) {
+		triple = triples[i];
+		if (triple.subject != null) {
+			output += "subject: " + triple.subject.key + ":" + triple.subject.value;
+			output += "<br>";	
+		}
+		
+		if (triple.predicate != null) {
+			output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
+			output += "<br>";
+		} else {
+			output += "predicate: null";
+			output += "<br>";
+		}
+		
+		if (triple.object != null) {
+			output += "object: " +  triple.object.key + ":" + triple.object.value;
+			output += "<br>";
+		}	
+		output += "------------------------------<br>";
 	}
-}
-$("#log").html(output);
+	var log = document.createElement("div");
+	log.id = "log";
+	$('body').append(log);
+	$("#log").html(output);
 ```
+Here is a small part of the result while applying this function to our example
+html:
 
+```
+subject: about:http://localhost:8888/OwlProject/rdfa/person.html
+predicate: property:profile
+object: href:http://www.w3.org/1999/xhtml/vocab
+------------------------------
+subject: about:http://localhost:8888/OwlProject/rdfa/person.html
+predicate: property:dc:creator
+object: content:Hoa Nguyen
+------------------------------
+subject: about:http://localhost:8888/OwlProject/rdfa/person.html
+predicate: rel:foaf:primaryTopic
+object: undefined:#me
+------------------------------
+subject: about:http://example.org/nxhoaf/#me
+predicate: property:foaf:nick
+object: literal:nxhoaf
+------------------------------
+subject: about:http://example.org/nxhoaf/#me
+predicate: property:foaf:interest
+object: href:http://www.amazon.com/
+------------------------------
+```
 ### Get triples in clicked HTML element
-This library provide us a way to get rdfa triples in a clicked HTML element. We have 
-two possiblities: 
+This library provide us a way to get rdfa triples in a clicked HTML element. 
+We have two possibilities: 
 
-1. The clicked element doesn't have a subject. For example `<span property="dc:creator">Joshua Bloch</span>`  
-in our example
-2. The clicked element has a subject, for example `<span resource="urn:ISBN:978-0321356680">`
+1. The clicked element doesn't have a subject. For example 
+`<span property="dc:creator">Joshua Bloch</span>`
+2. The clicked element has a subject, for example 
+`<span resource="urn:ISBN:978-0321356680">`
 
 
-First, we try to get the triple in the clicked area: `var triple = RdfLib.getTriple(event.target);`  
-If the clicked area doesn't contain any triple, nothing happens.
+First (for both cases), we try to get the triple in the clicked area: 
+`var triple = RdfLib.getTriple(event.target);` If the clicked area doesn't 
+contain any triple, nothing happens:
+
 ``` js
 if (triple == null ||  
 		((triple.predicate == null) && (triple.subject == null))) {
 	return;
 }
 ```
+
 Otherwise, we continue...
 #### The clicked element doesn't have a subject
-
 
 In this case, we get its subject using:
 ``` js
 	var subjectTriple = RdfLib.getSubjectTriple(event.target);
 	triple.subject = subjectTriple.subject;
 ```
-`RdfLib.getSubjectTriple()` is a recursive function, it'll go up the DOM tree to find out the subject triple.
-If it arrives at root without finding out the subject, it will use the current page's url as the default one.
-Now that we have the subject, we display it: 
-``` html
-	output += "subject: " + triple.subject.key + ":" + triple.subject.value;
-	output += "<br>";
-	
-	output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
-	output += "<br>";
-	
-	output += "object: " +  triple.object.key + ":" + triple.object.value;
-	output += "<br>";
-	
-	$("#log").html(output);
+`RdfLib.getSubjectTriple()` is a recursive function, it'll go up the DOM tree to 
+find out the subject triple. If it arrives at root without finding out the 
+subject, it will use the current page's url as the default one. That's why in 
+the previous example, we have the following subject for some triples:
+
+```
+subject: about:http://localhost:8888/OwlProject/rdfa/person.html
 ```
 
-Consider an example, when you click on `<span property="dc:creator">Joshua Bloch</span>`, `RdfLib.getSubjectTriple()`  
-will go up and the consider `<span resource="urn:ISBN:978-0321356680">` as its subject triple: 
+Now that we have the subject, we display it. The code for dipslaying the result
+is exactly the same as in the section **Retrieve rdfa attributes**
+
+Consider an example, when you click on 
+`<span property="dc:creator">Joshua Bloch</span>`, `RdfLib.getSubjectTriple()`
+it will go up and then find out that `<span resource="urn:ISBN:978-0321356680">` 
+is the subject of the current triple: 
+
 ``` html
 <span resource="urn:ISBN:978-0321356680">
 	  book is the inspiring <br>
@@ -155,16 +204,21 @@ will go up and the consider `<span resource="urn:ISBN:978-0321356680">` as its s
 	  <span property="dc:creator">Joshua Bloch</span>
 </span>
 ```
+
 As a result, we have: 
+
 ```
 subject: resource:urn:ISBN:978-0321356681
 predicate: property:dc:creator
 object: literal:Joshua Bloch
 ```  
+
 #### The clicked element has a subject
-When the clicked element is already a "subjectTriple", we **go down** the DOM tree to get all of its childrenTriples by 
-using `RdfLib.getAllTriples(event.target);` function.  
-For example, when `<span resource="urn:ISBN:978-0321356680">` is clicked, and here is the displaying code: 
+When the clicked element is already a "subjectTriple", we **go down** the DOM 
+tree to get all of its childrenTriples using 
+`RdfLib.getAllTriples(event.target);` function.  
+Suppose that `<span resource="urn:ISBN:978-0321356680">` is clicked, and 
+the displaying code is as below: 
 ```
 var triples = RdfLib.getAllTriples(event.target);
 for (var i = 0; i < triples.length; i++) {
@@ -175,7 +229,8 @@ for (var i = 0; i < triples.length; i++) {
 	}
 	
 	if (triple.predicate != null) {
-		output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
+		output += "predicate: " +  triple.predicate.key + ":" + 
+				triple.predicate.value;
 		output += "<br>";
 	}
 	
@@ -186,7 +241,7 @@ for (var i = 0; i < triples.length; i++) {
 	output += "------------------------------<br>";
 }
 ``` 
-the result should be: 
+then the result should be: 
 ```
 -----------------------
 subject: resource:urn:ISBN:978-0321356681
@@ -198,17 +253,23 @@ predicate: property:dc:creator
 object: literal:Joshua Bloch
 ------------------------------
 ```  
-Note that when used with the top <html> element, `RdfLib.getAllTriples(event.target);` will list all the rdfa in the page.  
+Note that when used with the top <html> element, 
+`RdfLib.getAllTriples(event.target);` will list all the rdfa in the page.  
 
 ### Blacklist wrong triples
-The [RDFa prime specification](http://www.w3.org/TR/xhtml-rdfa-primer/) say that when we have a tag containing 'rel' and 
-'href' attribute at the same time, the 'rel' should be considered as **predicate** and the 'href' should be considered as
-**object**. However, this definition is somehow inconsistent. The declaration of external css matches perfectly this definition:
+The [RDFa prime specification](http://www.w3.org/TR/xhtml-rdfa-primer/) say that 
+when we have a tag containing 'rel' and 
+'href' attribute at the same time, the 'rel' should be considered as 
+**predicate** and the 'href' should be considered as
+**object**. However, this definition is somehow inconsistent. The declaration of 
+external css matches perfectly this definition:
 ```
 <link rel="stylesheet" type="text/css" href="http://link/to/file.css">
 ```
-Obviously, this is not what we want. The library provide us a way to avoid such situations. All we need to do is to declare an 
-an array containing all 'ignore element' like this:
+Obviously, this is not what we want. The library provide us a way to avoid such 
+situations. All we need to do is declare an array containing all 
+'ignore element' like this:
+
 ```
 var ignoreArray = [
 	"stylesheet",
@@ -217,9 +278,11 @@ var ignoreArray = [
 	"yetAnotherElement",
 ];
 ```  
-where "stylesheet" "an element with space" is the value of the 'predicate' which will be ignored.  
-With this `ignoreArray`, we pass it to the function `RdfLib.addToIgnoreArray(ignoreArray);` 
-This function should be called just before the `RdfLib.init();` function.  
+
+where **"stylesheet"**, **"an element with space"** are the value of the
+'predicate' which will be ignored.  With this `ignoreArray`, we pass it to the 
+function `RdfLib.addToIgnoreArray(ignoreArray);` This function should be called 
+before using any other functions.  
 
 See [person.html](./rdfa/person.html) to view full source code.
 ## OwlParser using owl-lib.js

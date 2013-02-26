@@ -10,10 +10,10 @@
     <base href="http://example.org/nxhoaf/" />
     <meta property="dc:creator" content="Hoa Nguyen" />
     <link rel="foaf:primaryTopic" href="#me" />
+    
     <script>
 		$(document).ready(function () {
-			RdfLib.init();
-			var prefixes = RdfLib.prefixes;
+			var prefixes = RdfLib.getAllPrefixes();
 			var output = "";
 			
 			if (prefixes != null) {
@@ -24,27 +24,6 @@
 				}
 			}
 			
-			
-			/*
-			var rdfa = RdfLib.rdfa;
-			
-			if (rdfa != null) {
-				output += "<b>All attributes: </b><br>";
-				for (var subject in rdfa) {
-				    output += subject + "<br>";
-				    for (var predicate in rdfa[subject]) {
-				    	for (var i = 0; i < rdfa[subject][predicate].length; i++) {
-				    		output += "&nbsp&nbsp&nbsp&nbsp'" + predicate + "' : '" + rdfa[subject][predicate][i] + "' <br>";	
-				    	}
-				    	
-				    }
-				}	
-			}
-			var log = document.createElement("div");
-			log.id = "log";
-			$('body').append(log);
-			$("#log").html(output);
-			*/
 			
 			html = document.getElementsByTagName("html")[0];
 			var triples = RdfLib.getAllTriples(html);
@@ -74,9 +53,6 @@
 			log.id = "log";
 			$('body').append(log);
 			$("#log").html(output);
-			
-			
-			
 					
 		});
 	</script>
@@ -98,62 +74,60 @@
 	      </span>
      </span>
     </p>
-    <!--
 	<script>
 		var output;
-	$("body").click(function(event) {
-		var triple = RdfLib.getTriple(event.target);
-		var output = "All triples <br>";
-		output += "----------------------- <br>"
-		
-		if (triple == null ||  
-			((triple.predicate == null) && (triple.subject == null))) {
-			$("#log").html("this element: " + 
-					"<br> name: " + event.target.nodeName +  
-					"<br> value: " + event.target.textContent + 
-					"<br> doesn't contain any valid triples");
-			return;
-		}
-		
-		if (triple.subject == null) {
-			triple.subject = RdfLib.getSubjectTriple(event.target).subject;
-			output += "subject: " + triple.subject.key + ":" + triple.subject.value;
-			output += "<br>";
+		$("body").click(function(event) {
+			var triple = RdfLib.getTriple(event.target);
+			var output = "All triples <br>";
+			output += "----------------------- <br>"
 			
-			output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
-			output += "<br>";
-			
-			output += "object: " +  triple.object.key + ":" + triple.object.value;
-			output += "<br>";
-			
-			$("#log").html(output);
-		} else {
-			var triples = RdfLib.getAllTriples(event.target);
-			for (var i = 0; i < triples.length; i++) {
-				triple = triples[i];
-				if (triple.subject != null) {
-					output += "subject: " + triple.subject.key + ":" + triple.subject.value;
-					output += "<br>";	
-				}
-				
-				if (triple.predicate != null) {
-					output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
-					output += "<br>";
-				}
-				
-				if (triple.object != null) {
-					output += "object: " +  triple.object.key + ":" + triple.object.value;
-					output += "<br>";
-				}	
-				output += "------------------------------<br>";
+			if (triple == null ||  
+				((triple.predicate == null) && (triple.subject == null))) {
+				$("#log").html("this element: " + 
+						"<br> name: " + event.target.nodeName +  
+						"<br> value: " + event.target.textContent + 
+						"<br> doesn't contain any valid triples");
+				return;
 			}
-			$("#log").html(output);
-	}
-	});
-	
-	console.log("[person.html] - end");
+			
+			if (triple.subject == null) {
+				triple.subject = RdfLib.getSubjectTriple(event.target).subject;
+				output += "subject: " + triple.subject.key + ":" + triple.subject.value;
+				output += "<br>";
+				
+				output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
+				output += "<br>";
+				
+				output += "object: " +  triple.object.key + ":" + triple.object.value;
+				output += "<br>";
+				
+				$("#log").html(output);
+			} else {
+				var triples = RdfLib.getAllTriples(event.target);
+				for (var i = 0; i < triples.length; i++) {
+					triple = triples[i];
+					if (triple.subject != null) {
+						output += "subject: " + triple.subject.key + ":" + triple.subject.value;
+						output += "<br>";	
+					}
+					
+					if (triple.predicate != null) {
+						output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
+						output += "<br>";
+					}
+					
+					if (triple.object != null) {
+						output += "object: " +  triple.object.key + ":" + triple.object.value;
+						output += "<br>";
+					}	
+					output += "------------------------------<br>";
+				}
+				$("#log").html(output);
+		}
+		});
+		console.log("[person.html] - end");
 	</script>
-	 -->
+	
   </body>
 </html>
 
