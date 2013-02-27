@@ -84,37 +84,43 @@ var JOT_siteRelTimeStrs = ["il y a une minute","il y a __duration__ minutes","il
 		];
 		
 		RdfLib.addToIgnoreArray(ignoreArray);
-		RdfLib.init();
 		
-		var prefixes = RdfLib.prefixes;
-		var output = "";
-		
-		if (prefixes != null) {
-			output = "<b>All Prefixes: </b><br>";
-			for (var prefix in prefixes) {
-				output += "&nbsp&nbsp&nbsp&nbsp" + prefix + 
-				"   " + prefixes[prefix] + " <br>";
+		var prefixes = RdfLib.getAllPrefixes();
+			var output = "";
+			
+			if (prefixes != null) {
+				output = "<b>All Prefixes: </b><br>";
+				for (var prefix in prefixes) {
+					output += "&nbsp&nbsp&nbsp&nbsp" + prefix + 
+					"   " + prefixes[prefix] + " <br>";
+				}
 			}
-		}
-		
-		
-		
-		var rdfa = RdfLib.rdfa;
-		
-		if (rdfa != null) {
+			
+			
+			html = document.getElementsByTagName("html")[0];
+			var triples = RdfLib.getAllTriples(html);
 			output += "<b>All attributes: </b><br>";
-			for (var subject in rdfa) {
-			    output += subject + "<br>";
-			    for (var predicate in rdfa[subject]) {
-			    	var object = rdfa[subject][predicate];
-			    	// alert(object.length)
-			    	for (var i = 0; i < object.length; i++) {
-			    		output += "&nbsp&nbsp&nbsp&nbsp'" + predicate + "' : '" + object[i] + "' <br>";	
-			    	}
-			    }
-			}	
-		}
-		
+			for (var i = 0; i < triples.length; i++) {
+				triple = triples[i];
+				if (triple.subject != null) {
+					output += "subject: " + triple.subject.key + ":" + triple.subject.value;
+					output += "<br>";	
+				}
+				
+				if (triple.predicate != null) {
+					output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
+					output += "<br>";
+				} else {
+					output += "predicate: null";
+					output += "<br>";
+				}
+				
+				if (triple.object != null) {
+					output += "object: " +  triple.object.key + ":" + triple.object.value;
+					output += "<br>";
+				}	
+				output += "------------------------------<br>";
+			}
 		
 		var log = document.createElement("div");
 		log.id = "log";
