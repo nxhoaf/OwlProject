@@ -20,7 +20,7 @@ OwlLib.getBrowserInfo = function() {
 // For now, our library works only with chrome and firefox
 OwlLib.constant.firefox = {
 	ABOUT			: "rdf:about",
-	LABEL 			: "rdfs:label",
+	LABEL 			: "label",
 	NAMED_INVIDUAL 	: "NamedIndividual",
 	RDF				: "rdf:RDF", 
 	RESOURCE 		: "rdf:resource", 
@@ -193,7 +193,9 @@ OwlLib.getMetaData = function(namedIndividual) {
 	
 	
 	// get label, if any
-	var label = namedIndividual.getElementsByTagName(OwlLib.constant.LABEL)[0];
+	var labelNS = OwlLib.nameSpaces["rdfs"]; // 
+	var label = namedIndividual.
+			getElementsByTagNameNS(labelNS, OwlLib.constant.LABEL)[0];
 	if (label != null) {
 		properties[OwlLib.constant.LABEL] = label.textContent;
 		isEmpty = false;
