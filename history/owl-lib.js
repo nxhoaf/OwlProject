@@ -27,7 +27,9 @@ OwlLib.constant = {
 }
 
 /**
- * Load Owl file
+ * Load Owl file from a specific url
+ * @param url url to load
+ * @returns url content will be load into Owl.loadOwl object
  */
 OwlLib.loadOwl = function(url) {
 	console.log("[OwlLib] [loadOwl] - begin");
