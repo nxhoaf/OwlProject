@@ -20,7 +20,7 @@ FrHistoryLib.getBrowserInfo = function() {
 
 //For now, our library works only with chrome and firefox
 FrHistoryLib.constant.firefox = {
-	FAIT_PARTIE_DE 	: "programme_histoire_college_france:faitPartieDe",
+	FAIT_PARTIE_DE 	: "faitPartieDe",
 	ORGANIZATION 	: "organisation-systeme-scolaire-francais",
 	PROGRAM 		: "programme_histoire_college_france"	
 }
@@ -57,8 +57,10 @@ FrHistoryLib.getFaitPartieDe = function (element) {
 	var isEmpty = true;
 
 	// get "faitPartieDe" attribute, if any
+	var fptNS = OwlLib.nameSpaces["programme_histoire_college_france"];
 	var faitPartieDe = element.
-			getElementsByTagName(FrHistoryLib.constant.FAIT_PARTIE_DE)[0];
+			getElementsByTagNameNS(	fptNS, 
+									FrHistoryLib.constant.FAIT_PARTIE_DE)[0];
 	if ((faitPartieDe != null) 
 			&& (faitPartieDe.
 					getAttribute(OwlLib.constant.RESOURCE) != null)) {
@@ -117,12 +119,6 @@ FrHistoryLib.getKnowledgeOf = function (theme) {
 		result.push(stProperties);
 	}
 	
-	
-	
-	console.log("********************************************");
-	console.log("SubThemes of: " + theme);
-	console.log("********************************************");
-	
 	for (var i = 0; i < result.length; i++) {
 		var subTheme = result[i];
 		console.log(i + "  ------------------------------")
@@ -133,18 +129,3 @@ FrHistoryLib.getKnowledgeOf = function (theme) {
 	}
 	return result;
 }
-
-
-
-//console.log("********************************************");
-//console.log("SubThemes of: " + theme);
-//console.log("********************************************");
-//
-//for (var i = 0; i < result.length; i++) {
-//	var subTheme = result[i];
-//	console.log(i + "  ------------------------------")
-//	for (var key in subTheme) {
-//		console.log("	key:   " + key);
-//		console.log("	value: " + subTheme[key]);
-//	}
-//}
