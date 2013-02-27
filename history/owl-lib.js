@@ -2,7 +2,6 @@ OwlLib = {};
 OwlLib.constant = {};
 
 
-// ************ INITIALIZATION: create constant based on browser info***********
 /**
  * Helper function: Get browser info
  * http://stackoverflow.com/questions/5916900/detect-version-of-browser
@@ -18,61 +17,14 @@ OwlLib.getBrowserInfo = function() {
 	return M;
 };
 // For now, our library works only with chrome and firefox
-OwlLib.constant.firefox = {
+OwlLib.constant = {
 	ABOUT			: "rdf:about",
 	LABEL 			: "label",
 	NAMED_INVIDUAL 	: "NamedIndividual",
-	RDF				: "rdf:RDF", 
+	RDF				: "RDF", 
 	RESOURCE 		: "rdf:resource", 
 	TYPE 			: "type",  
 }
-
-OwlLib.constant.chrome = {
-	ABOUT			: "rdf:about",
-	LABEL 			: "label",
-	NAMED_INVIDUAL 	: "NamedIndividual",
-	RDF				: "RDF",
-	RESOURCE 		: "rdf:resource",
-	TYPE 			: "type", 
-}
-
-var browserInfo = OwlLib.getBrowserInfo();
-var browserName = browserInfo[0];
-browserName = browserName.toLowerCase();
-var browserVersion = browserInfo[0];
-browserVersion = browserVersion.toLowerCase();
-
-// Config constant based on browser type
-if ("firefox" === browserName) {
-	OwlLib.constant = {
-		ABOUT			: OwlLib.constant.firefox.ABOUT,
-		LABEL 			: OwlLib.constant.firefox.LABEL,
-		NAMED_INVIDUAL 	: OwlLib.constant.firefox.NAMED_INVIDUAL,
-		RDF 			: OwlLib.constant.firefox.RDF,
-		RESOURCE 		: OwlLib.constant.firefox.RESOURCE,
-		TYPE 			: OwlLib.constant.firefox.TYPE,
-		 
-		FAIT_PARTIE_DE 	: OwlLib.constant.firefox.FAIT_PARTIE_DE, 
-		ORGANIZATION 	: OwlLib.constant.firefox.ORGANIZATION, 
-		PROGRAM 		: OwlLib.constant.firefox.PROGRAM 
-	}
-} else { // chrome
-	OwlLib.constant = {
-		ABOUT			: OwlLib.constant.chrome.ABOUT,
-		LABEL 			: OwlLib.constant.chrome.LABEL,
-		NAMED_INVIDUAL 	: OwlLib.constant.chrome.NAMED_INVIDUAL,
-		RDF 			: OwlLib.constant.chrome.RDF,
-		RESOURCE 		: OwlLib.constant.chrome.RESOURCE,
-		TYPE 			: OwlLib.constant.chrome.TYPE,
-		 
-		FAIT_PARTIE_DE 	: OwlLib.constant.chrome.FAIT_PARTIE_DE, 
-		ORGANIZATION 	: OwlLib.constant.chrome.ORGANIZATION, 
-		PROGRAM 		: OwlLib.constant.chrome.PROGRAM 
-	}
-}
-console.log("[OwlLib] [loadOwl] - Browser: " + browserInfo[0] + " " + 
-		browserInfo[1]);
-//********************** END OF INITIALIZATION *********************************
 
 /**
  * Load Owl file
@@ -120,7 +72,7 @@ OwlLib.loadNameSpace = function() {
 	// Named Individual elements
 	var rdfNs = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 	var rdf= OwlLib.xmlDoc.
-			getElementsByTagNameNS(rdfNs,"RDF")[0];
+			getElementsByTagNameNS(rdfNs,OwlLib.constant.RDF)[0];
 	var attributes = rdf.attributes;
 	for (var i = 0; i < attributes.length; i++) {
 		attribute = attributes[i];
