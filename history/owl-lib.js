@@ -21,7 +21,7 @@ OwlLib.getBrowserInfo = function() {
 OwlLib.constant.firefox = {
 	ABOUT			: "rdf:about",
 	LABEL 			: "rdfs:label",
-	NAMED_INVIDUAL 	: "owl:NamedIndividual",
+	NAMED_INVIDUAL 	: "NamedIndividual",
 	RDF				: "rdf:RDF", 
 	RESOURCE 		: "rdf:resource", 
 	TYPE 			: "rdf:type",  
@@ -150,16 +150,19 @@ OwlLib.loadNameSpace = function() {
 OwlLib.getNamedIndividuals = function(type) {
 	// Store result
 	var namedIndividuals = [];
-	
+	var owlNS = OwlLib.nameSpaces["owl"];
 	// Named Individual elements
 	var niElements = OwlLib.xmlDoc.
-			getElementsByTagName(OwlLib.constant.NAMED_INVIDUAL);
-	
+			getElementsByTagNameNS(owlNS, OwlLib.constant.NAMED_INVIDUAL);
 	// Get all Named Individual which match the type
 	for (var i = 0; i < niElements.length; i++) {
 		// var ni = getNamedIndividual(niElements[i], type);
 		var niElement = niElements[i];
-		var rdfType = niElement.getElementsByTagName(OwlLib.constant.TYPE)[0];
+		var typeNS = OwlLib.nameSpaces["rdf"];
+		var rdfType = niElement.
+				getElementsByTagNameNS(typeNS,"type")[0];
+//		var rdfType = niElement.getElementsByTagName(OwlLib.constant.TYPE)[0];
+		
 		// Get rdfType, if any
 		if (rdfType != null) { // found type attribute
 			var currentType = rdfType.getAttribute(OwlLib.constant.RESOURCE); 
