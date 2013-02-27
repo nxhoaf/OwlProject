@@ -118,8 +118,9 @@ OwlLib.loadNameSpace = function() {
 	console.log("[OwlLib] [loadNameSpace]");
 	var result = {}; // store the result
 	// Named Individual elements
+	var rdfNs = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 	var rdf= OwlLib.xmlDoc.
-			getElementsByTagName(OwlLib.constant.RDF)[0];
+			getElementsByTagNameNS(rdfNs,"RDF")[0];
 	var attributes = rdf.attributes;
 	for (var i = 0; i < attributes.length; i++) {
 		attribute = attributes[i];
