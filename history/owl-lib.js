@@ -24,7 +24,7 @@ OwlLib.constant.firefox = {
 	NAMED_INVIDUAL 	: "NamedIndividual",
 	RDF				: "rdf:RDF", 
 	RESOURCE 		: "rdf:resource", 
-	TYPE 			: "rdf:type",  
+	TYPE 			: "type",  
 }
 
 OwlLib.constant.chrome = {
@@ -160,7 +160,7 @@ OwlLib.getNamedIndividuals = function(type) {
 		var niElement = niElements[i];
 		var typeNS = OwlLib.nameSpaces["rdf"];
 		var rdfType = niElement.
-				getElementsByTagNameNS(typeNS,"type")[0];
+				getElementsByTagNameNS(typeNS,OwlLib.constant.TYPE)[0];
 //		var rdfType = niElement.getElementsByTagName(OwlLib.constant.TYPE)[0];
 		
 		// Get rdfType, if any
@@ -183,7 +183,7 @@ OwlLib.getMetaData = function(namedIndividual) {
 	// Get element type
 	var typeNS = OwlLib.nameSpaces["rdf"];
 	var rdfType = namedIndividual.
-			getElementsByTagNameNS(typeNS, "type")[0];
+			getElementsByTagNameNS(typeNS, OwlLib.constant.TYPE)[0];
 	var elementType = rdfType.getAttribute(OwlLib.constant.RESOURCE);
 	
 	if (elementType != null) {
