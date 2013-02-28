@@ -1,4 +1,4 @@
-FrHistoryLib = function () {
+FrHistoryLib = function (owlLib) {
 	var frHistoryLib = {};
 	
 	frHistoryLib.getFaitPartieDe = function (element) {
@@ -6,7 +6,10 @@ FrHistoryLib = function () {
 		var isEmpty = true;
 
 		// get "faitPartieDe" attribute, if any
-		var fptNS = OwlLib.nameSpaces["programme_histoire_college_france"];
+		// var fptNS = OwlLib.nameSpaces["programme_histoire_college_france"];
+		
+		var fptNS = "Programme_Histoire_College_France#";
+		
 		var faitPartieDe = element.
 				getElementsByTagNameNS(	fptNS, 
 										CONSTANT.FAIT_PARTIE_DE)[0];
@@ -36,7 +39,7 @@ FrHistoryLib = function () {
 			}
 			
 			// Found one, Get other properties
-			var stProperties = OwlLib.getMetaData(subTheme);
+			var stProperties = owlLib.getMetaData(subTheme);
 			stProperties[CONSTANT.FAIT_PARTIE_DE] = faitPartieDe;
 			// Save it
 			result.push(stProperties);
@@ -46,7 +49,7 @@ FrHistoryLib = function () {
 	}
 
 	frHistoryLib.getKnowledgeOf = function (theme) {
-		var knowledge = OwlLib.getNamedIndividuals( 
+		var knowledge = owlLib.getNamedIndividuals( 
 				"Programme_Histoire_College_France#connaissance");
 		
 		var result = []; // store result
@@ -61,7 +64,7 @@ FrHistoryLib = function () {
 			}
 			
 			// Found one, Get other properties
-			var stProperties = OwlLib.getMetaData(item);
+			var stProperties = owlLib.getMetaData(item);
 			stProperties[CONSTANT.FAIT_PARTIE_DE] = faitPartieDe;
 			// Save it
 			

@@ -42,14 +42,16 @@ var RollingMenu = function () {
 	
 	
 	rollingMenu.createMenu = function() {
-		OwlLib.loadOwl("resource/programmeHistoire6emeV2.owl");   	
-    	var frHistoryLib = new FrHistoryLib();
+		var owlLib = new OwlLib();
+		owlLib.loadOwl("resource/programmeHistoire6emeV2.owl");   
 		
-    	var themes = OwlLib.getNamedIndividuals(
+    	var frHistoryLib = new FrHistoryLib(owlLib);
+		
+    	var themes = owlLib.getNamedIndividuals(
     		"Programme_Histoire_College_France#theme");
     	for (var i = 0; i < themes.length; i++) {
 			var theme = themes[i];
-			var themeMetadata = OwlLib.getMetaData(theme);
+			var themeMetadata = owlLib.getMetaData(theme);
 			
 			// Get theme label and display it if not null
 			li = document.createElement("li");
@@ -60,7 +62,7 @@ var RollingMenu = function () {
 			a.name = themeMetadata[CONSTANT.ABOUT];
 			li.appendChild(a);
 			
-			var allSubThemes = OwlLib.getNamedIndividuals(
+			var allSubThemes = owlLib.getNamedIndividuals(
 					"Programme_Histoire_College_France#soustheme"); 
 			var subThemes = frHistoryLib.
 					getSubThemesOf(themeMetadata[CONSTANT.ABOUT], allSubThemes);
