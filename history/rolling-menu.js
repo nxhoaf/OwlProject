@@ -3,8 +3,6 @@ var RollingMenu = function () {
 	
 	
 	rollingMenu.drawMenu = function () {
-		// ************************** HERE IS THE ROLLING MENU *****************
-		
         // On cache les sous-menus
         // sauf celui qui porte la classe "open_at_load" :
         $("ul.subMenu:not('.open_at_load')").hide();
@@ -40,9 +38,8 @@ var RollingMenu = function () {
             // On empêche le navigateur de suivre le lien :
             return false;
         });
-        
-        // ************************** HERE IS THE ROLLING MENU *****************
 	}
+	
 	
 	rollingMenu.createMenu = function() {
 		OwlLib.loadOwl("resource/programmeHistoire6emeV2.owl");   	
@@ -58,11 +55,11 @@ var RollingMenu = function () {
 			li.setAttribute("class","toggleSubMenu");
 			a = document.createElement("a");http://youtu.be/IUiDfJG54fQ
 			a.title = "";
-			a.textContent = themeMetadata[OwlLib.constant.LABEL];
-			a.name = themeMetadata[OwlLib.constant.ABOUT];
+			a.textContent = themeMetadata[CONSTANT.LABEL];
+			a.name = themeMetadata[CONSTANT.ABOUT];
 			li.appendChild(a);
 			var subThemes = FrHistoryLib.
-					getSubThemesOf(themeMetadata[OwlLib.constant.ABOUT]);
+					getSubThemesOf(themeMetadata[CONSTANT.ABOUT]);
 			if ((subThemes != null) && (subThemes.length != 0)) {
 				// Has Sub Theme, create list of sub theme
 				ul = document.createElement("ul");
@@ -74,7 +71,7 @@ var RollingMenu = function () {
 					
 					subA = document.createElement("a");
 					subA.title = "";
-					subA.name = subTheme[OwlLib.constant.ABOUT];
+					subA.name = subTheme[CONSTANT.ABOUT];
 					subA.onclick = function () {
 						var knowledge = FrHistoryLib.
 								getKnowledgeOf(this.name);
@@ -97,7 +94,7 @@ var RollingMenu = function () {
 							var label = document.createElement('label')
 							label.htmlFor = "id";
 							label.appendChild(document.createTextNode(
-									knowledge[k][OwlLib.constant.LABEL]));
+									knowledge[k][CONSTANT.LABEL]));
 							
 							var br = document.createElement("br");
 								
@@ -106,10 +103,10 @@ var RollingMenu = function () {
 							knowledgeList.appendChild(br);
 						}
 					};
-					subA.textContent = subTheme[OwlLib.constant.LABEL];
+					subA.textContent = subTheme[CONSTANT.LABEL];
 					subLi.appendChild(subA);
 					
-					// subLi.textContent = subTheme[OwlLib.constant.ABOUT];
+					// subLi.textContent = subTheme[CONSTANT.ABOUT];
 					
 					ul.appendChild(subLi);	
 				}
@@ -144,7 +141,7 @@ var RollingMenu = function () {
 						var label = document.createElement('label')
 						label.htmlFor = "id";
 						label.appendChild(document.createTextNode(
-								knowledge[k][OwlLib.constant.LABEL]));
+								knowledge[k][CONSTANT.LABEL]));
 						
 						var br = document.createElement("br");	
 						knowledgeList.appendChild(checkbox);

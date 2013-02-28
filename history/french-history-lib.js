@@ -19,8 +19,8 @@ FrHistoryLib.getFaitPartieDe = function (element) {
 									FrHistoryLib.constant.FAIT_PARTIE_DE)[0];
 	if ((faitPartieDe != null) 
 			&& (faitPartieDe.
-					getAttribute(OwlLib.constant.RESOURCE) != null)) {
-		value = faitPartieDe.getAttribute(OwlLib.constant.RESOURCE);
+					getAttribute(CONSTANT.RESOURCE) != null)) {
+		value = faitPartieDe.getAttribute(CONSTANT.RESOURCE);
 		// Found, return
 		return value;
 	}
