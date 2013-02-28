@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      UnitTest for rdf-lib.js
+    </title>
+    <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.11.0.css">
+    <script src="http://code.jquery.com/qunit/qunit-1.11.0.js"></script>
+    <script src="rdf-lib.js"></script>
+    <script>
+    
+    	//######################################################################
+    	//                     addToIgnoreArray()
+    	//###################################################################### 
+    	
+    	module("--- addToIgnoreArray() --- ")
+    	// --------------------- Normal case -----------------------------------
+		test("Blackbox test: Normal case", function () {
+			expect(4); // Must have 2 tests.
+		    var ignoreArray = [
+				"shortcut icon",
+				"apple-touch-icon"
+			];
+			
+			var rdfLib = new RdfLib();
+			rdfLib.addToIgnoreArray(ignoreArray);
+			
+			deepEqual( rdfLib.ignoreArray, ignoreArray,
+					"Add first array" );
+			
+			ignoreArray = [
+				"canonical",
+				"nofollow"
+			];		
+			
+			rdfLib.addToIgnoreArray(ignoreArray);
+			deepEqual( rdfLib.ignoreArray.length, 4, 
+					"Use one more array" );
+			
+			equal(rdfLib.ignoreArray[1], "apple-touch-icon", "Get element");
+			equal(rdfLib.ignoreArray[2], "canonical", "Get another element");
+		});
+		
+		// --------------------- Boundary case ---------------------------------
+		test("Blackbox test: Boundary case", function () {
+			expect(2);
+			var rdfLib = new RdfLib();
+			ignoreArray = [
+				"canonical",
+				"nofollow", 
+				"stylesheet"
+			];	
+			
+			rdfLib.addToIgnoreArray(ignoreArray);
+			equal(rdfLib.ignoreArray[0], "canonical", "Left boundary");
+			equal(rdfLib.ignoreArray[2], "stylesheet", "Right boundary");
+		});
+		
+		// --------------------- Exception case --------------------------------
+		test("Blackbox test: Exceptional case", function () {
+			expect(3); // Must have 3 tests
+			var rdfLib = new RdfLib();
+			rdfLib.addToIgnoreArray();
+			
+			deepEqual( rdfLib.ignoreArray.length, 0,  
+					"Call function without input params" );
+			
+			ignoreArray = [
+				"canonical",
+				"nofollow"
+			];		
+			
+			rdfLib.addToIgnoreArray(ignoreArray);
+			deepEqual( rdfLib.ignoreArray, ignoreArray, 
+					"Use one more normal array" );
+			
+			rdfLib.addToIgnoreArray([]);
+			deepEqual( rdfLib.ignoreArray.length,2, 
+					"Then add new empty array" );
+			
+		});
+		
+		
+		
+     </script>
+  </head>
+  <body>
+
+	<div id="qunit"></div>
+	<div id="qunit-fixture">
+	</div>
+	
+  </body>
+</html>

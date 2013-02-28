@@ -69,7 +69,7 @@ var RdfLib = function() {
 			rdfLib.ignoreArray = [];
 		}
 		
-		if ((ignoreArray == null) && (ignoreArray.length == 0)) {
+		if ((ignoreArray == null) || (ignoreArray.length == 0)) {
 			return;
 		}
 		
@@ -79,23 +79,6 @@ var RdfLib = function() {
 		}
 	};
 	
-	
-	rdfLib.isTriple = function(triple) {
-		
-		// Is Null ? 
-		if ((triple.subject == null) && (triple.predicate == null)) {
-			return false;
-		}
-		
-		if ((rdfLib.ignoreArray != null) && (rdfLib.ignoreArray.length != 0)) {
-			if (rdfLib.ignoreArray.indexOf(triple.predicate.value) != -1) {
-				return false;
-			}
-		}
-		
-		// Passed, return true
-		return true;
-	};
 	
 	/**
 	 * Get triple of the target (which is clicked event)
@@ -270,7 +253,7 @@ var RdfLib = function() {
 		// "The role of the resource attribute in the div element is to set the 
 		// "context", i.e., the subject for all the subsequent statements. Also, 
 		// when combined with the property attribute, resource can be used to set 
-		// the "target", i.e., the object for the statement (much as href). 
+		// the "target", i.e., the object for the statement (much as href)". 
 		if ((triple.subject != null) &&
 				(triple.predicate != null) &&
 				(triple.subject.key == SUBJECT.RESOURCE) && 
@@ -288,8 +271,35 @@ var RdfLib = function() {
 			triple.object = getObject(target, predicateType);
 		}
 		
+		/** 
+		 * Inner function, test if a triple is a "temporary triple".
+		 * During the parsing process, there're some states when triples aren't
+		 * completely constructed, for example: a triple may have subject, but 
+		 * may NOT have its predicate, object yet (the predicate and object will
+		 * be retrieved in inner tag later). This is considered as "TEMPORARY 
+		 * TRIPLE", and it's acceptable. 
+		 * 
+		 * When the parsing completed, only triples that have all of its subject, 
+		 * predicate, object constructed properly pass the rdf.isTriple() test.
+		 */
+		var isTemporaryTriple = function(triple) {
+			// Is Null ? 
+			if ((triple.subject == null) && (triple.predicate == null)) {
+				return false;
+			}
+			
+			if ((rdfLib.ignoreArray != null) 
+					&& (rdfLib.ignoreArray.length != 0)) {
+				if (rdfLib.ignoreArray.indexOf(triple.predicate.value) != -1) {
+					return false;
+				}
+			}
+			// Passed, return true
+			return true;
+		};
+		
 		// Not a real triple
-		if (!rdfLib.isTriple(triple)) {
+		if (!isTemporaryTriple(triple)) {
 			return null;
 		} else {
 			return triple;
@@ -337,6 +347,10 @@ var RdfLib = function() {
 		return triple;
 	};
 
+	rdfLib.isTriple = function(triple) {
+		
+	}
+	
 	/**
 	 * Get all triples in a specific HTML element
 	 * @param the HTML element to get all triples
