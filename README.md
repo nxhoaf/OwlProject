@@ -57,9 +57,14 @@ page is ready, we can perform these following actions:
 - Get triples in clicked HTML element.
 - Blacklist wrong triples.
 
+Let's create a new rdf object before using it: 
+```
+var rdfLib = new RdfLib();
+```
+
 ### Retrieve rdfa prefixes
 All rdfa prefixes can be retrieved via:
-`var prefixes = RdfLib.getAllPrefixes();`
+`var prefixes = rdfLib.getAllPrefixes('html');`
 The result is an object containing all rdfa prefixes in the page. 
 In our example, we should have:
 
@@ -80,7 +85,7 @@ for (var prefix in prefixes) {
 ### Retrieve rdfa attributes
 
 With this library, we can also get all rdfa attributes located in the page via 
-`var triples = RdfLib.getAllTriples(html);` attribute. `triples` is an array of 
+`var triples = rdfLib.getAllTriples('html');` attribute. `triples` is an array of 
 triple. Each triple is a data structure which has three fields: 
 
 ```
@@ -102,7 +107,7 @@ Here is an example of how to loop over the rdfa data structure to display all
 triples. Suppose that we have a 'div' element in our page whose id is "#log":
 ```
 html = document.getElementsByTagName("html")[0];
-	var triples = RdfLib.getAllTriples(html);
+	var triples = rdfLib.getAllTriples(html);
 	output += "<b>All attributes: </b><br>";
 	for (var i = 0; i < triples.length; i++) {
 		triple = triples[i];
@@ -166,7 +171,7 @@ We have two possibilities:
 
 
 First (for both cases), we try to get the triple in the clicked area: 
-`var triple = RdfLib.getTriple(event.target);` If the clicked area doesn't 
+`var triple = rdfLib.getTriple(event.target);` If the clicked area doesn't 
 contain any triple, nothing happens:
 
 ``` js
@@ -181,10 +186,10 @@ Otherwise, we continue...
 
 In this case, we get its subject using:
 ``` js
-	var subjectTriple = RdfLib.getSubjectTriple(event.target);
+	var subjectTriple = rdfLib.getSubjectTriple(event.target);
 	triple.subject = subjectTriple.subject;
 ```
-`RdfLib.getSubjectTriple()` is a recursive function, it'll go up the DOM tree to 
+`rdfLib.getSubjectTriple()` is a recursive function, it'll go up the DOM tree to 
 find out the subject triple. If it arrives at root without finding out the 
 subject, it will use the current page's url as the default one. That's why in 
 the previous example, we have the following subject for some triples:
