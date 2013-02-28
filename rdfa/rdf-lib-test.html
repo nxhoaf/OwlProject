@@ -245,8 +245,8 @@
 		
 		test("Whitebox test: Coverage", function () {
 			var rdfLib = new RdfLib();
-    		var element = document.getElementById("content");
-    		var triples = rdfLib.getAllTriples(element);
+    		var myElement = document.getElementById("content");
+    		var triples = rdfLib.getAllTriples(myElement);
     		equal(triples.length, 5, "Nested attribute");
 		});
 		
@@ -259,7 +259,7 @@
 			var element;
 			var prefixes;
 			 
-			element = '<div  prefix="schema: http://schema.org/">';
+			element = '<div  prefix="schema: http://schema.org/"></div>';
 			element = (new DOMParser()).parseFromString(element, 'text/xml');
 			prefixes = rdfLib.getAllPrefixes(element);
 			equal(prefixes["schema:"], 'http://schema.org/', 
