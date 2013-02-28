@@ -482,12 +482,25 @@ var RdfLib = function() {
 	 * 
 	 * and so on...
 	 */
-	rdfLib.getAllPrefixes = function() {
+	rdfLib.getAllPrefixes = function(element) {
 		var prefixes = {}; // All prefixes will be stored here
+		var hasPrefix = false;
 		console.log("[RdfLib] [getAllPrefixes] - begin");
 		
+		if ((element == null) || (element.length == 0)) {
+			return null;
+		}
+		
 		// Get all elements in the currents documents
-		var allElements = document.getElementsByTagName("*");
+		var allElements = element.getElementsByTagName("*");
+		
+		// Convert it to array
+		allElements = Array.prototype.slice.call(allElements)
+		
+		// If current element is not a root, add it to all element list
+		if (element != document) {
+			allElements.push(element);
+		}
 		for (var i = 0; i < allElements.length; i++) {
 			// For each elements, get all of its set of attributes
 			var attributes = allElements[i].attributes;
@@ -521,11 +534,20 @@ var RdfLib = function() {
 						console.log("prefix: " + parsedPrefix[k] + " fullName: " + 
 								parsedPrefix[k+1]);
 					}
+					
+					if (!hasPrefix) {
+						hasPrefix = true;
+					}
 				}
 			}
 		}
 		console.log("[RdfLib] [getAllPrefixes] - end");
-		return prefixes;	
+		if (!hasPrefix) {
+			return null;
+		} else {
+			return prefixes;
+		}
+			
 	};
 	
 	return rdfLib;

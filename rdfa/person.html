@@ -14,7 +14,8 @@
     <script>
 		$(document).ready(function () {
 			var rdfLib = new RdfLib();
-			var prefixes = rdfLib.getAllPrefixes();
+			html = document.getElementsByTagName("html")[0];
+			var prefixes = rdfLib.getAllPrefixes(html);
 			var output = "";
 			
 			if (prefixes != null) {
@@ -26,7 +27,6 @@
 			}
 			
 			
-			html = document.getElementsByTagName("html")[0];
 			var triples = rdfLib.getAllTriples(html);
 			output += "<b>All attributes: </b><br>";
 			for (var i = 0; i < triples.length; i++) {

@@ -243,11 +243,65 @@
 		});
 		
 		
-		test("Whitebox test: Coverate", function () {
+		test("Whitebox test: Coverage", function () {
 			var rdfLib = new RdfLib();
     		var element = document.getElementById("content");
     		var triples = rdfLib.getAllTriples(element);
     		equal(triples.length, 5, "Nested attribute");
+		});
+		
+		//######################################################################
+    	//                    Test unit for rdfLib.getAllPrefixes()
+    	//######################################################################
+    	module("--- getAllPrefixes() --- ")
+		test("Blackbox test: Normal case", function () {
+			var rdfLib = new RdfLib();
+			var element;
+			var prefixes;
+			 
+			element = '<div  prefix="schema: http://schema.org/">';
+			element = (new DOMParser()).parseFromString(element, 'text/xml');
+			prefixes = rdfLib.getAllPrefixes(element);
+			equal(prefixes["schema:"], 'http://schema.org/', 
+					"Get All Prefixes in leaf node");
+					
+		});
+		
+		test("Blackbox test: Boundary case", function () {
+			var rdfLib = new RdfLib();
+			var element;
+			var prefixes;
+			
+			element = document.getElementById("creator");	
+			prefixes = rdfLib.getAllPrefixes(element);
+			equal(prefixes, null, 
+					"Left boundary: element with no prefix");
+		});
+		
+		test("Blackbox test: Exceptional case", function () {
+			var rdfLib = new RdfLib();
+			var prefixes;
+			
+			prefixes = rdfLib.getAllPrefixes();
+			equal(prefixes, null, "Call function without param");
+					
+			prefixes = rdfLib.getAllPrefixes(null);
+			equal(prefixes, null, "Call function with param equal to null");
+		});
+		
+		test("Whitebox test: coverage test", function () {
+			var rdfLib = new RdfLib();
+			var element;
+			var prefixes;
+			
+			element = document.getElementById("content");	
+			prefixes = rdfLib.getAllPrefixes(element);
+			var counter = 0;
+			for (var prefix in prefixes) {
+				counter ++;
+			}
+			equal(counter, 2, 
+					"Get All Prefixes in nested node");	
 		});
      </script>
   </head>
@@ -265,7 +319,7 @@
 		        lang="en">Amazon</a>.
 		    </p>
 			
-		    <p>
+		    <p prefix="dc: http://purl.org/dc/terms/">
 		      My 
 		      <span property="foaf:interest" resource="urn:ISBN:978-0321356680">
 		          favorite <br>
