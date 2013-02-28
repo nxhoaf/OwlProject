@@ -58,8 +58,11 @@ var RollingMenu = function () {
 			a.textContent = themeMetadata[CONSTANT.LABEL];
 			a.name = themeMetadata[CONSTANT.ABOUT];
 			li.appendChild(a);
+			
+			var allSubThemes = OwlLib.getNamedIndividuals(
+					"Programme_Histoire_College_France#soustheme"); 
 			var subThemes = FrHistoryLib.
-					getSubThemesOf(themeMetadata[CONSTANT.ABOUT]);
+					getSubThemesOf(themeMetadata[CONSTANT.ABOUT], allSubThemes);
 			if ((subThemes != null) && (subThemes.length != 0)) {
 				// Has Sub Theme, create list of sub theme
 				ul = document.createElement("ul");

@@ -27,10 +27,10 @@ FrHistoryLib.getFaitPartieDe = function (element) {
 	return null;
 }
 
-FrHistoryLib.getSubThemesOf = function (theme) {
+FrHistoryLib.getSubThemesOf = function (theme, subThemes) {
 	// get all subthemes
-	var subThemes = OwlLib.getNamedIndividuals(
-			"Programme_Histoire_College_France#soustheme"); 
+//	var subThemes = OwlLib.getNamedIndividuals(
+//			"Programme_Histoire_College_France#soustheme"); 
 	var result = []; // store result
 	for (var i = 0; i < subThemes.length; i++) {
 		var subTheme = subThemes[i];
