@@ -74,6 +74,7 @@ var JOT_siteRelTimeStrs = ["il y a une minute","il y a __duration__ minutes","il
 <script src="../rdf-lib.js"></script>
 <script>
 	$(document).ready(function () {
+		var rdfLib = RdfLib();
 		// some elements which aren't considered as a rdfa
 		var ignoreArray = [
 			"shortcut icon",
@@ -83,9 +84,9 @@ var JOT_siteRelTimeStrs = ["il y a une minute","il y a __duration__ minutes","il
 			"nofollow"
 		];
 		
-		RdfLib.addToIgnoreArray(ignoreArray);
+		rdfLib.addToIgnoreArray(ignoreArray);
 		
-		var prefixes = RdfLib.getAllPrefixes();
+		var prefixes = rdfLib.getAllPrefixes();
 			var output = "";
 			
 			if (prefixes != null) {
@@ -98,7 +99,7 @@ var JOT_siteRelTimeStrs = ["il y a une minute","il y a __duration__ minutes","il
 			
 			
 			html = document.getElementsByTagName("html")[0];
-			var triples = RdfLib.getAllTriples(html);
+			var triples = rdfLib.getAllTriples(html);
 			output += "<b>All attributes: </b><br>";
 			for (var i = 0; i < triples.length; i++) {
 				triple = triples[i];
@@ -122,9 +123,6 @@ var JOT_siteRelTimeStrs = ["il y a une minute","il y a __duration__ minutes","il
 				output += "------------------------------<br>";
 			}
 		
-		var log = document.createElement("div");
-		log.id = "log";
-		$('body').append(log);
 		$("#logOwl").html(output);
 	});
 </script>
