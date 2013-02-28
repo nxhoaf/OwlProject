@@ -96,6 +96,11 @@ var RdfLib = function() {
 	 */
 	rdfLib.getTriple = function(target) {
 		
+		
+		if (target == null) {
+			return null;
+		}
+		
 		/**
 		 * Inner function, given a set of attributes, return its subject
 		 * if any. Otherwise, return null
@@ -302,6 +307,7 @@ var RdfLib = function() {
 		if (!isTemporaryTriple(triple)) {
 			return null;
 		} else {
+			// Ok, return
 			return triple;
 		}
 		
@@ -418,7 +424,26 @@ var RdfLib = function() {
 	rdfLib.getAllTriples = function(element) {
 		console.log("[RdfLib] [getAllAttributeTriples] - begin");
 		var result = []; // store all triples
+		
+		// Null, return an empty array
+		if (element == null) {
+			return result;
+		}
 		var children = $(element).children();
+		
+		// trivial case, dont have children
+		if ((children == null) || (children.length == 0)) {
+			var triple = rdfLib.getTriple(element);
+			if (triple != null) {
+				if (triple.subject == null) {
+					triple.subject =
+						rdfLib.getSubjectTriple(element).subject
+				}
+			}
+			result.push(triple);
+			return result;
+		}
+		
 		for (var i = 0; i < children.length; i++) {
 			var grandChildren = $(children[i]).children();
 
@@ -429,7 +454,8 @@ var RdfLib = function() {
 				result = result.concat(triples);
 			} 
 			
-			// trivial case, only get triple in the current node
+			// After getting all children's triple, 
+			// come back and get triple of the current node
 			var triple = rdfLib.getTriple(children[i]);
 			if (triple != null) {
 				if (triple.subject == null) {

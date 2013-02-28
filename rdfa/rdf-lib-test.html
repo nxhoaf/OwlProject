@@ -210,17 +210,44 @@
     	//######################################################################
     	module("--- getAllTriples() --- ")
     	test("Blackbox test: Normal case", function () {
+    		expect(2);
     		var rdfLib = new RdfLib();
-    		var element = document.getElementById("content");
+    		var element = document.getElementById("creator");
     		var triples = rdfLib.getAllTriples(element);
+
+    		equal(triples.length, 1, "Normal case with 1 rdfa: test length");
+    		deepEqual(triples[0].object.value, ["Joshua Bloch"], 
+    				"Normal case with 1 rdfa: test value");
 		});
+		
 		
 		test("Blackbox test: Boundary case", function () {
-		
+			var rdfLib = new RdfLib();
+    		var element = document.getElementById("qunit");
+    		var triples = rdfLib.getAllTriples(element);
+    		equal(triples.length, 0, "Left boundary: zero attribute");
 		});
 		
-		test("Blackbox test: Exceptional case", function () {
 		
+		test("Blackbox test: Exceptional case", function () {
+			expect(2);
+			
+			var rdfLib = new RdfLib();
+    		var triples = rdfLib.getAllTriples();
+    		equal(triples.length, 0, 
+    				"Call function without param");
+    				
+    		triples = rdfLib.getAllTriples(null);		
+			equal(triples.length, 0, 
+    				"Call function with param equal to null");
+		});
+		
+		
+		test("Whitebox test: Coverate", function () {
+			var rdfLib = new RdfLib();
+    		var element = document.getElementById("content");
+    		var triples = rdfLib.getAllTriples(element);
+    		equal(triples.length, 5, "Nested attribute");
 		});
      </script>
   </head>
@@ -228,9 +255,11 @@
 
 	<div id="qunit"></div>
 	<div id="qunit-fixture">
+		
 		<div id="content" about="http://example.org/nxhoaf/#me" 
         		prefix="foaf: http://xmlns.com/foaf/0.1/">
 		    <h1>Nxhoaf's Home Page</h1>
+		    
 		    <p>My name is <span property="foaf:nick">nxhoaf</span> and I like
 		      <a href="http://www.amazon.com/" property="foaf:interest"
 		        lang="en">Amazon</a>.
@@ -243,7 +272,7 @@
 		          <span resource="urn:ISBN:978-0321356680">
 		              book is the inspiring <br>
 		              <cite property="dc:title">Effective Java</cite> by
-		              <span property="dc:creator">Joshua Bloch</span>
+		              <span id="creator" property="dc:creator">Joshua Bloch</span>
 		          </span>
 		     </span>
 		    </p>
