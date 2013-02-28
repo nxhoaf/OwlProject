@@ -10,7 +10,11 @@ Examples based on this simple HTML page (say person.js)
 <html prefix="dc: http://purl.org/dc/terms/ schema: http://schema.org/">
   <head>
 	<meta charset="UTF-8" />
+	<link property="profile" href="http://www.w3.org/1999/xhtml/vocab" />
     <title>Nxhoaf's Home Page</title>
+    <base href="http://example.org/nxhoaf/" />
+    <meta property="dc:creator" content="Hoa Nguyen" />
+    <link rel="foaf:primaryTopic" href="#me" />
   </head>
   <body about="http://example.org/nxhoaf/#me" 
   		prefix="foaf: http://xmlns.com/foaf/0.1/">

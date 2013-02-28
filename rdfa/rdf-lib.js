@@ -357,6 +357,9 @@ var RdfLib = function() {
 		 */
 		var hasValue = function (value, constant, type) {
 			var hasValue = false;
+			
+			
+			
 			for (var item in constant) {
 				var value = constant[item];
 				if (triple[type].key == value) {
@@ -369,8 +372,8 @@ var RdfLib = function() {
 		
 		// subject, predicate and object must be not null
 		if ((triple.subject == null)
-				&& (triple.predicate == null)
-				&& (triple.object == null)) {
+				|| (triple.predicate == null)
+				|| (triple.object == null)) {
 			return false;
 		}
 		
@@ -379,9 +382,22 @@ var RdfLib = function() {
 		if (!hasValue(key, SUBJECT, "subject")) {
 			return false;
 		}
+
+		// Special case, subject becomes object, see 2.2.3 Alternative for setting 
+		// the context in http://www.w3.org/TR/xhtml-rdfa-primer/
+		// - quote -: 
+		// "The role of the resource attribute in the div element is to set the 
+		// "context", i.e., the subject for all the subsequent statements. Also, 
+		// when combined with the property attribute, resource can be used to set 
+		// the "target", i.e., the object for the statement (much as href)".
+		if ((triple.predicate.key == "property")
+				&& (triple.object.key == "resource")) {
+			return true;
+		}
 		
-		// Predicate must be predefined in predicate constant
+		
 		var key = triple.predicate.key;
+		// Predicate must be predefined in predicate constant
 		if (!hasValue(key, PREDICATE, "predicate")) {
 			return false;
 		}
@@ -405,24 +421,26 @@ var RdfLib = function() {
 		var children = $(element).children();
 		for (var i = 0; i < children.length; i++) {
 			var grandChildren = $(children[i]).children();
-			
+
 			// non trivial case, children is a nested node
-			if ((grandChildren != null) && (grandChildren.length > 0)) { 
+			if ((grandChildren != null) && (grandChildren.length > 0)) {
 				// First, get all triple in a sub node
 				var triples = rdfLib.getAllTriples(children[i]);
 				result = result.concat(triples);
+			} 
+			
+			// trivial case, only get triple in the current node
+			var triple = rdfLib.getTriple(children[i]);
+			if (triple != null) {
+				if (triple.subject == null) {
+					triple.subject =
+						rdfLib.getSubjectTriple(children[i]).subject
+				}
 				
-			}  // trivial case, only get triple in the current node
-				var triple = rdfLib.getTriple(children[i]);
-				if (triple != null) {
-					if (triple.subject == null) {
-						triple.subject = 
-							rdfLib.getSubjectTriple(children[i]).subject
-					}
+				if (rdfLib.isTriple(triple)) {
 					result.push(triple);
 				}
-			
-			
+			}
 		}
 		console.log("[RdfLib] [getAllAttributeTriples] - end");
 		return result;

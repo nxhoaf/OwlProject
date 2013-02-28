@@ -6,6 +6,7 @@
       Test result for rdf-lib.js
     </title>
     <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.11.0.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="http://code.jquery.com/qunit/qunit-1.11.0.js"></script>
     <script src="rdf-lib.js"></script>
     <script>
@@ -202,12 +203,51 @@
 			equal(rdfLib.isTriple(triple), false, 
 					"Object is null");
 		});
+		
+		
+		//######################################################################
+    	//                    Test unit for rdfLib.getAllTriples(element)
+    	//######################################################################
+    	module("--- getAllTriples() --- ")
+    	test("Blackbox test: Normal case", function () {
+    		var rdfLib = new RdfLib();
+    		var element = document.getElementById("content");
+    		var triples = rdfLib.getAllTriples(element);
+		});
+		
+		test("Blackbox test: Boundary case", function () {
+		
+		});
+		
+		test("Blackbox test: Exceptional case", function () {
+		
+		});
      </script>
   </head>
   <body>
 
 	<div id="qunit"></div>
 	<div id="qunit-fixture">
+		<div id="content" about="http://example.org/nxhoaf/#me" 
+        		prefix="foaf: http://xmlns.com/foaf/0.1/">
+		    <h1>Nxhoaf's Home Page</h1>
+		    <p>My name is <span property="foaf:nick">nxhoaf</span> and I like
+		      <a href="http://www.amazon.com/" property="foaf:interest"
+		        lang="en">Amazon</a>.
+		    </p>
+			
+		    <p>
+		      My 
+		      <span property="foaf:interest" resource="urn:ISBN:978-0321356680">
+		          favorite <br>
+		          <span resource="urn:ISBN:978-0321356680">
+		              book is the inspiring <br>
+		              <cite property="dc:title">Effective Java</cite> by
+		              <span property="dc:creator">Joshua Bloch</span>
+		          </span>
+		     </span>
+		    </p>
+		</div>
 	</div>
 	
   </body>
