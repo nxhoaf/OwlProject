@@ -1,8 +1,8 @@
-var RollingMenu = function () {
+var RollingMenu = function (owlLib, frHistoryLib) {
 	rollingMenu = {};
 	
 	
-	rollingMenu.drawMenu = function () {
+	rollingMenu.activateCss = function () {
         // On cache les sous-menus
         // sauf celui qui porte la classe "open_at_load" :
         $("ul.subMenu:not('.open_at_load')").hide();
@@ -41,43 +41,37 @@ var RollingMenu = function () {
 	}
 	
 	
-	rollingMenu.createMenu = function() {
-		var owlLib = new OwlLib();
-		owlLib.loadOwl("resource/programmeHistoire6emeV2.owl");   
+	rollingMenu.populateMenu = function(menuData) {
+//		var owlLib = new OwlLib();
 		
-    	var frHistoryLib = new FrHistoryLib(owlLib);
 		
-    	var themes = owlLib.getNamedIndividuals(
-    		"Programme_Histoire_College_France#theme");
-    	for (var i = 0; i < themes.length; i++) {
-			var theme = themes[i];
-			var themeMetadata = owlLib.getMetaData(theme);
+//    	var frHistoryLib = new FrHistoryLib(owlLib);
+		
+    	for (var i = 0; i < menuData.length; i++) {
+			var menuItem = menuData[i];
 			
 			// Get theme label and display it if not null
 			li = document.createElement("li");
 			li.setAttribute("class","toggleSubMenu");
 			a = document.createElement("a");http://youtu.be/IUiDfJG54fQ
 			a.title = "";
-			a.textContent = themeMetadata[CONSTANT.LABEL];
-			a.name = themeMetadata[CONSTANT.ABOUT];
+			a.textContent = menuItem.label;
+			a.name = menuItem.about;
 			li.appendChild(a);
 			
-			var allSubThemes = owlLib.getNamedIndividuals(
-					"Programme_Histoire_College_France#soustheme"); 
-			var subThemes = frHistoryLib.
-					getSubThemesOf(themeMetadata[CONSTANT.ABOUT], allSubThemes);
-			if ((subThemes != null) && (subThemes.length != 0)) {
+			var subItems = menuItem.subItems;
+			if ((subItems != null) && (subItems.length != 0)) {
 				// Has Sub Theme, create list of sub theme
 				ul = document.createElement("ul");
 				ul.setAttribute("class", "subMenu");
-				for (var j = 0; j < subThemes.length; j++) {
-					var subTheme = subThemes[j];
+				for (var j = 0; j < subItems.length; j++) {
+					var subItem = subItems[j];
 					
 					subLi = document.createElement("li");
 					
 					subA = document.createElement("a");
 					subA.title = "";
-					subA.name = subTheme[CONSTANT.ABOUT];
+					subA.name = subItem.about;
 					subA.onclick = function () {
 						var knowledge = frHistoryLib.
 								getKnowledgeOf(this.name);
@@ -109,7 +103,7 @@ var RollingMenu = function () {
 							knowledgeList.appendChild(br);
 						}
 					};
-					subA.textContent = subTheme[CONSTANT.LABEL];
+					subA.textContent = subItem.label;
 					subLi.appendChild(subA);
 					
 					// subLi.textContent = subTheme[CONSTANT.ABOUT];

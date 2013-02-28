@@ -1,5 +1,6 @@
 OwlLib = function () {
 	var owlLib = {};
+	
 	/**
 	 * Load Owl file from a specific url
 	 * @param url url to load

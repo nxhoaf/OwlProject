@@ -75,6 +75,41 @@ FrHistoryLib = function (owlLib) {
 	}
 	
 	
+	frHistoryLib.getMenuData = function() {
+		var menuData = [];
+		var themes = owlLib.getNamedIndividuals(
+				"Programme_Histoire_College_France#theme");
+		
+		for (var i = 0; i < themes.length; i++) {
+			var theme = themes[i];
+			var themeMetadata = owlLib.getMetaData(theme);
+			var menuItem = {}; // contain menu item
+			menuItem.label = themeMetadata[CONSTANT.LABEL];
+			menuItem.about = themeMetadata[CONSTANT.ABOUT];
+			
+			// Get its sub themes
+			var allSubThemes = owlLib.getNamedIndividuals(
+					"Programme_Histoire_College_France#soustheme"); 
+			var subThemes = frHistoryLib.
+					getSubThemesOf(themeMetadata[CONSTANT.ABOUT], allSubThemes);
+			
+			// Each menuItem may have zero or many sub themes;
+			menuItem.subItems = []; 
+			if ((subThemes != null) && (subThemes.length != 0)) {
+				for (var j = 0; j < subThemes.length; j++) {
+					var subTheme = subThemes[j];
+					var subThemeItem = {};
+					subThemeItem.label = subTheme[CONSTANT.LABEL];
+					subThemeItem.about = subTheme[CONSTANT.ABOUT];
+					menuItem.subItems.push(subThemeItem);
+				}
+			} 
+			menuData.push(menuItem);
+		}
+		
+		return menuData;
+		
+	}
 	
 	return frHistoryLib;
 };

@@ -20,12 +20,17 @@
     <script type="text/javascript">
     <!--
     $(document).ready( function () {
-    	// init();
 		
+		var owlLib = new OwlLib();
+		owlLib.loadOwl("resource/programmeHistoire6emeV2.owl");   
 		
-		var rollingMenu = new RollingMenu();
-		rollingMenu.createMenu();
-		rollingMenu.drawMenu();
+		var frHistoryLib = new FrHistoryLib(owlLib);
+		var rollingMenu = new RollingMenu(owlLib,frHistoryLib);
+		
+		var menuData = frHistoryLib.getMenuData(); 
+		rollingMenu.populateMenu(menuData);
+		
+		rollingMenu.activateCss();
 		
 		
     
