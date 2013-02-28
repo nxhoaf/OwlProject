@@ -349,6 +349,50 @@ var RdfLib = function() {
 
 	rdfLib.isTriple = function(triple) {
 		
+		/**
+		 * Check if a value is defined in a constant
+		 * @param value value to check
+		 * @param constant constant to check
+		 * @returns result
+		 */
+		var hasValue = function (value, constant, type) {
+			var hasValue = false;
+			for (var item in constant) {
+				var value = constant[item];
+				if (triple[type].key == value) {
+					hasValue = true;
+					break;
+				}
+			}
+			return hasValue;
+		}
+		
+		// subject, predicate and object must be not null
+		if ((triple.subject == null)
+				&& (triple.predicate == null)
+				&& (triple.object == null)) {
+			return false;
+		}
+		
+		// Subject must be predefined in subject constant
+		var key = triple.subject.key;
+		if (!hasValue(key, SUBJECT, "subject")) {
+			return false;
+		}
+		
+		// Predicate must be predefined in predicate constant
+		var key = triple.predicate.key;
+		if (!hasValue(key, PREDICATE, "predicate")) {
+			return false;
+		}
+		
+		// Object must be predefined in object constant
+		var key = triple.object.key;
+		if (!hasValue(key, OBJECT, "object")) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	/**

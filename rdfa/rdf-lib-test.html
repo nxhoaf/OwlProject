@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>
-      UnitTest for rdf-lib.js
+      Test result for rdf-lib.js
     </title>
     <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.11.0.css">
     <script src="http://code.jquery.com/qunit/qunit-1.11.0.js"></script>
@@ -11,7 +11,7 @@
     <script>
     
     	//######################################################################
-    	//                     addToIgnoreArray()
+    	//             Test unit for addToIgnoreArray()
     	//###################################################################### 
     	
     	module("--- addToIgnoreArray() --- ")
@@ -82,7 +82,126 @@
 		});
 		
 		
+		//######################################################################
+    	//                    Test unit for isTriple()
+    	//######################################################################
+    	module("--- isTriple() --- ")
+    	test("Blackbox test: Normal case", function () {
+			var subject = {};
+			var predicate = {};
+			var object = {};
+			var triple = {};
+			
+			// Init subject
+			subject.key = "about";
+			subject.value = "com.nxhoaf/#me";
+			
+			// Init predicate
+			predicate.key = "property";
+			predicate.value = "foaf:nick";
+			
+			// Init object
+			object.key = "literal";
+			object.value = "nxhoaf";
+									
+			triple.subject = subject;
+			triple.predicate = predicate;
+			triple.object = object;
+			
+			// Begin first test			
+			var rdfLib = new RdfLib();
+			ok(rdfLib.isTriple(triple), "Normal case")
+			
+			triple.object.key = object;
+			
+			
+		});
 		
+		// Blackbox test: Boundary case", the same as whitebox test MC/DC
+		
+		test("Blackbox test: Exceptional case", function () {
+			var subject = {};
+			var predicate = {};
+			var object = {};
+			var triple = {};
+			
+			// Init subject
+			subject.key = "strangerName";
+			subject.value = "com.nxhoaf/#me";
+			
+			// Init predicate
+			predicate.key = "property";
+			predicate.value = "foaf:nick";
+			
+			// Init object
+			object.key = "literal";
+			object.value = "nxhoaf";
+									
+			triple.subject = subject;
+			triple.predicate = predicate;
+			triple.object = object;
+			
+			var rdfLib = new RdfLib();
+		
+			// First test
+			equal(rdfLib.isTriple(triple), false, 
+					"Stranger subject key");
+					
+			// Second test
+			triple.subject.key = "about";
+			triple.predicate.key = "strangerName";
+			equal(rdfLib.isTriple(triple), false, 
+					"Stranger predicate key");
+					
+			// Third test
+			triple.predicate.key = "property";
+			triple.object.key = "strangerName";
+			equal(rdfLib.isTriple(triple), false, 
+					"Stranger object key");
+		});
+		
+		test("Whitebox test: Coverage MC/DC", function () {
+			var subject = {};
+			var predicate = {};
+			var object = {};
+			var triple = {};
+			
+			// Init subject
+			subject.key = "strangerName";
+			subject.value = "com.nxhoaf/#me";
+			
+			// Init predicate
+			predicate.key = "property";
+			predicate.value = "foaf:nick";
+			
+			// Init object
+			object.key = "literal";
+			object.value = "nxhoaf";
+									
+			triple.subject = subject;
+			triple.predicate = predicate;
+			triple.object = object;
+			
+			// First test: all are not null. Already done in 
+			// "Blackbox test: Normal case"
+			var rdfLib = new RdfLib();
+			// Second test subject is null
+			predicate.subject = null;
+			equal(rdfLib.isTriple(triple), false, 
+					"Subject is null");
+					
+			// Third test predicate is null
+			triple.subject = subject;
+			triple.predicate = null;
+			equal(rdfLib.isTriple(triple), false, 
+					"Predicate is null");
+					
+			// Fourth test subject is null
+			triple.predicate = predicate;
+			triple.object = null;
+			equal(rdfLib.isTriple(triple), false, 
+					"Object is null");
+		});
      </script>
   </head>
   <body>
