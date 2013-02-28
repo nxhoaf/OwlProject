@@ -1,12 +1,4 @@
 FrHistoryLib = {};
-FrHistoryLib.constant = {};
-
-
-FrHistoryLib.constant = {
-	FAIT_PARTIE_DE 	: "faitPartieDe",
-	ORGANIZATION 	: "organisation-systeme-scolaire-francais",
-	PROGRAM 		: "programme_histoire_college_france"	
-}
 
 FrHistoryLib.getFaitPartieDe = function (element) {
 	var properties = {};
@@ -16,7 +8,7 @@ FrHistoryLib.getFaitPartieDe = function (element) {
 	var fptNS = OwlLib.nameSpaces["programme_histoire_college_france"];
 	var faitPartieDe = element.
 			getElementsByTagNameNS(	fptNS, 
-									FrHistoryLib.constant.FAIT_PARTIE_DE)[0];
+									CONSTANT.FAIT_PARTIE_DE)[0];
 	if ((faitPartieDe != null) 
 			&& (faitPartieDe.
 					getAttribute(CONSTANT.RESOURCE) != null)) {
@@ -44,7 +36,7 @@ FrHistoryLib.getSubThemesOf = function (theme, subThemes) {
 		
 		// Found one, Get other properties
 		var stProperties = OwlLib.getMetaData(subTheme);
-		stProperties[FrHistoryLib.constant.FAIT_PARTIE_DE] = faitPartieDe;
+		stProperties[CONSTANT.FAIT_PARTIE_DE] = faitPartieDe;
 		// Save it
 		result.push(stProperties);
 	}
@@ -69,7 +61,7 @@ FrHistoryLib.getKnowledgeOf = function (theme) {
 		
 		// Found one, Get other properties
 		var stProperties = OwlLib.getMetaData(item);
-		stProperties[FrHistoryLib.constant.FAIT_PARTIE_DE] = faitPartieDe;
+		stProperties[CONSTANT.FAIT_PARTIE_DE] = faitPartieDe;
 		// Save it
 		
 		result.push(stProperties);

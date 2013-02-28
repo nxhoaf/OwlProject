@@ -6,4 +6,8 @@ CONSTANT = {
 	RDF				: "RDF", 
 	RESOURCE 		: "rdf:resource", 
 	TYPE 			: "type",  
+	
+	FAIT_PARTIE_DE 	: "faitPartieDe",
+	ORGANIZATION 	: "organisation-systeme-scolaire-francais",
+	PROGRAM 		: "programme_histoire_college_france"	
 }
