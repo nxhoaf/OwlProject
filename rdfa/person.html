@@ -82,7 +82,9 @@
 	<script>
 		var output;
 		$("body").click(function(event) {
-			var triple = RdfLib.getTriple(event.target);
+			var rdfLib = new RdfLib();
+			
+			var triple = rdfLib.getTriple(event.target);
 			var output = "All triples <br>";
 			output += "----------------------- <br>"
 			
@@ -96,7 +98,7 @@
 			}
 			
 			if (triple.subject == null) {
-				triple.subject = RdfLib.getSubjectTriple(event.target).subject;
+				triple.subject = rdfLib.getSubjectTriple(event.target).subject;
 				output += "subject: " + triple.subject.key + ":" + 
 						triple.subject.value;
 				output += "<br>";
@@ -111,7 +113,7 @@
 				
 				$("#log").html(output);
 			} else {
-				var triples = RdfLib.getAllTriples(event.target);
+				var triples = rdfLib.getAllTriples(event.target);
 				for (var i = 0; i < triples.length; i++) {
 					triple = triples[i];
 					if (triple.subject != null) {
