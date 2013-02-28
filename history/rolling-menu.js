@@ -43,7 +43,8 @@ var RollingMenu = function () {
 	
 	rollingMenu.createMenu = function() {
 		OwlLib.loadOwl("resource/programmeHistoire6emeV2.owl");   	
-    	
+    	var frHistoryLib = new FrHistoryLib();
+		
     	var themes = OwlLib.getNamedIndividuals(
     		"Programme_Histoire_College_France#theme");
     	for (var i = 0; i < themes.length; i++) {
@@ -61,7 +62,7 @@ var RollingMenu = function () {
 			
 			var allSubThemes = OwlLib.getNamedIndividuals(
 					"Programme_Histoire_College_France#soustheme"); 
-			var subThemes = FrHistoryLib.
+			var subThemes = frHistoryLib.
 					getSubThemesOf(themeMetadata[CONSTANT.ABOUT], allSubThemes);
 			if ((subThemes != null) && (subThemes.length != 0)) {
 				// Has Sub Theme, create list of sub theme
@@ -76,7 +77,7 @@ var RollingMenu = function () {
 					subA.title = "";
 					subA.name = subTheme[CONSTANT.ABOUT];
 					subA.onclick = function () {
-						var knowledge = FrHistoryLib.
+						var knowledge = frHistoryLib.
 								getKnowledgeOf(this.name);
 								
 						var knowledgeList = document.
@@ -118,7 +119,7 @@ var RollingMenu = function () {
 				
 				a.onclick = function () {
 					console.log(a.textContent + " don't have sub elements");
-					var knowledge = FrHistoryLib.
+					var knowledge = frHistoryLib.
 								getKnowledgeOf(this.name);
 					var knowledgeList = document.
 							getElementById("knowledgeList");
