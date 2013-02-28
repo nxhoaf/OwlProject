@@ -65,8 +65,8 @@ var RdfLib = function() {
 	 * 
 	 */
 	rdfLib.addToIgnoreArray = function(ignoreArray) {
-		if (RdfLib.ignoreArray == null) {
-			RdfLib.ignoreArray = [];
+		if (rdfLib.ignoreArray == null) {
+			rdfLib.ignoreArray = [];
 		}
 		
 		if ((ignoreArray == null) && (ignoreArray.length == 0)) {
@@ -75,7 +75,7 @@ var RdfLib = function() {
 		
 		for (var i = 0; i < ignoreArray.length; i++) {
 			item = ignoreArray[i];
-			RdfLib.ignoreArray.push(item);
+			rdfLib.ignoreArray.push(item);
 		}
 	};
 	
@@ -87,8 +87,8 @@ var RdfLib = function() {
 			return false;
 		}
 		
-		if ((RdfLib.ignoreArray != null) && (RdfLib.ignoreArray.length != 0)) {
-			if (RdfLib.ignoreArray.indexOf(triple.predicate.value) != -1) {
+		if ((rdfLib.ignoreArray != null) && (rdfLib.ignoreArray.length != 0)) {
+			if (rdfLib.ignoreArray.indexOf(triple.predicate.value) != -1) {
 				return false;
 			}
 		}
@@ -289,7 +289,7 @@ var RdfLib = function() {
 		}
 		
 		// Not a real triple
-		if (!RdfLib.isTriple(triple)) {
+		if (!rdfLib.isTriple(triple)) {
 			return null;
 		} else {
 			return triple;
@@ -309,7 +309,7 @@ var RdfLib = function() {
 		if (parent == null) {
 			return null;
 		}
-		var triple = RdfLib.getTriple(parent);
+		var triple = rdfLib.getTriple(parent);
 		
 		// If we don't find out subject: 
 		// 		((triple == null) || (triple.subject == null))
@@ -318,7 +318,7 @@ var RdfLib = function() {
 		// then we continue searching (recursive)
 		while ((parent.parentNode != document) 
 				&& ((triple == null) || (triple.subject == null))) {
-			triple = RdfLib.getSubjectTriple(element.parentNode);
+			triple = rdfLib.getSubjectTriple(element.parentNode);
 		}
 		
 		// Still not found, return default triple
@@ -351,15 +351,15 @@ var RdfLib = function() {
 			// non trivial case, children is a nested node
 			if ((grandChildren != null) && (grandChildren.length > 0)) { 
 				// First, get all triple in a sub node
-				var triples = RdfLib.getAllTriples(children[i]);
+				var triples = rdfLib.getAllTriples(children[i]);
 				result = result.concat(triples);
 				
 			}  // trivial case, only get triple in the current node
-				var triple = RdfLib.getTriple(children[i]);
+				var triple = rdfLib.getTriple(children[i]);
 				if (triple != null) {
 					if (triple.subject == null) {
 						triple.subject = 
-							RdfLib.getSubjectTriple(children[i]).subject
+							rdfLib.getSubjectTriple(children[i]).subject
 					}
 					result.push(triple);
 				}

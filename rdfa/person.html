@@ -33,12 +33,14 @@
 			for (var i = 0; i < triples.length; i++) {
 				triple = triples[i];
 				if (triple.subject != null) {
-					output += "subject: " + triple.subject.key + ":" + triple.subject.value;
+					output += "subject: " + triple.subject.key + ":" + 
+							triple.subject.value;
 					output += "<br>";	
 				}
 				
 				if (triple.predicate != null) {
-					output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
+					output += "predicate: " +  triple.predicate.key + ":" + 
+							triple.predicate.value;
 					output += "<br>";
 				} else {
 					output += "predicate: null";
@@ -46,7 +48,8 @@
 				}
 				
 				if (triple.object != null) {
-					output += "object: " +  triple.object.key + ":" + triple.object.value;
+					output += "object: " +  triple.object.key + ":" + 
+							triple.object.value;
 					output += "<br>";
 				}	
 				output += "------------------------------<br>";
@@ -59,7 +62,8 @@
 		});
 	</script>
   </head>
-  <body about="http://example.org/nxhoaf/#me" prefix="foaf: http://xmlns.com/foaf/0.1/">
+  <body about="http://example.org/nxhoaf/#me" 
+  		prefix="foaf: http://xmlns.com/foaf/0.1/">
     <h1>Nxhoaf's Home Page</h1>
     <p>My name is <span property="foaf:nick">nxhoaf</span> and I like
       <a href="http://www.amazon.com/" property="foaf:interest"
@@ -94,13 +98,16 @@
 			
 			if (triple.subject == null) {
 				triple.subject = RdfLib.getSubjectTriple(event.target).subject;
-				output += "subject: " + triple.subject.key + ":" + triple.subject.value;
+				output += "subject: " + triple.subject.key + ":" + 
+						triple.subject.value;
 				output += "<br>";
 				
-				output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
+				output += "predicate: " +  triple.predicate.key + ":" + 
+						triple.predicate.value;
 				output += "<br>";
 				
-				output += "object: " +  triple.object.key + ":" + triple.object.value;
+				output += "object: " +  triple.object.key + ":" + 
+						triple.object.value;
 				output += "<br>";
 				
 				$("#log").html(output);
@@ -109,17 +116,20 @@
 				for (var i = 0; i < triples.length; i++) {
 					triple = triples[i];
 					if (triple.subject != null) {
-						output += "subject: " + triple.subject.key + ":" + triple.subject.value;
+						output += "subject: " + triple.subject.key + ":" + 
+								triple.subject.value;
 						output += "<br>";	
 					}
 					
 					if (triple.predicate != null) {
-						output += "predicate: " +  triple.predicate.key + ":" + triple.predicate.value;
+						output += "predicate: " +  triple.predicate.key + ":" + 
+								triple.predicate.value;
 						output += "<br>";
 					}
 					
 					if (triple.object != null) {
-						output += "object: " +  triple.object.key + ":" + triple.object.value;
+						output += "object: " +  triple.object.key + ":" + 
+								triple.object.value;
 						output += "<br>";
 					}	
 					output += "------------------------------<br>";
