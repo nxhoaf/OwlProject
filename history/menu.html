@@ -22,9 +22,9 @@
     $(document).ready( function () {
 		
 		var owlLib = new OwlLib();
-		owlLib.loadOwl("resource/programmeHistoire6emeV2.owl");   
-		
+		owlLib.loadOwl("resource/programmeHistoire6emeV3.owl");   
 		var frHistoryLib = new FrHistoryLib(owlLib);
+		
 		var rollingMenu = new RollingMenu(owlLib,frHistoryLib);
 		
 		var menuData = frHistoryLib.getMenuData(); 

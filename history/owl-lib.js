@@ -27,7 +27,6 @@ OwlLib = function () {
 		xmlDoc = (new DOMParser()).parseFromString(xmlDoc, 'text/xml');
 		owlLib.xmlDoc = xmlDoc;
 		owlLib.nameSpaces = owlLib.loadNameSpace();
-		
 		console.log("[OwlLib] [loadOwl] - end");
 	}
 
@@ -93,8 +92,9 @@ OwlLib = function () {
 //			var rdfType = niElement.getElementsByTagName(CONSTANT.TYPE)[0];
 			
 			// Get rdfType, if any
+			var currentType;
 			if (rdfType != null) { // found type attribute
-				var currentType = rdfType.getAttribute(CONSTANT.RESOURCE); 
+				currentType = rdfType.getAttribute(CONSTANT.RESOURCE); 
 			}
 			
 			// Found a type, but not matched, skip it

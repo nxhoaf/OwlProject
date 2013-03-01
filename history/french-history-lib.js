@@ -50,7 +50,7 @@ FrHistoryLib = function (owlLib) {
 
 	frHistoryLib.getKnowledgeOf = function (theme) {
 		var knowledge = owlLib.getNamedIndividuals( 
-				"Programme_Histoire_College_France#connaissance");
+				"Programme_Histoire_College_France#knowledge");
 		
 		var result = []; // store result
 		for (var i = 0; i < knowledge.length; i++) {
@@ -78,7 +78,8 @@ FrHistoryLib = function (owlLib) {
 	frHistoryLib.getMenuData = function() {
 		var menuData = [];
 		var themes = owlLib.getNamedIndividuals(
-				"Programme_Histoire_College_France#theme");
+				"file:/C:/Documents/Dvpt/ILOTLeLivreScolaire/Code/ILOT/Programme_Histoire_College_France#subtheme");
+		
 		
 		for (var i = 0; i < themes.length; i++) {
 			var theme = themes[i];
@@ -89,7 +90,7 @@ FrHistoryLib = function (owlLib) {
 			
 			// Get its sub themes
 			var allSubThemes = owlLib.getNamedIndividuals(
-					"Programme_Histoire_College_France#soustheme"); 
+					"Programme_Histoire_College_France#subtheme"); 
 			var subThemes = frHistoryLib.
 					getSubThemesOf(themeMetadata[CONSTANT.ABOUT], allSubThemes);
 			
