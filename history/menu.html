@@ -23,8 +23,8 @@
 		
 		var historyOwl = new OwlObject();
 		historyOwl.loadOwl("resource/programmeHistoire6emeV3.owl");   
-		var frHistoryLib = new EducationProgram(historyOwl);
-		var rollingMenu = new RollingMenu(frHistoryLib);
+		var historyProgram = new EducationProgram(historyOwl);
+		var rollingMenu = new RollingMenu(historyOwl, historyProgram);
 		
 		// Don't need path anymore, because historyOwl.loadOwl(path);  is pulled
 		// out of the createProgramMenu()
@@ -32,7 +32,7 @@
 		var themeFilter = historyOwl.
 				nameSpaces["organisation-systeme-scolaire-francais"] + 
 				"programmeHistoire6eme";
-		var historyMenu = frHistoryLib.createProgramMenu(themeFilter, prefix); 
+		var historyMenu = historyProgram.createProgramMenu(themeFilter, prefix); 
 		rollingMenu.drawMenu(historyMenu);
     } ) ;
     

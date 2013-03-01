@@ -4,43 +4,38 @@ EducationProgram = function (owlObject) {
 	educationProgram.getIsPartOf = function (element) {
 		var properties = {};
 		var isEmpty = true;
-
-		// get "faitPartieDe" attribute, if any
-		// var fptNS = OwlLib.nameSpaces["programme_histoire_college_france"];
 		
-		var fptNS = "Programme_Histoire_College_France#";
+		var isPartOfNS = owlObject.nameSpaces["Programme_Histoire_College_France"];
 		
-		var faitPartieDe = element.
-				getElementsByTagNameNS(	fptNS, 
+		var isPartOfTag = element.
+				getElementsByTagNameNS(	isPartOfNS, 
 										CONSTANT.IS_PART_OF)[0];
-		if ((faitPartieDe != null) 
-				&& (faitPartieDe.
+		if ((isPartOfTag != null) 
+				&& (isPartOfTag.
 						getAttribute(CONSTANT.RESOURCE) != null)) {
-			value = faitPartieDe.getAttribute(CONSTANT.RESOURCE);
+			value = isPartOfTag.getAttribute(CONSTANT.RESOURCE);
 			// Found, return
 			return value;
 		}
 		return null;
 	}
 
-	educationProgram.getSubThemesOf = function (theme, subThemes) {
-		// get all subthemes
-//		var subThemes = OwlLib.getNamedIndividuals(
-//				"Programme_Histoire_College_France#soustheme"); 
+	educationProgram.getSubThemesOf = function (theme, allSubThemes) {
 		var result = []; // store result
-		for (var i = 0; i < subThemes.length; i++) {
-			var subTheme = subThemes[i];
-			
-			// Get "faitPartieDe" property
-			var faitPartieDe = educationProgram.getIsPartOf(subTheme);
+		console.log("theme: " + theme);
+		console.log("allSubtheme: " + allSubThemes.length);
+		for (var i = 0; i < allSubThemes.length; i++) {
+			var subTheme = allSubThemes[i];
+			// Get "isPartOf" property
+			var isPartOf = educationProgram.getIsPartOf(subTheme);
 			// If this sub theme doesn't belong to the theme, we continue
-			if (faitPartieDe == null || faitPartieDe != theme) {
+			if (isPartOf == null || isPartOf != theme) {
 				continue;
 			}
 			
 			// Found one, Get other properties
 			var stProperties = owlObject.getMetaData(subTheme);
-			stProperties[CONSTANT.IS_PART_OF] = faitPartieDe;
+			stProperties[CONSTANT.IS_PART_OF] = isPartOf;
 			// Save it
 			result.push(stProperties);
 		}
@@ -56,10 +51,10 @@ EducationProgram = function (owlObject) {
 		for (var i = 0; i < knowledge.length; i++) {
 			var item = knowledge[i];
 			
-			// Get "faitPartieDe" property
-			var faitPartieDe = educationProgram.getIsPartOf(item);
+			// Get "isPartOf" property
+			var isPartOf = educationProgram.getIsPartOf(item);
 			// If this sub theme doesn't belong to the theme, we continue
-			if (faitPartieDe == null || faitPartieDe != theme) {
+			if (isPartOf == null || isPartOf != theme) {
 				continue;
 			}
 			
@@ -79,19 +74,19 @@ EducationProgram = function (owlObject) {
 		var programMenu = [];
 		var themes = owlObject.getNamedIndividuals(prefix + "subtheme");
 		
-		
 		for (var i = 0; i < themes.length; i++) {
 			var theme = themes[i];
+			if (educationProgram.getIsPartOf(theme) != filter) {
+				continue;
+			}
+			
+			
 			var themeMetadata = owlObject.getMetaData(theme);
 			var menuItem = {}; // contain menu item
 			menuItem.label = themeMetadata[CONSTANT.LABEL];
 			menuItem.about = themeMetadata[CONSTANT.ABOUT];
-			
-			// Get its sub themes
-			var allSubThemes = owlObject.getNamedIndividuals(
-					"Programme_Histoire_College_France#subtheme"); 
 			var subThemes = educationProgram.
-					getSubThemesOf(themeMetadata[CONSTANT.ABOUT], allSubThemes);
+					getSubThemesOf(themeMetadata[CONSTANT.ABOUT], themes);
 			
 			// Each menuItem may have zero or many sub themes;
 			menuItem.subItems = []; 

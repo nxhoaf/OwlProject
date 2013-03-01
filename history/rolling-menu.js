@@ -1,4 +1,4 @@
-var RollingMenu = function (frHistoryLib) {
+var RollingMenu = function (owlObject, frHistoryLib) {
 	rollingMenu = {};
 	
 	/**

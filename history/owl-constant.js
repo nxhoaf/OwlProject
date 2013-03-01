@@ -7,7 +7,7 @@ CONSTANT = {
 	RESOURCE 		: "rdf:resource", 
 	TYPE 			: "type",  
 	
-	IS_PART_OF 	: "faitPartieDe",
+	IS_PART_OF 	: "isPartOf",
 	ORGANIZATION 	: "organisation-systeme-scolaire-francais",
 	PROGRAM 		: "programme_histoire_college_france"	
 }
