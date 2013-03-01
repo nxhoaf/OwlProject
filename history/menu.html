@@ -24,11 +24,14 @@
 		var historyOwl = new OwlObject();
 		historyOwl.loadOwl("resource/programmeHistoire6emeV3.owl");   
 		var frHistoryLib = new FrHistoryLib(historyOwl);
-		
-		
 		var rollingMenu = new RollingMenu(frHistoryLib);
-		var menuData = frHistoryLib.createProgramMenu(); 
-		rollingMenu.drawMenu(menuData);
+		
+		// Don't need path anymore, because historyOwl.loadOwl(path);  is pulled
+		// out of the createProgramMenu()
+		var prefix = historyOwl.nameSpaces["Programme_Histoire_College_France"];
+		var filter = null;
+		var historyMenu = frHistoryLib.createProgramMenu(filter, prefix); 
+		rollingMenu.drawMenu(historyMenu);
 		
 		
 		
