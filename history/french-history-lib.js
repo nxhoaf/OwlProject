@@ -75,8 +75,8 @@ FrHistoryLib = function (owlLib) {
 	}
 	
 	
-	frHistoryLib.getMenuData = function() {
-		var menuData = [];
+	frHistoryLib.createProgramMenu = function() {
+		var programMenu = [];
 		var themeNS = owlLib.nameSpaces["Programme_Histoire_College_France"];
 		var themes = owlLib.getNamedIndividuals(themeNS + "subtheme");
 		
@@ -105,10 +105,10 @@ FrHistoryLib = function (owlLib) {
 					menuItem.subItems.push(subThemeItem);
 				}
 			} 
-			menuData.push(menuItem);
+			programMenu.push(menuItem);
 		}
 		
-		return menuData;
+		return programMenu;
 		
 	}
 	
