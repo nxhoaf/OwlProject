@@ -61,6 +61,8 @@ var RollingMenu = function (frHistoryLib) {
 				// Has Sub Theme, create list of sub theme
 				ul = document.createElement("ul");
 				ul.setAttribute("class", "subMenu");
+				var knowledgePrefix = 
+					owlObject.nameSpaces["Programme_Histoire_College_France"];
 				for (var j = 0; j < subItems.length; j++) {
 					var subItem = subItems[j];
 					
@@ -71,7 +73,7 @@ var RollingMenu = function (frHistoryLib) {
 					subA.name = subItem.about;
 					subA.onclick = function () {
 						var knowledge = frHistoryLib.
-								getKnowledgeOf(this.name);
+								getKnowledgeOf(this.name, knowledgePrefix);
 								
 						var knowledgeList = document.
 								getElementById("knowledgeList");
@@ -109,7 +111,7 @@ var RollingMenu = function (frHistoryLib) {
 				a.onclick = function () {
 					console.log(a.textContent + " don't have sub elements");
 					var knowledge = frHistoryLib.
-								getKnowledgeOf(this.name);
+								getKnowledgeOf(this.name, knowledgePrefix);
 					var knowledgeList = document.
 							getElementById("knowledgeList");
 					knowledgeList.innerHTML = ""; // clear content

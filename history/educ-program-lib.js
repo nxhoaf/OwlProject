@@ -48,11 +48,9 @@ EducationProgram = function (owlObject) {
 		return result;
 	}
 
-	educationProgram.getKnowledgeOf = function (theme) {
-		var knowledgeNS = 
-				owlObject.nameSpaces["Programme_Histoire_College_France"];
+	educationProgram.getKnowledgeOf = function (theme, prefix) {
 		var knowledge = 
-				owlObject.getNamedIndividuals( knowledgeNS + "knowledge");
+				owlObject.getNamedIndividuals( prefix + "knowledge");
 		
 		var result = []; // store result
 		for (var i = 0; i < knowledge.length; i++) {
