@@ -1,7 +1,7 @@
 EducationProgram = function (owlObject) {
 	var educationProgram = {};
 	
-	educationProgram.getFaitPartieDe = function (element) {
+	educationProgram.getIsPartOf = function (element) {
 		var properties = {};
 		var isEmpty = true;
 
@@ -12,7 +12,7 @@ EducationProgram = function (owlObject) {
 		
 		var faitPartieDe = element.
 				getElementsByTagNameNS(	fptNS, 
-										CONSTANT.FAIT_PARTIE_DE)[0];
+										CONSTANT.IS_PART_OF)[0];
 		if ((faitPartieDe != null) 
 				&& (faitPartieDe.
 						getAttribute(CONSTANT.RESOURCE) != null)) {
@@ -32,7 +32,7 @@ EducationProgram = function (owlObject) {
 			var subTheme = subThemes[i];
 			
 			// Get "faitPartieDe" property
-			var faitPartieDe = educationProgram.getFaitPartieDe(subTheme);
+			var faitPartieDe = educationProgram.getIsPartOf(subTheme);
 			// If this sub theme doesn't belong to the theme, we continue
 			if (faitPartieDe == null || faitPartieDe != theme) {
 				continue;
@@ -40,7 +40,7 @@ EducationProgram = function (owlObject) {
 			
 			// Found one, Get other properties
 			var stProperties = owlObject.getMetaData(subTheme);
-			stProperties[CONSTANT.FAIT_PARTIE_DE] = faitPartieDe;
+			stProperties[CONSTANT.IS_PART_OF] = faitPartieDe;
 			// Save it
 			result.push(stProperties);
 		}
@@ -59,7 +59,7 @@ EducationProgram = function (owlObject) {
 			var item = knowledge[i];
 			
 			// Get "faitPartieDe" property
-			var faitPartieDe = educationProgram.getFaitPartieDe(item);
+			var faitPartieDe = educationProgram.getIsPartOf(item);
 			// If this sub theme doesn't belong to the theme, we continue
 			if (faitPartieDe == null || faitPartieDe != theme) {
 				continue;
@@ -67,7 +67,7 @@ EducationProgram = function (owlObject) {
 			
 			// Found one, Get other properties
 			var stProperties = owlObject.getMetaData(item);
-			stProperties[CONSTANT.FAIT_PARTIE_DE] = faitPartieDe;
+			stProperties[CONSTANT.IS_PART_OF] = faitPartieDe;
 			// Save it
 			
 			result.push(stProperties);
