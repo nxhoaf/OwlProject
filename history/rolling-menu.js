@@ -43,7 +43,7 @@ var RollingMenu = function (frHistoryLib) {
 	}
 	
 	
-	rollingMenu.populateMenu = function(menuData) {
+	rollingMenu.drawMenu = function(menuData) {
     	for (var i = 0; i < menuData.length; i++) {
 			var menuItem = menuData[i];
 			
@@ -148,6 +148,9 @@ var RollingMenu = function (frHistoryLib) {
 			}
 			document.getElementById("navigation").appendChild(li);
 		}
+    	
+    	// Ok, now display the menu
+    	rollingMenu.display();
 	}
 	
 	return rollingMenu;

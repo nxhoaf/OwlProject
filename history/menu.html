@@ -21,16 +21,16 @@
     <!--
     $(document).ready( function () {
 		
-		var owlLib = new OwlObject();
-		owlLib.loadOwl("resource/programmeHistoire6emeV3.owl");   
-		var frHistoryLib = new FrHistoryLib(owlLib);
+		var historyOwl = new OwlObject();
+		historyOwl.loadOwl("resource/programmeHistoire6emeV3.owl");   
+		var frHistoryLib = new FrHistoryLib(historyOwl);
+		
 		
 		var rollingMenu = new RollingMenu(frHistoryLib);
-		
 		var menuData = frHistoryLib.createProgramMenu(); 
-		rollingMenu.populateMenu(menuData);
+		rollingMenu.drawMenu(menuData);
 		
-		rollingMenu.display();
+		
 		
 		
     
