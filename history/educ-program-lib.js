@@ -1,11 +1,17 @@
 EducationProgram = function (owlObject) {
 	var educationProgram = {};
 	
+	/**
+	 * Get is 'isPartOf' Property of an element
+	 * @param element the element to get property
+	 * @returns 'isPartOf' property if any, or null
+	 */
 	educationProgram.getIsPartOf = function (element) {
 		var properties = {};
 		var isEmpty = true;
 		
-		var isPartOfNS = owlObject.nameSpaces["Programme_Histoire_College_France"];
+		var isPartOfNS = owlObject.
+				nameSpaces["Programme_Histoire_College_France"];
 		
 		var isPartOfTag = element.
 				getElementsByTagNameNS(	isPartOfNS, 
@@ -20,6 +26,9 @@ EducationProgram = function (owlObject) {
 		return null;
 	}
 
+	/**
+	 * Find all sub theme of a theme 
+	 */
 	educationProgram.getSubThemesOf = function (theme, allSubThemes) {
 		var result = []; // store result
 		console.log("theme: " + theme);

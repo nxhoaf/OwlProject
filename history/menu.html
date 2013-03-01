@@ -21,13 +21,17 @@
     <!--
     $(document).ready( function () {
 		
+		// Init new History Owl object
 		var historyOwl = new OwlObject();
-		historyOwl.loadOwl("resource/programmeHistoire6emeV3.owl");   
+		historyOwl.loadOwl("resource/programmeHistoire6emeV3.owl");
+		
+		// Init new History Program object   
 		var historyProgram = new EducationProgram(historyOwl);
+		
+		// Create new rolling menu
 		var rollingMenu = new RollingMenu(historyOwl, historyProgram);
 		
-		// Don't need path anymore, because historyOwl.loadOwl(path);  is pulled
-		// out of the createProgramMenu()
+		// Display the created rolling menu 
 		var prefix = historyOwl.nameSpaces["Programme_Histoire_College_France"];
 		var themeFilter = historyOwl.
 				nameSpaces["organisation-systeme-scolaire-francais"] + 

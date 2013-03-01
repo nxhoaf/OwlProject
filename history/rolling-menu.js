@@ -1,4 +1,4 @@
-var RollingMenu = function (owlObject, frHistoryLib) {
+var RollingMenu = function (owlObject, historyProgram) {
 	rollingMenu = {};
 	
 	/**
@@ -72,7 +72,7 @@ var RollingMenu = function (owlObject, frHistoryLib) {
 					subA.title = "";
 					subA.name = subItem.about;
 					subA.onclick = function () {
-						var knowledge = frHistoryLib.
+						var knowledge = historyProgram.
 								getKnowledgeOf(this.name, knowledgePrefix);
 								
 						var knowledgeList = document.
@@ -110,7 +110,7 @@ var RollingMenu = function (owlObject, frHistoryLib) {
 			} else {
 				a.onclick = function () {
 					console.log(a.textContent + " don't have sub elements");
-					var knowledge = frHistoryLib.
+					var knowledge = historyProgram.
 								getKnowledgeOf(this.name, knowledgePrefix);
 					var knowledgeList = document.
 							getElementById("knowledgeList");
