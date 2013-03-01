@@ -1,12 +1,12 @@
 OwlObject = function () {
-	var owlLib = {};
+	var owlObject = {};
 	
 	/**
 	 * Load Owl file from a specific url
 	 * @param url url to load
 	 * @returns url content will be load into Owl.loadOwl object
 	 */
-	owlLib.loadOwl = function(url) {
+	owlObject.loadOwl = function(url) {
 		console.log("[OwlObject] [loadOwl] - begin");
 		
 		// TODO: Regrex to test url
@@ -25,8 +25,8 @@ OwlObject = function () {
 		xhr.send();
 		xmlDoc = xhr.response;
 		xmlDoc = (new DOMParser()).parseFromString(xmlDoc, 'text/xml');
-		owlLib.xmlDoc = xmlDoc;
-		owlLib.nameSpaces = owlLib.loadNameSpace();
+		owlObject.xmlDoc = xmlDoc;
+		owlObject.nameSpaces = owlObject.loadNameSpace();
 		console.log("[OwlObject] [loadOwl] - end");
 	}
 
@@ -42,12 +42,12 @@ OwlObject = function () {
 	 * namespaces[owl] = "http://www.w3.org/2002/07/owl#"
 	 * namespaces[xsd] = "http://www.w3.org/2001/XMLSchema#"
 	 */
-	owlLib.loadNameSpace = function() {
+	owlObject.loadNameSpace = function() {
 		console.log("[OwlObject] [loadNameSpace]");
 		var result = {}; // store the result
 		// Named Individual elements
 		var rdfNs = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-		var rdf= owlLib.xmlDoc.
+		var rdf= owlObject.xmlDoc.
 				getElementsByTagNameNS(rdfNs,CONSTANT.RDF)[0];
 		var attributes = rdf.attributes;
 		for (var i = 0; i < attributes.length; i++) {
@@ -75,18 +75,18 @@ OwlObject = function () {
 	 * ex: themes = getNamedIndividuals("theme", "programme_histoire_college_france");
 	 * will return all NamedIndividual whose type is "theme" 
 	 */
-	owlLib.getNamedIndividuals = function(type) {
+	owlObject.getNamedIndividuals = function(type) {
 		// Store result
 		var namedIndividuals = [];
-		var owlNS = owlLib.nameSpaces["owl"];
+		var owlNS = owlObject.nameSpaces["owl"];
 		// Named Individual elements
-		var niElements = owlLib.xmlDoc.
+		var niElements = owlObject.xmlDoc.
 				getElementsByTagNameNS(owlNS, CONSTANT.NAMED_INVIDUAL);
 		// Get all Named Individual which match the type
 		for (var i = 0; i < niElements.length; i++) {
 			// var ni = getNamedIndividual(niElements[i], type);
 			var niElement = niElements[i];
-			var typeNS = owlLib.nameSpaces["rdf"];
+			var typeNS = owlObject.nameSpaces["rdf"];
 			var rdfType = niElement.
 					getElementsByTagNameNS(typeNS,CONSTANT.TYPE)[0];
 //			var rdfType = niElement.getElementsByTagName(CONSTANT.TYPE)[0];
@@ -105,12 +105,12 @@ OwlObject = function () {
 		return namedIndividuals;
 	}
 
-	owlLib.getMetaData = function(namedIndividual) {
+	owlObject.getMetaData = function(namedIndividual) {
 		var properties = {};
 		var isEmpty = true;
 		
 		// Get element type
-		var typeNS = owlLib.nameSpaces["rdf"];
+		var typeNS = owlObject.nameSpaces["rdf"];
 		var rdfType = namedIndividual.
 				getElementsByTagNameNS(typeNS, CONSTANT.TYPE)[0];
 		var elementType = rdfType.getAttribute(CONSTANT.RESOURCE);
@@ -122,7 +122,7 @@ OwlObject = function () {
 		
 		
 		// get label, if any
-		var labelNS = owlLib.nameSpaces["rdfs"]; // 
+		var labelNS = owlObject.nameSpaces["rdfs"]; // 
 		var label = namedIndividual.
 				getElementsByTagNameNS(labelNS, CONSTANT.LABEL)[0];
 		if (label != null) {
@@ -141,6 +141,6 @@ OwlObject = function () {
 			return null;
 		}
 	}
-	return owlLib;
+	return owlObject;
 };
 
