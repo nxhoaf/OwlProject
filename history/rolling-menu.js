@@ -1,8 +1,10 @@
-var RollingMenu = function (owlLib, frHistoryLib) {
+var RollingMenu = function (frHistoryLib) {
 	rollingMenu = {};
 	
-	
-	rollingMenu.activateCss = function () {
+	/**
+	 * 
+	 */
+	rollingMenu.display = function () {
         // On cache les sous-menus
         // sauf celui qui porte la classe "open_at_load" :
         $("ul.subMenu:not('.open_at_load')").hide();
@@ -42,11 +44,6 @@ var RollingMenu = function (owlLib, frHistoryLib) {
 	
 	
 	rollingMenu.populateMenu = function(menuData) {
-//		var owlLib = new OwlLib();
-		
-		
-//    	var frHistoryLib = new FrHistoryLib(owlLib);
-		
     	for (var i = 0; i < menuData.length; i++) {
 			var menuItem = menuData[i];
 			
@@ -105,14 +102,10 @@ var RollingMenu = function (owlLib, frHistoryLib) {
 					};
 					subA.textContent = subItem.label;
 					subLi.appendChild(subA);
-					
-					// subLi.textContent = subTheme[CONSTANT.ABOUT];
-					
 					ul.appendChild(subLi);	
 				}
 				li.appendChild(ul);
 			} else {
-				
 				a.onclick = function () {
 					console.log(a.textContent + " don't have sub elements");
 					var knowledge = frHistoryLib.

@@ -1,4 +1,4 @@
-OwlLib = function () {
+OwlObject = function () {
 	var owlLib = {};
 	
 	/**
@@ -7,7 +7,7 @@ OwlLib = function () {
 	 * @returns url content will be load into Owl.loadOwl object
 	 */
 	owlLib.loadOwl = function(url) {
-		console.log("[OwlLib] [loadOwl] - begin");
+		console.log("[OwlObject] [loadOwl] - begin");
 		
 		// TODO: Regrex to test url
 		var xhr = {}; // XHR object
@@ -27,7 +27,7 @@ OwlLib = function () {
 		xmlDoc = (new DOMParser()).parseFromString(xmlDoc, 'text/xml');
 		owlLib.xmlDoc = xmlDoc;
 		owlLib.nameSpaces = owlLib.loadNameSpace();
-		console.log("[OwlLib] [loadOwl] - end");
+		console.log("[OwlObject] [loadOwl] - end");
 	}
 
 
@@ -43,7 +43,7 @@ OwlLib = function () {
 	 * namespaces[xsd] = "http://www.w3.org/2001/XMLSchema#"
 	 */
 	owlLib.loadNameSpace = function() {
-		console.log("[OwlLib] [loadNameSpace]");
+		console.log("[OwlObject] [loadNameSpace]");
 		var result = {}; // store the result
 		// Named Individual elements
 		var rdfNs = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
@@ -141,25 +141,6 @@ OwlLib = function () {
 			return null;
 		}
 	}
-	
-	
-	
 	return owlLib;
 };
 
-
-
-/**
- * Helper function: Get browser info
- * http://stackoverflow.com/questions/5916900/detect-version-of-browser
- */
-//owlLib.getBrowserInfo = function() {
-//	var N = navigator.appName, ua = navigator.userAgent, tem;
-//	var M = ua
-//			.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
-//	if (M && (tem = ua.match(/version\/([\.\d]+)/i)) != null)
-//		M[2] = tem[1];
-//	M = M ? [ M[1], M[2] ] : [ N, navigator.appVersion, '-?' ];
-//	
-//	return M;
-//};
