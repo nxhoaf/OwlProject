@@ -1,7 +1,7 @@
-FrHistoryLib = function (owlObject) {
-	var frHistoryLib = {};
+EducationProgram = function (owlObject) {
+	var educationProgram = {};
 	
-	frHistoryLib.getFaitPartieDe = function (element) {
+	educationProgram.getFaitPartieDe = function (element) {
 		var properties = {};
 		var isEmpty = true;
 
@@ -23,7 +23,7 @@ FrHistoryLib = function (owlObject) {
 		return null;
 	}
 
-	frHistoryLib.getSubThemesOf = function (theme, subThemes) {
+	educationProgram.getSubThemesOf = function (theme, subThemes) {
 		// get all subthemes
 //		var subThemes = OwlLib.getNamedIndividuals(
 //				"Programme_Histoire_College_France#soustheme"); 
@@ -32,7 +32,7 @@ FrHistoryLib = function (owlObject) {
 			var subTheme = subThemes[i];
 			
 			// Get "faitPartieDe" property
-			var faitPartieDe = frHistoryLib.getFaitPartieDe(subTheme);
+			var faitPartieDe = educationProgram.getFaitPartieDe(subTheme);
 			// If this sub theme doesn't belong to the theme, we continue
 			if (faitPartieDe == null || faitPartieDe != theme) {
 				continue;
@@ -48,16 +48,18 @@ FrHistoryLib = function (owlObject) {
 		return result;
 	}
 
-	frHistoryLib.getKnowledgeOf = function (theme) {
-		var knowledgeNS = owlObject.nameSpaces["Programme_Histoire_College_France"];
-		var knowledge = owlObject.getNamedIndividuals( knowledgeNS + "knowledge");
+	educationProgram.getKnowledgeOf = function (theme) {
+		var knowledgeNS = 
+				owlObject.nameSpaces["Programme_Histoire_College_France"];
+		var knowledge = 
+				owlObject.getNamedIndividuals( knowledgeNS + "knowledge");
 		
 		var result = []; // store result
 		for (var i = 0; i < knowledge.length; i++) {
 			var item = knowledge[i];
 			
 			// Get "faitPartieDe" property
-			var faitPartieDe = frHistoryLib.getFaitPartieDe(item);
+			var faitPartieDe = educationProgram.getFaitPartieDe(item);
 			// If this sub theme doesn't belong to the theme, we continue
 			if (faitPartieDe == null || faitPartieDe != theme) {
 				continue;
@@ -75,7 +77,7 @@ FrHistoryLib = function (owlObject) {
 	}
 	
 	
-	frHistoryLib.createProgramMenu = function(filter, prefix) {
+	educationProgram.createProgramMenu = function(filter, prefix) {
 		var programMenu = [];
 		var themes = owlObject.getNamedIndividuals(prefix + "subtheme");
 		
@@ -90,7 +92,7 @@ FrHistoryLib = function (owlObject) {
 			// Get its sub themes
 			var allSubThemes = owlObject.getNamedIndividuals(
 					"Programme_Histoire_College_France#subtheme"); 
-			var subThemes = frHistoryLib.
+			var subThemes = educationProgram.
 					getSubThemesOf(themeMetadata[CONSTANT.ABOUT], allSubThemes);
 			
 			// Each menuItem may have zero or many sub themes;
@@ -111,7 +113,7 @@ FrHistoryLib = function (owlObject) {
 		
 	}
 	
-	return frHistoryLib;
+	return educationProgram;
 };
 
 

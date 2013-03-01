@@ -7,7 +7,7 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="./owl-constant.js"></script>
     <script src="./owl-lib.js"></script>
-    <script src="./french-history-lib.js"></script>
+    <script src="./educ-program-lib.js"></script>
     <script src="./rolling-menu.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<!--[if lte IE 6]>
@@ -23,7 +23,7 @@
 		
 		var historyOwl = new OwlObject();
 		historyOwl.loadOwl("resource/programmeHistoire6emeV3.owl");   
-		var frHistoryLib = new FrHistoryLib(historyOwl);
+		var frHistoryLib = new EducationProgram(historyOwl);
 		var rollingMenu = new RollingMenu(frHistoryLib);
 		
 		// Don't need path anymore, because historyOwl.loadOwl(path);  is pulled
