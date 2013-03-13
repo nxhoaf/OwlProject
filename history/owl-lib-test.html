@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Test result for rdf-lib.js
+    </title>
+    <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.11.0.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://code.jquery.com/qunit/qunit-1.11.0.js"></script>
+    <script src="owl-constant.js"></script>
+    <script src="owl-lib.js"></script>
+    <script>
+    	//######################################################################
+    	//             Test unit for loadOwl()
+    	//###################################################################### 
+    	
+    	module("--- owlObject.loadOwl() --- ")
+    	// --------------------- Normal case -----------------------------------
+		test("Blackbox test: Normal case", function () {
+			expect(2); // Must have 2 tests.
+			var owlObject = new OwlObject();
+			var url = "resource/programmeHistoire6emeV3.owl";
+			owlObject.loadOwl(url);
+			
+			ok( owlObject.xmlDoc, "xmlDoc not null" );
+			ok( owlObject.nameSpaces, "nameSpaces not null" );
+		});
+		
+		test("Blackbox test: Exceptional case: invalid url", function () {
+			expect(2); // Must have 2 tests.
+			var owlObject = new OwlObject();
+			var url = "resource/this-is-an-invalid-url";
+			owlObject.loadOwl(url);
+			
+			equal( owlObject.xmlDoc, null, "xmlDoc null" );
+			equal( owlObject.nameSpaces, null, "nameSpaces null" );
+		});
+    	
+     </script>
+  </head>
+  <body>
+
+	<div id="qunit"></div>
+	<div id="qunit-fixture">
+		
+	</div>
+	
+  </body>
+</html>

@@ -23,6 +23,11 @@ OwlObject = function () {
 		
 		xhr.open("GET", url, false); // using sync
 		xhr.send();
+		if (xhr.status != 200) {
+			owlObject.xmlDoc = null;
+			owlObject.nameSpaces = null;
+			return;
+		}
 		xmlDoc = xhr.response;
 		xmlDoc = (new DOMParser()).parseFromString(xmlDoc, 'text/xml');
 		owlObject.xmlDoc = xmlDoc;
@@ -47,6 +52,11 @@ OwlObject = function () {
 		var result = {}; // store the result
 		// Named Individual elements
 		var rdfNs = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+		
+		if (owlObject.xmlDoc == null) {
+			return;
+		}
+		
 		var rdf= owlObject.xmlDoc.
 				getElementsByTagNameNS(rdfNs,CONSTANT.RDF)[0];
 		var attributes = rdf.attributes;
