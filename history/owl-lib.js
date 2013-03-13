@@ -139,9 +139,8 @@ OwlObject = function () {
 			isEmpty = false;
 		}
 		
-		
 		// get label, if any
-		var labelNS = owlObject.nameSpaces["rdfs"]; // 
+		var labelNS = owlObject.nameSpaces["rdfs"]; 
 		var label = namedIndividual.
 				getElementsByTagNameNS(labelNS, CONSTANT.LABEL)[0];
 		if (label != null) {

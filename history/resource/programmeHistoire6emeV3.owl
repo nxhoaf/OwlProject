@@ -531,7 +531,8 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;Des_grands_récits_de_la_Bible">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_debutDuJudaisme"/>
+		<rdfs:label> Des grands récits de la bible </rdfs:label>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_debutDuJudaisme"/>
     </owl:NamedIndividual>
     
 
@@ -540,7 +541,8 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;Des_grands_écrits_de_la_tradition">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_debutDuJudaisme"/>
+		<rdfs:label> Des grands récits de la tradition </rdfs:label>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_debutDuJudaisme"/>
     </owl:NamedIndividual>
     
 
@@ -549,7 +551,8 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;Du_mythe_à_l’histoire_:_l’Enéide_et_la_légende_de_Romulus_et_Remus">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_originesALaFin"/>
+		<rdfs:label> L'Enéide et la légende de Romulus et Remus </rdfs:label>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_originesALaFin"/>
     </owl:NamedIndividual>
     
 
@@ -574,7 +577,8 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;La_Chine_des_Han">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_chineDesHans"/>
+		<rdfs:label> La Chine des Han </rdfs:label>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_chineDesHans"/>
     </owl:NamedIndividual>
     
 
@@ -583,7 +587,8 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;La_République_romaine">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_originesALaFin"/>
+		<rdfs:label> La République romaine </rdfs:label>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_originesALaFin"/>
     </owl:NamedIndividual>
     
 
@@ -592,7 +597,8 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;La_diaspora">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_debutDuJudaisme"/>
+		<rdfs:label> La diaspora </rdfs:label>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_debutDuJudaisme"/>
     </owl:NamedIndividual>
     
 
@@ -601,7 +607,8 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;La_dynastie_des_Gupta">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_indeClassique"/>
+		<rdfs:label> La dynastie des Gupta </rdfs:label>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_indeClassique"/>
     </owl:NamedIndividual>
     
 
@@ -610,7 +617,8 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;La_paix_romaine">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_empire"/>
+		<rdfs:label> La paix romaine </rdfs:label>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_empire"/>
     </owl:NamedIndividual>
     
 
@@ -619,7 +627,8 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;La_romanisation">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_empire"/>
+		<rdfs:label> La romanisation </rdfs:label>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_empire"/>
     </owl:NamedIndividual>
     
 
@@ -628,7 +637,8 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;La_route_de_la_soie">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_chineDesHans"/>
+		<rdfs:label> La route de la soie </rdfs:label>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_chineDesHans"/>
     </owl:NamedIndividual>
     
 
@@ -638,7 +648,7 @@ La République française et son organisation démocratique sont au cœur du pro
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;Le_personnage_d’Alexandre">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
         <rdfs:label xml:lang="fr">Le personnage d’Alexandre</rdfs:label>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_alexandreLeGrand"/>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_alexandreLeGrand"/>
     </owl:NamedIndividual>
     
 
@@ -653,7 +663,8 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;Les_Hébreux_du_royaume_de_Juda">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_debutDuJudaisme"/>
+		<rdfs:label> Les Hébreax du royaume de Juda </rdfs:label>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_debutDuJudaisme"/>
     </owl:NamedIndividual>
     
 
@@ -662,7 +673,8 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;Les_chrétiens_sont_abordés_dans_le_cadre_l’empire_romain">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_debutDuJudaisme"/>
+		<rdfs:label> Les chrétiens sont abordés dans le cadre l’empire romain  </rdfs:label>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_debutDuJudaisme"/>
     </owl:NamedIndividual>
     
 
@@ -671,7 +683,8 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;Les_citoyens">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_citeDesAtheniens"/>
+		<rdfs:label> Les citoyens  </rdfs:label>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_citeDesAtheniens"/>
     </owl:NamedIndividual>
     
 
@@ -680,7 +693,7 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;Les_foyers_de_la_civilisation_grecque_aux_VIIIe_-_VIIe_siècle">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_fondementDeLaGrece"/>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_fondementDeLaGrece"/>
     </owl:NamedIndividual>
     
 
@@ -689,7 +702,7 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;Les_habitants_de_la_cité">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_citeDesAtheniens"/>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_citeDesAtheniens"/>
     </owl:NamedIndividual>
     
 
@@ -698,7 +711,7 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;Les_relations_du_christianisme_et_de_l’empire_romain">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_debutDuJudaisme"/>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_debutDuJudaisme"/>
     </owl:NamedIndividual>
     
 
@@ -707,7 +720,7 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;Les_sanctuaires_panhelléniques">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_fondementDeLaGrece"/>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_fondementDeLaGrece"/>
     </owl:NamedIndividual>
     
 
@@ -716,7 +729,7 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;Les_savants_grecs">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_laGreceDesSavants"/>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_laGreceDesSavants"/>
     </owl:NamedIndividual>
     
 
@@ -725,7 +738,7 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;L’Iliade_et_l’Odyssée">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_fondementDeLaGrece"/>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_fondementDeLaGrece"/>
     </owl:NamedIndividual>
     
 
@@ -734,7 +747,7 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;L’Urbs,_capitale_de_l’Empire">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_empire"/>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_empire"/>
     </owl:NamedIndividual>
     
 
@@ -743,7 +756,7 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;L’apogée_de_la_civilisation_de_l’Inde_classique">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_indeClassique"/>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_indeClassique"/>
     </owl:NamedIndividual>
     
 
@@ -754,7 +767,7 @@ La République française et son organisation démocratique sont au cœur du pro
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
         <rdfs:label xml:lang="fr">Capacité
 </rdfs:label>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_indeClassique"/>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_indeClassique"/>
     </owl:NamedIndividual>
     
 
@@ -763,7 +776,7 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;L’empereur">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_empire"/>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_empire"/>
     </owl:NamedIndividual>
     
 
@@ -772,7 +785,8 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;L’enchaînement_des_conquêtes">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_originesALaFin"/>
+		
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_originesALaFin"/>
     </owl:NamedIndividual>
     
 
@@ -790,7 +804,7 @@ La République française et son organisation démocratique sont au cœur du pro
 
     <owl:NamedIndividual rdf:about="&Programme_Histoire_College_France;L’unité_de_la_cité_des_Athéniens">
         <rdf:type rdf:resource="&Programme_Histoire_College_France;knowledge"/>
-        <faitPartieDe rdf:resource="&Programme_Histoire_College_France;theme_citeDesAtheniens"/>
+        <isPartOf rdf:resource="&Programme_Histoire_College_France;theme_citeDesAtheniens"/>
     </owl:NamedIndividual>
     
 

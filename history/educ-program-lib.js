@@ -10,12 +10,22 @@ EducationProgram = function (owlObject) {
 		var properties = {};
 		var isEmpty = true;
 		
-		var isPartOfNS = owlObject.
-				nameSpaces["Programme_Histoire_College_France"];
+		
 		
 		var isPartOfTag = element.
-				getElementsByTagNameNS(	isPartOfNS, 
-										CONSTANT.IS_PART_OF)[0];
+				getElementsByTagName(CONSTANT.IS_PART_OF)[0];
+		
+		if (isPartOfTag == null) {
+			var isPartOfNS = owlObject.
+					nameSpaces["Programme_Histoire_College_France"];
+			
+			isPartOfTag = element.
+					getElementsByTagNameNS(isPartOfNS, CONSTANT.IS_PART_OF)[0];
+		}
+		
+		
+		
+		
 		if ((isPartOfTag != null) 
 				&& (isPartOfTag.
 						getAttribute(CONSTANT.RESOURCE) != null)) {
@@ -55,13 +65,15 @@ EducationProgram = function (owlObject) {
 	educationProgram.getKnowledgeOf = function (theme, prefix) {
 		var knowledge = 
 				owlObject.getNamedIndividuals( prefix + "knowledge");
-		
+		console.log("knowledge: " + theme + "***" + prefix);
+		console.log("length: " + knowledge.length);
 		var result = []; // store result
 		for (var i = 0; i < knowledge.length; i++) {
 			var item = knowledge[i];
 			
 			// Get "isPartOf" property
 			var isPartOf = educationProgram.getIsPartOf(item);
+			console.log("isPartOf: " + isPartOf);
 			// If this sub theme doesn't belong to the theme, we continue
 			if (isPartOf == null || isPartOf != theme) {
 				continue;
@@ -69,7 +81,7 @@ EducationProgram = function (owlObject) {
 			
 			// Found one, Get other properties
 			var stProperties = owlObject.getMetaData(item);
-			stProperties[CONSTANT.IS_PART_OF] = faitPartieDe;
+			stProperties[CONSTANT.IS_PART_OF] = isPartOf;
 			// Save it
 			
 			result.push(stProperties);

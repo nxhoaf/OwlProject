@@ -72,9 +72,10 @@ var RollingMenu = function (owlObject, historyProgram) {
 					subA.title = "";
 					subA.name = subItem.about;
 					subA.onclick = function () {
+						var log = document.getElementById("log");
+						log.innerHTML = "";
 						var knowledge = historyProgram.
 								getKnowledgeOf(this.name, knowledgePrefix);
-								
 						var knowledgeList = document.
 								getElementById("knowledgeList");
 						knowledgeList.innerHTML = ""; // clear content
@@ -109,7 +110,9 @@ var RollingMenu = function (owlObject, historyProgram) {
 				li.appendChild(ul);
 			} else {
 				a.onclick = function () {
-					console.log(a.textContent + " don't have sub elements");
+					var log = document.getElementById("log");
+					log.innerHTML = "<b>" + this.textContent + "</b> " +
+						" doesn't have sub elements";
 					var knowledge = historyProgram.
 								getKnowledgeOf(this.name, knowledgePrefix);
 					var knowledgeList = document.
