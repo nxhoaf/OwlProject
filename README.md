@@ -295,12 +295,41 @@ var ignoreArray = [
 
 where **"stylesheet"**, **"an element with space"** are the value of the
 **'predicate'** which will be ignored.  With this `ignoreArray`, we pass it to the 
-function `RdfLib.addToIgnoreArray(ignoreArray);` This function should be called 
+function `rdfLib.addToIgnoreArray(ignoreArray);` This function should be called 
 before using any other functions.  
 
 See [person.html](./rdfa/person.html) to view full source code.
-## OwlParser using owl-lib.js
+## Working with owl file
+**owl-lib.js** gives us a way to work with .owl file via some baseline 
+functions. We can create a new owlObject via: `var owlObject = new OwlObject();`
+We use this owlObject to load the owl file that we want to work with:
+```
+owlObject.loadOwl("path/to/file.owl");
+```
+If succeeded, this function will create two data structures in the original 
+owlObject (otherwise, both of these fields are null):
 
+ - `owlObject.xlmDoc` this field contains all the content of the loaded owl 
+ file
+ - `owlObject.nameSpaces` this file contains all the nameSpace defined in the 
+ owl file. For example, in our owl file, if we have:
+	 
+	- **owl** is actually "http://www.w3.org/2002/07/owl#"
+	- **xsd** is actually "http://www.w3.org/2001/XMLSchema#"
+ 
+then we have: 
+ 
+ ```
+	owlObject.nameSpaces[owl] = "http://www.w3.org/2002/07/owl#"
+	owlObject.nameSpaces[xsd] = "http://www.w3.org/2001/XMLSchema#"
+ ```
+
+After loading owl file, we can also: 
+
+- Get a list of NamedIndividual based on its type via 
+`owlObject.getNamedIndividuals(type)`
+- Get metadata of a specific NamedIndividual via
+`owlObject.getMetaData(namedIndividual)`
 
 
 

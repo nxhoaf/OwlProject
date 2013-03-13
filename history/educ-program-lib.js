@@ -9,9 +9,6 @@ EducationProgram = function (owlObject) {
 	educationProgram.getIsPartOf = function (element) {
 		var properties = {};
 		var isEmpty = true;
-		
-		
-		
 		var isPartOfTag = element.
 				getElementsByTagName(CONSTANT.IS_PART_OF)[0];
 		
@@ -22,9 +19,6 @@ EducationProgram = function (owlObject) {
 			isPartOfTag = element.
 					getElementsByTagNameNS(isPartOfNS, CONSTANT.IS_PART_OF)[0];
 		}
-		
-		
-		
 		
 		if ((isPartOfTag != null) 
 				&& (isPartOfTag.
@@ -85,7 +79,7 @@ EducationProgram = function (owlObject) {
 			// Save it
 			
 			result.push(stProperties);
-		}
+		}+ 
 		
 		return result;
 	}
@@ -122,9 +116,7 @@ EducationProgram = function (owlObject) {
 			} 
 			programMenu.push(menuItem);
 		}
-		
 		return programMenu;
-		
 	}
 	
 	return educationProgram;
