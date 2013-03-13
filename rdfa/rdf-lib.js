@@ -1,5 +1,17 @@
 /**
- * Literal js object, used to hold attributes which are considered subject
+ * rdf-lib.js
+ */
+/**
+ * rdf-lib.js is a library helping us to deal with rdfa attributes embedded in 
+ * html pages.
+ */
+
+
+//------------------------------------------------------------------------------
+// Constant declaration
+//------------------------------------------------------------------------------
+/**
+ * This variable holds attributes which are considered subject
  * for more information about which properties are considered "rdfa" property, 
  * see here: http://www.w3.org/TR/xhtml-rdfa-primer/
  */
@@ -9,7 +21,7 @@ var SUBJECT = {
 };
 
 /**
- * Literal js object, used to hold attributes which are considered predicate
+ *  This variable holds attributes which are considered predicate
  */
 var PREDICATE = {
 	REL: "rel",
@@ -17,7 +29,7 @@ var PREDICATE = {
 }
 
 /**
- * Literal js object, used to hold attributes which are considered object
+ * This variable holds attributes which are considered object
  */
 var OBJECT = {
 	HREF : "href",
@@ -36,23 +48,27 @@ var TRIPLE = {
 	OBJECT: "OBJECT"
 };
 
+//------------------------------------------------------------------------------
+//	Main funtion
+//------------------------------------------------------------------------------
 var RdfLib = function() {
 	var rdfLib = {};
 	
 	/**
 	 * Add new elements to ignoreArray
 	 *
-	 * @param ignoreArray an array contain a list of ignore elements
+	 * @param ignoreArray an array contains a list of ignore elements
 	 * 
 	 * The RDFa prime specification say that when we have a tag containing 'rel' 
 	 * and 'href' attribute at the same time, the 'rel' should be considered as 
-	 * predicate and the 'href' should be considered as object. However, this 
-	 * definition is somehow inconsistent. The declaration of external css matches 
-	 * perfectly this definition:
+	 * predicate and the 'href' should be considered as object. Unfortunately, 
+	 * there're some exceptions. For example, the declaration of external css 
+	 * matches  this definition:
 	 * <link rel="stylesheet" type="text/css" href="http://link/to/file.css">
-	 * Obviously, this is not what we want. The library provide us a way to avoid 
-	 * such situations. All we need to do is declare an array containing all 
-	 * 'ignore element' like this:
+	 * 
+	 * Obviously, this is not what we want. The library provide us a way to 
+	 * ignore some unexpected elements. All we need to do is declare an array 
+	 * containing all 'ignore element' like this:
 	 * 
 	 * var ignoreArray = [
 	 *   "stylesheet",
@@ -84,7 +100,13 @@ var RdfLib = function() {
 	 * Get triple of the target (which is clicked event)
 	 * @param target the clicked area
 	 * @returns triple in clicked area (if any), otherwise, return null. The data
-	 * structure is as follow: (actually, key mean type)
+	 * structure is as follow:
+	 * 
+	 * triple = {subject, predicate, object}
+	 * subject = {key, value}
+	 * predicate = {key, value}
+	 * object = {key, value}
+	 * 
 	 * triple.subject.key = about
 	 * triple.subject.value = "http://example.org/nxhoaf/#me"
 	 * 
@@ -102,11 +124,9 @@ var RdfLib = function() {
 		}
 		
 		/**
-		 * Inner function, given a set of attributes, return its subject
-		 * if any. Otherwise, return null
-		 * @returns the subject object in which
-		 * subject.key = subject name
-		 * subject.value = subject value
+		 * Inner function, given a set of attributes, return the subject
+		 * attribute (if any). Otherwise, return null
+		 * @returns the subject where subject = {key, value}
 		 */
 		var getSubject = function(attributes) {
 			result = {};
@@ -117,13 +137,15 @@ var RdfLib = function() {
 				return null;
 			}
 			
+			// Find subject in set of attributes
 			for (i = 0; i < attributes.length; i++) {
 				// Must be not null
-				if ((attributes[i] == 'undefined') && (attributes[i] == null) ) {
+				if ((attributes[i] == 'undefined') && (attributes[i] == null) ){
 					continue;
 				}
 				attribute = attributes[i];
 				
+				// Found!
 				if ((attribute.nodeName == SUBJECT.ABOUT) 
 						|| (attribute.nodeName == SUBJECT.RESOURCE)) {
 					result.key = attribute.nodeName;
@@ -135,11 +157,9 @@ var RdfLib = function() {
 		};
 		
 		/**
-		 * Inner function, given a set of attributes, return its predicate 
-		 * if any. Otherwise, return null
-		 * @returns the predicate object in which
-		 * predicate.key = predicate name
-		 * predicate.value = predicate value
+		 * Inner function, given a set of attributes, return the predicate 
+		 * attribute if any. Otherwise, return null
+		 * @returns the predicate where predicate = {key, value}
 		 */
 		var getPredicate = function(attributes) {
 			result = {};
@@ -150,14 +170,15 @@ var RdfLib = function() {
 				return null;
 			}
 			
+			// Find predicate in set of attributes
 			for (i = 0; i < attributes.length; i++) {
 				// Must be not null
-				if ((attributes[i] == 'undefined') && (attributes[i] == null) ) {
+				if ((attributes[i] == 'undefined') && (attributes[i] == null) ){
 					continue;
 				}
 				attribute = attributes[i];
 				
-				
+				// Found!
 				if ((attribute.nodeName == PREDICATE.REL)
 					|| (attribute.nodeName == PREDICATE.PROPERTY)) {
 					result.key = attribute.nodeName;
@@ -170,13 +191,10 @@ var RdfLib = function() {
 		};
 		
 		/**
-		 * Inner function, given a set of attributes, return its object 
-		 * any. Otherwise, return null
-		 * @returns the object in which
-		 * object.key = object name
-		 * object.value = object value
+		 * Inner function, given a set of attributes, return the object 
+		 * attribute (if any). Otherwise, return null
+		 * @returns the object where object = {key, value}
 		 */
-		
 		var getObject = function(target, predicateType) {
 			result = {};
 			var i;
@@ -186,13 +204,10 @@ var RdfLib = function() {
 			}
 			
 			var attribute;
-			console.log("______________________ predicateType " + predicateType);
-
-			// if predicate is property (case 2), it has only one object, if it's
-			// rel (case 1), it can have many object
-			// see 2.2.4 Alternative for setting the property: rel 
+			// if predicate is 'property' (case 2), it has only one object, 
+			// if it's 'rel' (case 1), it can have many object
+			// For more info, see 2.2.4 Alternative for setting the property: rel 
 			// in http://www.w3.org/TR/xhtml-rdfa-primer/
-			// for more info
 			
 			// case 1
 			if (predicateType == PREDICATE.REL) {
@@ -208,7 +223,6 @@ var RdfLib = function() {
 						console.log(attribute.nodeValue)
 					}
 				}
-				console.log("______________________ " + attributes[i]);
 				return result;
 			}
 			
@@ -242,8 +256,8 @@ var RdfLib = function() {
 			return result;
 		};
 		
-		var triple = {}; // Represent the triple in RDF {subject, predicate, object}
-		
+		// Represent the triple in RDF {subject, predicate, object}
+		var triple = {}; 
 		triple.subject = null;
 		triple.predicate = null;
 		triple.object = null;
@@ -252,13 +266,14 @@ var RdfLib = function() {
 		triple.subject = getSubject(target.attributes);
 		triple.predicate = getPredicate(target.attributes);
 		
-		// Special case, subject becomes object, see 2.2.3 Alternative for setting 
-		// the context in http://www.w3.org/TR/xhtml-rdfa-primer/
+		// Special case, subject becomes object, see 2.2.3 Alternative for 
+		// setting the context in http://www.w3.org/TR/xhtml-rdfa-primer/
+		
 		// - quote -: 
 		// "The role of the resource attribute in the div element is to set the 
 		// "context", i.e., the subject for all the subsequent statements. Also, 
-		// when combined with the property attribute, resource can be used to set 
-		// the "target", i.e., the object for the statement (much as href)". 
+		// when combined with the property attribute, resource can be used to 
+		// set the "target", i.e., the object for the statement (much as href)". 
 		if ((triple.subject != null) &&
 				(triple.predicate != null) &&
 				(triple.subject.key == SUBJECT.RESOURCE) && 
@@ -286,6 +301,7 @@ var RdfLib = function() {
 		 * 
 		 * When the parsing completed, only triples that have all of its subject, 
 		 * predicate, object constructed properly pass the rdf.isTriple() test.
+		 * Do NOT get confused this function with rdf.isTriple()
 		 */
 		var isTemporaryTriple = function(triple) {
 			// Is Null ? 
@@ -315,13 +331,13 @@ var RdfLib = function() {
 	
 	/**
 	 * Get subject triple (if any) of the current element
-	 * @element current element, which has only predicat and subject.
+	 * @element current element, which has only predicate and subject.
 	 * @returns its subject if any, or null
 	 */
 	rdfLib.getSubjectTriple = function (element) {
 		var parent = element.parentNode;
 		
-		// If parent == null, return null as we dont have subject
+		// If parent == null, return null as we don't have subject
 		if (parent == null) {
 			return null;
 		}
@@ -353,6 +369,9 @@ var RdfLib = function() {
 		return triple;
 	};
 
+	/**
+	 * Check if the input triple is a well-formed triple.
+	 */
 	rdfLib.isTriple = function(triple) {
 		
 		/**
@@ -363,9 +382,6 @@ var RdfLib = function() {
 		 */
 		var hasValue = function (value, constant, type) {
 			var hasValue = false;
-			
-			
-			
 			for (var item in constant) {
 				var value = constant[item];
 				if (triple[type].key == value) {
@@ -389,18 +405,17 @@ var RdfLib = function() {
 			return false;
 		}
 
-		// Special case, subject becomes object, see 2.2.3 Alternative for setting 
-		// the context in http://www.w3.org/TR/xhtml-rdfa-primer/
+		// Special case, subject becomes object, see 2.2.3 Alternative for  
+		// setting the context in http://www.w3.org/TR/xhtml-rdfa-primer/
 		// - quote -: 
 		// "The role of the resource attribute in the div element is to set the 
 		// "context", i.e., the subject for all the subsequent statements. Also, 
-		// when combined with the property attribute, resource can be used to set 
-		// the "target", i.e., the object for the statement (much as href)".
+		// set when combined with the property attribute, resource can be used   
+		// to the "target", i.e., the object for the statement (much as href)".
 		if ((triple.predicate.key == "property")
 				&& (triple.object.key == "resource")) {
 			return true;
 		}
-		
 		
 		var key = triple.predicate.key;
 		// Predicate must be predefined in predicate constant
@@ -431,7 +446,7 @@ var RdfLib = function() {
 		}
 		var children = $(element).children();
 		
-		// trivial case, dont have children
+		// trivial case, don't have children
 		if ((children == null) || (children.length == 0)) {
 			var triple = rdfLib.getTriple(element);
 			if (triple != null) {
@@ -475,8 +490,8 @@ var RdfLib = function() {
 	/**
 	 * Get all prefixes in the HTML page
 	 * 
-	 * @returns an object contains all prefix in this HTML page. If the object name 
-	 * is prefixes, then we have, for example:
+	 * @returns an object contains all prefix in this HTML page. If the object  
+	 * name is prefixes, then we have, for example:
 	 * prefixes[dc] = http://purl.org/dc/terms/ schema: http://schema.org/
 	 * prefixes[foaf] = http://xmlns.com/foaf/0.1/
 	 * 
@@ -531,8 +546,8 @@ var RdfLib = function() {
 						var fullName = parsedPrefix[k + 1];
 						
 						prefixes[prefix] = fullName;
-						console.log("prefix: " + parsedPrefix[k] + " fullName: " + 
-								parsedPrefix[k+1]);
+						console.log("prefix: " + parsedPrefix[k] + 
+								" fullName: " + parsedPrefix[k+1]);
 					}
 					
 					if (!hasPrefix) {

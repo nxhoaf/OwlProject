@@ -64,8 +64,8 @@ var rdfLib = new RdfLib();
 
 ### Retrieve rdfa prefixes
 All rdfa prefixes can be retrieved via:
-`var prefixes = rdfLib.getAllPrefixes('html');`
-The result is an object containing all rdfa prefixes in the page. 
+`var prefixes = rdfLib.getAllPrefixes(html);`
+As a result, we have an object containing all rdfa prefixes in the page. 
 In our example, we should have:
 
 ```
@@ -84,9 +84,9 @@ for (var prefix in prefixes) {
 
 ### Retrieve rdfa attributes
 
-With this library, we can also get all rdfa attributes located in the page via 
-`var triples = rdfLib.getAllTriples('html');` attribute. `triples` is an array of 
-triple. Each triple is a data structure which has three fields: 
+Also, we can get all rdfa attributes located in the page via 
+`var triples = rdfLib.getAllTriples(html);` attribute. `triples` is an array of 
+triples. Each triple is a data structure which has three fields: 
 
 ```
 triple.subject
@@ -94,17 +94,21 @@ triple.predicate
 triple.object
 ```
 
-in which each of `{subject, predicate, object}` is a `{key, value}` data
-structure: 
+in which each of `{subject, predicate, object}` has two fields {key, value} 
+where key is considered as title and value is the real value:
+```
+subject.key
+subject.value
 
-`subject.key` is the title of the subject
-`subject.key` is the real value of the subject
+predicate.key
+predicate.value
 
-For `predicate` and `object`, it's exactely the same.
- 
+object.key
+object.value
+```
 
 Here is an example of how to loop over the rdfa data structure to display all 
-triples. Suppose that we have a 'div' element in our page whose id is "#log":
+triples. Suppose that in our page, we have a 'div' element whose id is "#log":
 ```
 html = document.getElementsByTagName("html")[0];
 	var triples = rdfLib.getAllTriples(html);
@@ -135,7 +139,7 @@ html = document.getElementsByTagName("html")[0];
 	$('body').append(log);
 	$("#log").html(output);
 ```
-Here is a small part of the result while applying this function to our example
+Here is one part of the result while applying this function to our example
 html:
 
 ```
@@ -170,7 +174,7 @@ We have two possibilities:
 `<span resource="urn:ISBN:978-0321356680">`
 
 
-First (for both cases), we try to get the triple in the clicked area: 
+First of all (for both cases), we try to get the triple in the clicked area: 
 `var triple = rdfLib.getTriple(event.target);` If the clicked area doesn't 
 contain any triple, nothing happens:
 
@@ -202,8 +206,8 @@ Now that we have the subject, we display it. The code for dipslaying the result
 is exactly the same as in the section **Retrieve rdfa attributes**
 
 Consider an example, when you click on 
-`<span property="dc:creator">Joshua Bloch</span>`, `RdfLib.getSubjectTriple()`
-it will go up and then find out that `<span resource="urn:ISBN:978-0321356680">` 
+`<span property="dc:creator">Joshua Bloch</span>`, `rdfLib.getSubjectTriple()`
+will go up and then find out that `<span resource="urn:ISBN:978-0321356680">` 
 is the subject of the current triple: 
 
 ``` html
@@ -225,7 +229,7 @@ object: literal:Joshua Bloch
 #### The clicked element has a subject
 When the clicked element is already a "subjectTriple", we **go down** the DOM 
 tree to get all of its childrenTriples using 
-`RdfLib.getAllTriples(event.target);` function.  
+`rdfLib.getAllTriples(event.target);` function.  
 Suppose that `<span resource="urn:ISBN:978-0321356680">` is clicked, and 
 the displaying code is as below: 
 ```
@@ -265,17 +269,18 @@ object: literal:Joshua Bloch
 Note that when used with the top <html> element, 
 `RdfLib.getAllTriples(event.target);` will list all the rdfa in the page.  
 
-### Blacklist wrong triples
+### Ignore unwanted triples
 The [RDFa prime specification](http://www.w3.org/TR/xhtml-rdfa-primer/) say that 
 when we have a tag containing 'rel' and 
 'href' attribute at the same time, the 'rel' should be considered as 
 **predicate** and the 'href' should be considered as
-**object**. However, this definition is somehow inconsistent. The declaration of 
-external css matches perfectly this definition:
+**object**. Unfortunately, there're some exceptions. For example, the 
+declaration of external css matches  this definition:
+
 ```
 <link rel="stylesheet" type="text/css" href="http://link/to/file.css">
 ```
-Obviously, this is not what we want. The library provide us a way to avoid such 
+Obviously, this is not what we want. The library provides us a way to avoid such 
 situations. All we need to do is declare an array containing all 
 'ignore element' like this:
 
@@ -289,7 +294,7 @@ var ignoreArray = [
 ```  
 
 where **"stylesheet"**, **"an element with space"** are the value of the
-'predicate' which will be ignored.  With this `ignoreArray`, we pass it to the 
+**'predicate'** which will be ignored.  With this `ignoreArray`, we pass it to the 
 function `RdfLib.addToIgnoreArray(ignoreArray);` This function should be called 
 before using any other functions.  
 
