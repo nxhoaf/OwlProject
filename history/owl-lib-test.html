@@ -16,7 +16,6 @@
     	//###################################################################### 
     	
     	module("--- owlObject.loadOwl() --- ")
-    	// --------------------- Normal case -----------------------------------
 		test("Blackbox test: Normal case", function () {
 			expect(2); // Must have 2 tests.
 			var owlObject = new OwlObject();
@@ -37,6 +36,42 @@
 			equal( owlObject.nameSpaces, null, "nameSpaces null" );
 		});
     	
+    	
+    	//######################################################################
+    	//             Test unit for getNamedIndividuals(type)
+    	//###################################################################### 
+    	
+    	module("--- owlObject.getNamedIndividuals(type) and" + 
+    			"owlObject.getMetaData(namedIndividual) --- ");
+    	test("Blackbox test: Normal case: type = periode1ere ", function () {
+    		expect(2);
+    		var owlObject = new OwlObject();
+    		var url = "resource/programmeHistoire6emeV3.owl";
+			owlObject.loadOwl(url);
+			
+			var prefix = owlObject.
+					nameSpaces["organisation-systeme-scolaire-francais"];
+			
+			var period1 = owlObject.getNamedIndividuals(prefix + "periode1ere");
+			equal( period1.length, 1, "Found period1ere" );
+			
+			var metaData = owlObject.getMetaData(period1[0]);
+			var prefix = owlObject.
+					nameSpaces["Programme_Histoire_College_France"];
+			equal(metaData["rdf:about"], prefix + "1ereGenerale", 
+					"Retrieve 'rdf:about' property" );
+		});
+		
+		test("Blackbox test: Exceptional case: invalid type ", function () {
+    		
+    		var owlObject = new OwlObject();
+    		var url = "resource/programmeHistoire6emeV3.owl";
+			owlObject.loadOwl(url);
+			
+			var invalid = owlObject.getNamedIndividuals("invalid");
+			equal( invalid, null, "Invalid type" );
+		});
+		
      </script>
   </head>
   <body>

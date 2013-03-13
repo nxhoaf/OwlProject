@@ -112,9 +112,18 @@ OwlObject = function () {
 				namedIndividuals.push(niElement);
 			}
 		}
+
+		if (namedIndividuals.length == 0) {
+			return null;
+		}
 		return namedIndividuals;
 	}
 
+	/**
+	 * Get metadata of a namedIndividual 
+	 * @param namedIndividual the namedIndividual to get attributes.
+	 * @returns the metadata data structure if any, otherwise, return null
+	 */
 	owlObject.getMetaData = function(namedIndividual) {
 		var properties = {};
 		var isEmpty = true;
