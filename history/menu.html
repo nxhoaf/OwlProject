@@ -20,26 +20,10 @@
     <script type="text/javascript">
     <!--
     $(document).ready( function () {
-		
-		// Init new History Owl object
-		var historyOwl = new OwlObject();
-		historyOwl.loadOwl("resource/programmeHistoire6emeV3.owl");
-		
-		// Init new History Program object   
-		var historyProgram = new EducationProgram(historyOwl);
-		
-		// Create new rolling menu
-		var rollingMenu = new RollingMenu(historyOwl, historyProgram);
-		
-		// Display the created rolling menu 
-		var prefix = historyOwl.
-				nameSpaces["Programme_Histoire_College_France"];
-		var themeFilter = historyOwl.
-				nameSpaces["organisation-systeme-scolaire-francais"] + 
-				"programmeHistoire6eme";
-		var historyMenu = historyProgram.createProgramMenu(themeFilter, prefix);
-		
-		var subThemeOnClick = function () {
+		//----------------------------------------------------------------------
+		// Handler function for onclick event
+		//----------------------------------------------------------------------
+		var subThemeOnClickHandler = function () {
 			var log = document.getElementById("log");
 			log.innerHTML = "";
 			var knowledge = historyProgram.
@@ -72,7 +56,7 @@
 			}
 		}
 		
-		var themeOnClick = function() {
+		var themeOnClickHandler = function() {
 			var log = document.getElementById("log");
 			log.innerHTML = "<b>" + this.textContent + "</b> " +
 				" doesn't have sub elements";
@@ -112,8 +96,30 @@
 				}
 			}
 		}
-		 
-		rollingMenu.drawMenu(historyMenu, subThemeOnClick, themeOnClick);
+		
+		//----------------------------------------------------------------------
+		// Main program goes here.
+		//----------------------------------------------------------------------
+		// Init new History Owl object
+		var historyOwl = new OwlObject();
+		historyOwl.loadOwl("resource/programmeHistoire6emeV3.owl");
+		
+		// Init new History Program object   
+		var historyProgram = new EducationProgram(historyOwl);
+		
+		// Create new rolling menu
+		var rollingMenu = new RollingMenu(historyOwl);
+		
+		// Display the created rolling menu 
+		var prefix = historyOwl.
+				nameSpaces["Programme_Histoire_College_France"];
+		var themeFilter = historyOwl.
+				nameSpaces["organisation-systeme-scolaire-francais"] + 
+				"programmeHistoire6eme";
+		var historyMenu = historyProgram.createProgramMenu(themeFilter, prefix);
+		
+		rollingMenu.drawMenu(historyMenu, subThemeOnClickHandler, 
+				themeOnClickHandler);
     } ) ;
     
     // -->

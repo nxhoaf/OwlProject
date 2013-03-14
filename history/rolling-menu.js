@@ -1,4 +1,4 @@
-var RollingMenu = function (owlObject, historyProgram) {
+var RollingMenu = function (owlObject) {
 	rollingMenu = {};
 	
 	/**
@@ -43,7 +43,8 @@ var RollingMenu = function (owlObject, historyProgram) {
 	}
 	
 	
-	rollingMenu.drawMenu = function(menuData, subThemeOnClick, themeOnClick) {
+	rollingMenu.drawMenu = function(menuData, subThemeOnClickHandler, 
+			themeOnClickHandler) {
     	for (var i = 0; i < menuData.length; i++) {
 			var menuItem = menuData[i];
 			// Get theme label and display it if not null
@@ -70,14 +71,14 @@ var RollingMenu = function (owlObject, historyProgram) {
 					subA = document.createElement("a");
 					subA.title = "";
 					subA.name = subItem.about;
-					subA.onclick = subThemeOnClick;
+					subA.onclick = subThemeOnClickHandler;
 					subA.textContent = subItem.label;
 					subLi.appendChild(subA);
 					ul.appendChild(subLi);	
 				}
 				li.appendChild(ul);
 			} else {
-				a.onclick = themeOnClick;
+				a.onclick = themeOnClickHandler;
 			}
 			document.getElementById("navigation").appendChild(li);
 		}

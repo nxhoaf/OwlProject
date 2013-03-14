@@ -401,18 +401,31 @@ It's the front-end part, which displays all required information founded in
 This javascript file contains two functions: 
 
 - `display()`
-- `drawMenu(menuData)` where `menuData` is retrieved via 
-`eduProgramObject.createProgramMenu(filter, prefix)`
+- `drawMenu(menuData, subThemeOnClickHandler, themeOnClickHandler)` where 
+	- `menuData` is retrieved via 
+	`eduProgramObject.createProgramMenu(filter, prefix)`
+	- `subThemeOnClickHandler` is the user-defined handler for the onclick 
+	event on subtheme
+	- `themeOnClickHandler` is the user-defined handler for the onclick 
+	event on theme.
+
+	(These two handler function can be found in [menu.html](./history/menu.html))
 
 Here, `display()` deals with presentation, css. It will be invoked as soon as 
-`drawMenu(menuData)` finishes its works.
+`drawMenu(menuData)` finishes its works to display the collected data.
 
+### menu.html
+The last one is `menu.html`, also considered as the entry point of the program 
+via a web browser. Some of its roles are: 
 
+- Define two handler functions `subThemeOnClickHandler` and 
+`themeOnClickHandler`
+- Do some initialization: 
+	- Instantiate a new `OwlObject` object
+	- Instantiate a new `EducationProgram` object
+	- Instantiate a new `RollingMenu` object
 
-
-
-
-See [menu.html](./history/menu.html) for more details.
+For more details, see [menu.html](./history/menu.html) 
 
 
 
