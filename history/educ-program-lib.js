@@ -52,22 +52,21 @@ EducationProgram = function (owlObject) {
 			// Save it
 			result.push(stProperties);
 		}
-		
 		return result;
 	}
 
 	educationProgram.getKnowledgeOf = function (theme, prefix) {
 		var knowledge = 
 				owlObject.getNamedIndividuals( prefix + "knowledge");
-		console.log("knowledge: " + theme + "***" + prefix);
-		console.log("length: " + knowledge.length);
+//		console.log("knowledge: " + theme + "***" + prefix);
+//		console.log("length: " + knowledge.length);
 		var result = []; // store result
 		for (var i = 0; i < knowledge.length; i++) {
 			var item = knowledge[i];
 			
 			// Get "isPartOf" property
 			var isPartOf = educationProgram.getIsPartOf(item);
-			console.log("isPartOf: " + isPartOf);
+//			console.log("isPartOf: " + isPartOf);
 			// If this sub theme doesn't belong to the theme, we continue
 			if (isPartOf == null || isPartOf != theme) {
 				continue;
@@ -79,7 +78,7 @@ EducationProgram = function (owlObject) {
 			// Save it
 			
 			result.push(stProperties);
-		}+ 
+		}
 		
 		return result;
 	}

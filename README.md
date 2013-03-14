@@ -1,6 +1,4 @@
-## OwlProject
-
-## RdfaParser using rdf-lib.js
+## 1. RdfaParser using rdf-lib.js
 In this part, we describle how to use rdf-lib.js to retrieve all rdfa attributes
 in an HTML page.
 
@@ -298,38 +296,104 @@ where **"stylesheet"**, **"an element with space"** are the value of the
 function `rdfLib.addToIgnoreArray(ignoreArray);` This function should be called 
 before using any other functions.  
 
-See [person.html](./rdfa/person.html) to view full source code.
-## Working with owl file
-**owl-lib.js** gives us a way to work with .owl file via some baseline 
+See [person.html](./rdfa/person.html) for more details.
+## 2. Working with owl file
+In this section, we will: 
+
+- Use `owl-lib.js` to work with .owl file via some basic funtions.
+- Based on `owl-lib.js`, we'll implement the `educ-program-lib.js` to deal 
+with a specific ontology file: *The french history*.
+- For the displaying part, we'll construct an GUI interface: `rolling-menu.js` 
+(which is a rolling menu).
+- And finally, the `menu.html` is the container, which is also considered as 
+the input point, via a web browser.
+
+### owl-lib.js
+
+First of all, `owl-lib.js` gives us a way to work with .owl file via some basic 
 functions. We can create a new owlObject via: `var owlObject = new OwlObject();`
-We use this owlObject to load the owl file that we want to work with:
+It will be used to load the owl file that we want to work with:
 ```
 owlObject.loadOwl("path/to/file.owl");
 ```
 If succeeded, this function will create two data structures in the original 
 owlObject (otherwise, both of these fields are null):
 
- - `owlObject.xlmDoc` this field contains all the content of the loaded owl 
- file
- - `owlObject.nameSpaces` this file contains all the nameSpace defined in the 
+ - `owlObject.xlmDoc` contains all the content of the loaded owl 
+ file. For example, if `path/to/file.owl` points to 
+ [programmeHistoire6emeV3.owl](./history/resource/programmeHistoire6emeV3.owl), 
+ then all contents of this file will be loaded to `owlObject.xlmDoc`.
+ - `owlObject.nameSpaces` contains all the nameSpace defined in the 
  owl file. For example, in our owl file, if we have:
 	 
-	- **owl** is actually "http://www.w3.org/2002/07/owl#"
-	- **xsd** is actually "http://www.w3.org/2001/XMLSchema#"
+	- `owl` is actually "http://www.w3.org/2002/07/owl#"
+	- `xsd` is actually "http://www.w3.org/2001/XMLSchema#"
  
-then we have: 
+then it should be accessible via `owlObject.nameSpaces[owl]`: 
  
  ```
 	owlObject.nameSpaces[owl] = "http://www.w3.org/2002/07/owl#"
 	owlObject.nameSpaces[xsd] = "http://www.w3.org/2001/XMLSchema#"
  ```
 
-After loading owl file, we can also: 
+Now that we loaded owl file, we can also: 
 
-- Get a list of NamedIndividual based on its type via 
-`owlObject.getNamedIndividuals(type)`
-- Get metadata of a specific NamedIndividual via
-`owlObject.getMetaData(namedIndividual)`
+- Get a list of NamedIndividual
+- Get metadata of a specific NamedIndividual
+
+##### Get a list of NamedIndividual
+
+`NamedIndividual` can be retrieved based on its type via 
+`owlObject.getNamedIndividuals(type)`. Consider an example, with the owlObject
+well-initialized as above, we can get the NamedIndividual object named
+"periode1ere" (from line 512 to 516 in
+[programmeHistoire6emeV3.owl](./history/resource/programmeHistoire6emeV3.owl))
+ via: 
+ ```
+	var prefix = owlObject.nameSpaces["organisation-systeme-scolaire-francais"];
+	var period1 = owlObject.getNamedIndividuals(prefix + "periode1ere")[0];
+ ```
+ Note that the returned object is an array. That is, although the `periode1ere`
+ object is unique, we still need to get that unique element via `[0]` as above.
+
+##### Get metadata of a specific NamedIndividual
+Now that we have period1, we can get its `about` property and `label` via
+`owlObject.getMetaData(namedIndividual)`:
+
+ ```
+	var metaData = owlObject.getMetaData(period1);
+	console.log(metaData[rdf:about]); // &Programme_Histoire_College_France;1ereGenerale
+	console.log(metaData[rdfs:label]; // empty, as `period1` doesn't have label
+ ```
+
+With these baseline functions, we will implement the `educ-program-lib.js` to 
+deal with 
+[programmeHistoire6emeV3.owl](./history/resource/programmeHistoire6emeV3.owl), 
+a specific ontology describling the history courses in french highschool.  
+
+### educ-program-lib.js
+Based on the api provided by owl-lib.js, we'll implement some functions to deal 
+with the 
+[programmeHistoire6emeV3.owl](./history/resource/programmeHistoire6emeV3.owl)
+ontology. What we will to is to get all `NamedIndividual` whose type are 
+`theme` or `subtheme`. The implementation is strictly linked to this ontology, 
+nevertheless, it can be used as an example for similar situations. 
+It has some main functions: 
+
+- `getIsPartOf(element)`
+- `getSubThemeOf(element)`
+
+
+
+
+
+
+
+
+
+
+See [menu.html](./history/menu.html) for more details.
+
 
 
 
