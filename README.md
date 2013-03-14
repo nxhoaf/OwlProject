@@ -376,16 +376,36 @@ Based on the api provided by owl-lib.js, we'll implement some functions to deal
 with the 
 [programmeHistoire6emeV3.owl](./history/resource/programmeHistoire6emeV3.owl)
 ontology. What we will to is to get all `NamedIndividual` whose type are 
-`theme` or `subtheme`. The implementation is strictly linked to this ontology, 
+`theme` or `subtheme`. The implementation is specifically linked to this ontology, 
 nevertheless, it can be used as an example for similar situations. 
 It has some main functions: 
 
-- `getIsPartOf(element)`
-- `getSubThemeOf(element)`
+- `getIsPartOf(element)` get the `isPartOf` attribute of a NamedElement
+- `getSubThemeOf(element)` get sub theme of a theme
+- `getKnowledgeOf(theme, prefix)` get all knowledge linked to the current theme
+- `createProgramMenu(filter, prefix)`
 
+The first three functions are used as their names indicated. The last one, 
+`createProgramMenu(filter, prefix)` is the interface between 
+[programmeHistoire6emeV3.owl](./history/resource/programmeHistoire6emeV3.owl) 
+and `rolling-menu.js`. It'll parse this owl file and return data structures 
+used by `rolling-menu.js`.
 
+### rolling-menu.js
+RollingMenu object can be instantiated via 
+```
+var rollingMenu = new RollingMenu(owlObject, eduProgramObject)
+```
+It's the front-end part, which displays all required information founded in 
+[programmeHistoire6emeV3.owl](./history/resource/programmeHistoire6emeV3.owl).
+This javascript file contains two functions: 
 
+- `display()`
+- `drawMenu(menuData)` where `menuData` is retrieved via 
+`eduProgramObject.createProgramMenu(filter, prefix)`
 
+Here, `display()` deals with presentation, css. It will be invoked as soon as 
+`drawMenu(menuData)` finishes its works.
 
 
 

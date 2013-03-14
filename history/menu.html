@@ -32,12 +32,88 @@
 		var rollingMenu = new RollingMenu(historyOwl, historyProgram);
 		
 		// Display the created rolling menu 
-		var prefix = historyOwl.nameSpaces["Programme_Histoire_College_France"];
+		var prefix = historyOwl.
+				nameSpaces["Programme_Histoire_College_France"];
 		var themeFilter = historyOwl.
 				nameSpaces["organisation-systeme-scolaire-francais"] + 
 				"programmeHistoire6eme";
-		var historyMenu = historyProgram.createProgramMenu(themeFilter, prefix); 
-		rollingMenu.drawMenu(historyMenu);
+		var historyMenu = historyProgram.createProgramMenu(themeFilter, prefix);
+		
+		var subThemeOnClick = function () {
+			var log = document.getElementById("log");
+			log.innerHTML = "";
+			var knowledge = historyProgram.
+					getKnowledgeOf(this.name, prefix);
+			var knowledgeList = document.
+					getElementById("knowledgeList");
+			knowledgeList.innerHTML = ""; // clear content
+			var knowledgeLabel = document.
+					getElementById("knowledgeLabel");
+			knowledgeLabel.style.visibility = 'visible';
+			
+			for (var k = 0; k < knowledge.length; k++) {
+				
+				var checkbox = document.createElement('input');
+				checkbox.type = "checkbox";
+				checkbox.name = "knowledge";
+				checkbox.value = knowledge[k];
+				checkbox.id = "knowledge_" + k;
+				
+				var label = document.createElement('label')
+				label.htmlFor = "id";
+				label.appendChild(document.createTextNode(
+						knowledge[k][CONSTANT.LABEL]));
+				
+				var br = document.createElement("br");
+					
+				knowledgeList.appendChild(checkbox);
+				knowledgeList.appendChild(label);
+				knowledgeList.appendChild(br);
+			}
+		}
+		
+		var themeOnClick = function() {
+			var log = document.getElementById("log");
+			log.innerHTML = "<b>" + this.textContent + "</b> " +
+				" doesn't have sub elements";
+			var knowledge = historyProgram.
+						getKnowledgeOf(this.name, prefix);
+			var knowledgeList = document.
+					getElementById("knowledgeList");
+			knowledgeList.innerHTML = ""; // clear content
+			var knowledgeLabel = document.
+					getElementById("knowledgeLabel");
+			knowledgeLabel.style.visibility = 'visible';
+			
+			// Knowledge not found
+			if ((knowledge == null) || (knowledge.length == 0)) {
+				var notFound = document.createTextNode("None");
+				knowledgeList.appendChild(notFound);
+				
+			} else {
+				for (var k = 0; k < knowledge.length; k++) {
+				
+				var checkbox = document.createElement('input');
+				checkbox.type = "checkbox";
+				checkbox.name = "knowledge";
+				checkbox.value = knowledge[k];
+				checkbox.id = "knowledge_" + k;
+				
+				var label = document.createElement('label')
+				label.htmlFor = "id";
+				label.appendChild(document.createTextNode(
+						knowledge[k][CONSTANT.LABEL]));
+				
+				var br = document.createElement("br");	
+				knowledgeList.appendChild(checkbox);
+				knowledgeList.appendChild(label);
+				knowledgeList.appendChild(br);
+				
+				}
+			}
+		}
+		 
+		rollingMenu.drawMenu(historyMenu, subThemeOnClick, themeOnClick);
     } ) ;
     
     // -->

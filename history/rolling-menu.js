@@ -43,10 +43,9 @@ var RollingMenu = function (owlObject, historyProgram) {
 	}
 	
 	
-	rollingMenu.drawMenu = function(menuData) {
+	rollingMenu.drawMenu = function(menuData, subThemeOnClick, themeOnClick) {
     	for (var i = 0; i < menuData.length; i++) {
 			var menuItem = menuData[i];
-			
 			// Get theme label and display it if not null
 			li = document.createElement("li");
 			li.setAttribute("class","toggleSubMenu");
@@ -71,85 +70,14 @@ var RollingMenu = function (owlObject, historyProgram) {
 					subA = document.createElement("a");
 					subA.title = "";
 					subA.name = subItem.about;
-					subA.onclick = function () {
-						var log = document.getElementById("log");
-						log.innerHTML = "";
-						var knowledge = historyProgram.
-								getKnowledgeOf(this.name, knowledgePrefix);
-						var knowledgeList = document.
-								getElementById("knowledgeList");
-						knowledgeList.innerHTML = ""; // clear content
-						var knowledgeLabel = document.
-								getElementById("knowledgeLabel");
-						knowledgeLabel.style.visibility = 'visible';
-						
-						for (var k = 0; k < knowledge.length; k++) {
-							
-							var checkbox = document.createElement('input');
-							checkbox.type = "checkbox";
-							checkbox.name = "knowledge";
-							checkbox.value = knowledge[k];
-							checkbox.id = "knowledge_" + k;
-							
-							var label = document.createElement('label')
-							label.htmlFor = "id";
-							label.appendChild(document.createTextNode(
-									knowledge[k][CONSTANT.LABEL]));
-							
-							var br = document.createElement("br");
-								
-							knowledgeList.appendChild(checkbox);
-							knowledgeList.appendChild(label);
-							knowledgeList.appendChild(br);
-						}
-					};
+					subA.onclick = subThemeOnClick;
 					subA.textContent = subItem.label;
 					subLi.appendChild(subA);
 					ul.appendChild(subLi);	
 				}
 				li.appendChild(ul);
 			} else {
-				a.onclick = function () {
-					var log = document.getElementById("log");
-					log.innerHTML = "<b>" + this.textContent + "</b> " +
-						" doesn't have sub elements";
-					var knowledge = historyProgram.
-								getKnowledgeOf(this.name, knowledgePrefix);
-					var knowledgeList = document.
-							getElementById("knowledgeList");
-					knowledgeList.innerHTML = ""; // clear content
-					var knowledgeLabel = document.
-							getElementById("knowledgeLabel");
-					knowledgeLabel.style.visibility = 'visible';
-					
-					// Knowledge not found
-					if ((knowledge == null) || (knowledge.length == 0)) {
-						var notFound = document.createTextNode("None");
-						knowledgeList.appendChild(notFound);
-						
-					} else {
-						for (var k = 0; k < knowledge.length; k++) {
-						
-						var checkbox = document.createElement('input');
-						checkbox.type = "checkbox";
-						checkbox.name = "knowledge";
-						checkbox.value = knowledge[k];
-						checkbox.id = "knowledge_" + k;
-						
-						var label = document.createElement('label')
-						label.htmlFor = "id";
-						label.appendChild(document.createTextNode(
-								knowledge[k][CONSTANT.LABEL]));
-						
-						var br = document.createElement("br");	
-						knowledgeList.appendChild(checkbox);
-						knowledgeList.appendChild(label);
-						knowledgeList.appendChild(br);
-						
-						}
-					}
-				}
-			
+				a.onclick = themeOnClick;
 			}
 			document.getElementById("navigation").appendChild(li);
 		}
